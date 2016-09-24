@@ -48,14 +48,14 @@
 {
     width: 305px;
     padding: 10px;
-    padding-bottom: 0px;
+    padding-bottom: 0;
 }
 
 .navbar-login-session
 {
     padding: 10px;
-    padding-bottom: 0px;
-    padding-top: 0px;
+    padding-bottom: 0;
+    padding-top: 0;
 }
 
 .icon-size
@@ -78,7 +78,47 @@
 .navbar-default .navbar-nav>li>a:hover{
   color: #5b9bd1;
 }
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+    position: relative;
+    min-height: 100%;
+}
+body {
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
+}
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 20px;
+    /* Set the fixed height of the footer here */
+    /*height: 60px;*/
+    background-color: #777;
+    /*background-color: #f5f5f5;*/
+}
 
+
+/* Custom page CSS
+-------------------------------------------------- */
+/* Not required for template or sticky footer method. */
+
+body > .container {
+    padding: 60px 15px 0;
+}
+.container .text-muted {
+    margin: 20px 0;
+}
+
+.footer > .container {
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+code {
+    font-size: 80%;
+}
 /***
 Side-bar use profile
 **/
@@ -142,7 +182,7 @@ body {
 }
 
 .profile-userbuttons .btn:last-child {
-  margin-right: 0px;
+  margin-right: 0;
 }
     
 .profile-usermenu {
@@ -213,7 +253,7 @@ blockquote{
     padding-top: -100px;
     border-radius: 17px;
     background-color: #929396;
-    margin-top: 0px;
+    margin-top: 0;
     color:white;
     box-shadow: 2px 2px 2px 2px #E0E0E0;
     font-family: 'Lobster Two', cursive;
@@ -242,7 +282,7 @@ blockquote{
 	  margin: 4%;
 }
 .w1dget-head{
-	padding-bottom: 10px
+	padding-bottom: 10px;
 	height:32px;
 	padding-left: 5px;
 	padding-right: 5px;
