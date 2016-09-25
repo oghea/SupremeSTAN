@@ -1,5 +1,4 @@
-
-    <header id="primary" class="relative" style="height: 50px;">
+ <header id="primary" class="relative" style="height: 60px;">
         <nav class="navbar navbar-default navbar-fixed-top">
             <div class="container">
                 <div class="navbar-header">
@@ -8,7 +7,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <img src="storage/img/logo.png" class="navbar-brand ">
+                    <img src="storage/img/logo.png" class="navbar-brand-1 ">
                 </div>
                 <div class="navbar-collapse collapse" aria-expanded="false">
                     <ul class="nav navbar-nav navbar-right">
@@ -25,15 +24,14 @@
                                 <li>
                                     <div class="navbar-login">
                                         <div class="row">
-                                            <div class="col-lg-4">
+                                            <div class="col-lg-4 col-xs-4">
                                                 <p class="text-center">
-                                                    <!-- <span class="glyphicon glyphicon-user icon-size"></span> -->
                                                     <img class="img-size" src="storage/uploads/avatars/{{ Auth::user()->user_profile->avatar }}">
                                                 </p>
                                             </div>
-                                            <div class="col-lg-8">
-                                                <p class="text-left"><strong>{{Auth::user()->name}}</strong></p>
-                                                <p class="text-left small">{{Auth::user()->email}}</p>
+                                            <div class="col-lg-8 col-xs-8">
+                                                <p class="text-left mobile-warna"><strong>{{Auth::user()->name}}</strong></p>
+                                                <p class="text-left small mobile-warna">{{Auth::user()->email}}</p>
                                                 <p class="text-left">
                                                     <a href="#" class="btn btn-primary btn-block btn-sm">Edit Profile</a>
                                                 </p>

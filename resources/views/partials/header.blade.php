@@ -1,5 +1,5 @@
 
-    <header id="primary" class="relative" style="height: 50px;">
+    <header id="primary" class="relative" style="height: 60px;">
         <nav class="navbar navbar-default navbar-fixed-top">
             <div class="container">
                 <div class="navbar-header">
@@ -8,7 +8,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <img src="storage/img/logo.png" class="navbar-brand ">
+                    <img src="storage/img/logo.png" class="navbar-brand-1 ">
                 </div>
                 <div class="navbar-collapse collapse" aria-expanded="false">
                     <ul class="nav navbar-nav navbar-right">

@@ -13,6 +13,7 @@
     {{--our css--}}
     <link rel="stylesheet" href="css/supreme.css">
     <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
     {{--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css" integrity="sha384-XdYbMnZ/QjLh6iI4ogqCTaIjrFk87ip+ekIjefZch0Y+PvJ8CDYtEs1ipDmPorQ+" crossorigin="anonymous">--}}
     {{--<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700">--}}
 </head>
@@ -29,9 +30,11 @@
         @include('partials.header-auth')
     @endif
 @endif
-    <div class="container">
-        @yield('content')
-    </div>
+    <section>
+        <div class="container">
+            @yield('content')
+        </div>
+    </section>
 @if(\Route::current()->getName() == 'login' || str_contains(Request::fullUrl(), 'register') || str_contains(Request::fullUrl(), 'password/reset'))
     @include('partials.kosong')
 @else

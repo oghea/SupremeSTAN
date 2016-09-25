@@ -5,6 +5,7 @@ namespace SupremeSTAN\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use SupremeSTAN\User;
+use SupremeSTAN\Role;
 
 class HomeController extends Controller
 {
@@ -35,16 +36,22 @@ class HomeController extends Controller
 //            return view('welcome');
 //        }
         if(Auth::user()->isVerified()) {
+            $auth=Auth::user();
             if (Auth::user()->hasRole(['owner', 'superadmin', 'curriculum', 'finance', 'siswa', 'siswa_tryout', 'banned',
                 'admin_account', 'admin_content' , 'free_member']))
             {
-                return view('home');
+                $users=$auth;
+//                $user->roles->get();
+                return view('dashboard.user',compact('users'));
             } else {
                 Auth::user()->attachRole('10');
-                return view('home');
+                $users=$auth;
+//                $user->roles->get();
+                return view('dashboard.user',compact('users'));
             }
         }else{
-            return view('home');
+            $users=User::find(Auth::user());
+            return view('dashboard.user',compact('users'));
         }
 //        Auth::User();
 //        if(){
