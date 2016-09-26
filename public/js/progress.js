@@ -11,3 +11,9 @@ $( window ).load(function() {
        
  //  }  
 });
+
+$("#sidebar li a").each(function() {
+  if (this.href == window.location.href) {
+    $(this).parents('li').addClass("active");
+  }
+});

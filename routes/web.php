@@ -23,10 +23,11 @@ Route::get('email-verification/check/{token}', 'Auth\RegisterController@getVerif
 Route::group(['middleware' => ['auth']], function() {
 
     Route::get('/home', 'HomeController@index');
-    Route::resource('users', 'UserController');
+//    Route::resource('users', 'UserController');
 
     Route::get('profile','UserController@profile');
-    Route::post('profile','UserController@updateProfile');
+    Route::get('profile/edit','UserController@editProfile');
+    Route::post('profile/edit','UserController@updateProfile');
 //    Route::get('profile/{id}','UserProfileController@show');
 
     Route::get('roles', ['as' => 'roles.index', 'uses' => 'RoleController@index', 'middleware' => ['permission:role-list|role-create|role-edit|role-delete']]);

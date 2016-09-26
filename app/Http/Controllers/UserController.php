@@ -140,11 +140,15 @@ class UserController extends Controller
             $profile = new UserProfile();
             $profile->user()->associate($user);
             $profile->save();
-            return view('profile.index', array('user' => $user) );
+            return view('profile.index', array('users' => $user) );
         }else{
-            return view('profile.index', array('user' => $user) );
+            return view('profile.index', array('users' => $user) );
         }
 
+    }
+    public function editProfile(){
+        $user = Auth::user();
+        return view('profile.edit',array('users' => $user));
     }
     public function updateProfile(Request $request){
         $user = Auth::user();

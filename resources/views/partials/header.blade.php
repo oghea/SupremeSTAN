@@ -8,7 +8,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <img src="storage/img/logo.png" class="navbar-brand-1 ">
+                    <img src="/storage/img/logo.png" class="navbar-brand-1 ">
                 </div>
                 <div class="navbar-collapse collapse" aria-expanded="false">
                     <ul class="nav navbar-nav navbar-right">

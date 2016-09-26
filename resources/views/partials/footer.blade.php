@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-7">
-                <img src="storage/img/logo.png" class="footer-brand">
+                <img src="/storage/img/logo.png" class="footer-brand">
                 <p>Bimbel USM STAN</p>
                 <p></p>
                 <p>Jl. Bintaro city no 12 tanggerang</p>
