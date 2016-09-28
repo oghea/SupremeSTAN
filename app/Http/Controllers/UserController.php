@@ -69,7 +69,26 @@ class UserController extends Controller
         return redirect()->route('users.index')
             ->with('success','User created successfully');
     }
+    public function ChangePassword(){
+        $user = Auth::user();
+        return view('users.changepass',array('users' => $user));
+    }
+    public function PostChangePassword(Request $request){
+        $this->validate($request, [
+            'password' => 'same:confirm-password',
+        ]);
 
+        $input = $request->all();
+        if(!empty($input['password'])){
+            $input['password'] = Hash::make($input['password']);
+        }else{
+            $input = array_except($input,array('password'));
+        }
+        $user = Auth::user();
+        $user->update($input);
+        return redirect()->route('profile.index')
+            ->with('success','User updated successfully');
+    }
     /**
      * Display the specified resource.
      *
