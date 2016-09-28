@@ -191,6 +191,7 @@
                 </div>
                 <div class="edit-profile-buttons">
                     <a href="{{url('/profile/edit')}}" class="btn btn-warning btn-sm" role="button">Edit Profile</a>
+                    <a href="/" class="btn btn-danger btn-sm" role="button">Change Password</a>
                 </div>
             </div>
         </div>

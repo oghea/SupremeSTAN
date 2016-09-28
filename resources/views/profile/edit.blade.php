@@ -11,8 +11,7 @@
                 </div>
 
                 <h3>Personal info</h3>
-
-                <form class="form-horizontal" role="form">
+                <form enctype="multipart/form-data" action="profile/edit" method="POST" class="form-horizontal" role="form" id="loginForm">
                     <div class="form-group">
                         <label class="col-lg-3 control-label">First Name:</label>
                         <div class="col-lg-8">
@@ -32,13 +31,6 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-lg-3 control-label">Email:</label>
-                        <div class="col-lg-8">
-                            <input class="form-control" type="email" value="a.pprayogi18@gmail.com">
-                        </div>
-                    </div>
-
-                    <div class="form-group">
                         <label class="col-md-3 control-label">No Handphone:</label>
                         <div class="col-md-8">
                             <input class="form-control" type="text" value="081297345428">
@@ -47,7 +39,8 @@
                     <div class="form-group">
                         <label class="col-md-3 control-label">Gender:</label>
                         <div class="col-md-8">
-                            <input class="form-control" type="text" value="Pria">
+                            <label class="radio-inline"><input type="radio" name="optradio">Pria</label>
+                            <label class="radio-inline"><input type="radio" name="optradio">Wanita</label>
                         </div>
                     </div>
                     <div class="form-group">
@@ -69,15 +62,23 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-md-3 control-label">Sekolah Asal</label>
+                        <label class="col-md-3 control-label">Sekolah Asal:</label>
                         <div class="col-md-8">
                             <input class="form-control" type="text" value="SMAN 3 Metro">
                         </div>
                     </div>
                     <div class="form-group">
+                        <label class="col-md-3 control-label">Update Profile Image</label>
+                        <div class="col-md-8">
+                            <input type="file" name="avatar">
+                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="form-group">
                         <label class="col-md-3 control-label"></label>
                         <div class="col-md-8">
-                            <input type="button" class="btn btn-primary" value="Save Changes">
+                            <input type="submit" class="btn btn-primary" value="Save Changes">
                             <span></span>
                             <input type="reset" class="btn btn-default" value="Cancel">
                         </div>
