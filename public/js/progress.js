@@ -17,3 +17,13 @@ $("#sidebar li a").each(function() {
     $(this).parents('li').addClass("active");
   }
 });
+$('#datepickId .input-group.date').datepicker({
+  format: "dd/mm/yyyy",
+  startDate: "01/01/1980",
+  endDate: "30/12/2005",
+  maxViewMode: 3,
+  todayBtn: "linked",
+  autoclose: true,
+  todayHighlight: true,
+  toggleActive: true
+});

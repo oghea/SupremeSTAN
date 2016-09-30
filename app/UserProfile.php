@@ -12,14 +12,18 @@ class UserProfile extends Model
         'user_id',
         'first_name',
         'last_name',
+        'quote',
+        'birth_date',
+        'gender',
         'phone',
-        'vat',
+        'parent_name',
+        'parent_phone',
+        'line_id',
+        'address',
         'state',
         'city',
-        'country',
         'zip',
-        'code',
-        'address',
+        'school_origin',
         'avatar'
     ];
 

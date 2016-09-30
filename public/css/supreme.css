@@ -257,7 +257,10 @@ Side-bar use profile
 	font-family: 'Raleway', sans-serif;
     font-size: 20px;
 }
-
+.input-group[class*=col-]{
+    padding-left: 15px;
+    padding-right: 15px;
+}
 /*blockquote*/
 
 blockquote{

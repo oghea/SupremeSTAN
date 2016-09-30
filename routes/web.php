@@ -25,11 +25,11 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/home', 'HomeController@index');
 //    Route::resource('users', 'UserController');
 
-    Route::get('profile','UserController@profile');
+    Route::get('profile','UserProfileController@create');
     Route::get('profile/change-pass','UserController@ChangePassword');
     Route::post('profile/change-pass','UserController@PostChangePassword');
-    Route::get('profile/edit','UserController@editProfile');
-    Route::post('profile/edit','UserController@updateProfile');
+    Route::get('profile/edit','UserProfileController@edit');
+    Route::post('profile/edit','UserProfileController@update');
 //    Route::get('profile/{id}','UserProfileController@show');
 
     Route::get('roles', ['as' => 'roles.index', 'uses' => 'RoleController@index', 'middleware' => ['permission:role-list|role-create|role-edit|role-delete']]);

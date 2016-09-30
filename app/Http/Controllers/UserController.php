@@ -151,47 +151,47 @@ class UserController extends Controller
         return redirect()->route('users.index')
             ->with('success','User updated successfully');
     }
-    public function profile(){
-        $user = Auth::user();
-        $id=Auth::user()->id;
-        $checkId=UserProfile::where('user_id','=',$id)->get();
-        if($checkId->isEmpty()){
-            $profile = new UserProfile();
-            $profile->user()->associate($user);
-            $profile->save();
-            return view('profile.index', array('users' => $user) );
-        }else{
-            return view('profile.index', array('users' => $user) );
-        }
-
-    }
-    public function editProfile(){
-        $user = Auth::user();
-        return view('profile.edit',array('users' => $user));
-    }
-    public function updateProfile(Request $request){
-        $user = Auth::user();
-        if($request->hasFile('avatar')){
-            $avatar = $request->file('avatar');
-            if($user->user_profile->avatar == 'default.jpg') {
-                $filename = time() . '.' . $avatar->getClientOriginalExtension();
-                Image::make($avatar)->resize(300, 300)->save(storage_path('app/public/uploads/avatars/' . $filename));
-                $user_profile = $user->user_profile;
-                $user_profile->avatar = $filename;
-                $user_profile->save();
-            }else{
-                $old_img=$user->user_profile->avatar;
-                Storage::delete('/public/uploads/avatars/' . $old_img);
-//                File::delete(public_path('/uploads/avatars/'.$old_img));
-                $filename = time() . '.' . $avatar->getClientOriginalExtension();
-                Image::make($avatar)->resize(300, 300)->save(storage_path('app/public/uploads/avatars/' . $filename));
-                $user_profile = $user->user_profile;
-                $user_profile->avatar = $filename;
-                $user_profile->save();
-            }
-        }
-        return view('profile.index', array('user' => $user) );
-    }
+//    public function profile(){
+//        $user = Auth::user();
+//        $id=Auth::user()->id;
+//        $checkId=UserProfile::where('user_id','=',$id)->get();
+//        if($checkId->isEmpty()){
+//            $profile = new UserProfile();
+//            $profile->user()->associate($user);
+//            $profile->save();
+//            return view('profile.index', array('users' => $user) );
+//        }else{
+//            return view('profile.index', array('users' => $user) );
+//        }
+//
+//    }
+//    public function editProfile(){
+//        $user = Auth::user();
+//        return view('profile.edit',array('users' => $user));
+//    }
+//    public function updateProfile(Request $request){
+//        $user = Auth::user();
+//        if($request->hasFile('avatar')){
+//            $avatar = $request->file('avatar');
+//            if($user->user_profile->avatar == 'default.jpg') {
+//                $filename = time() . '.' . $avatar->getClientOriginalExtension();
+//                Image::make($avatar)->resize(300, 300)->save(storage_path('app/public/uploads/avatars/' . $filename));
+//                $user_profile = $user->user_profile;
+//                $user_profile->avatar = $filename;
+//                $user_profile->save();
+//            }else{
+//                $old_img=$user->user_profile->avatar;
+//                Storage::delete('/public/uploads/avatars/' . $old_img);
+////                File::delete(public_path('/uploads/avatars/'.$old_img));
+//                $filename = time() . '.' . $avatar->getClientOriginalExtension();
+//                Image::make($avatar)->resize(300, 300)->save(storage_path('app/public/uploads/avatars/' . $filename));
+//                $user_profile = $user->user_profile;
+//                $user_profile->avatar = $filename;
+//                $user_profile->save();
+//            }
+//        }
+//        return view('profile.index', array('user' => $user) );
+//    }
 
     /**
      * Remove the specified resource from storage.

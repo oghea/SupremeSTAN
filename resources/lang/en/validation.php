@@ -94,9 +94,41 @@ return [
     */
 
     'custom' => [
-        'attribute-name' => [
-            'rule-name' => 'custom-message',
+        'first_name' => [
+            'required' => 'Really? you doesnt have name',
         ],
+        'address' => [
+            'required' => 'Jangan Kosong dong',
+            'max' => 'kepanjangan sob',
+        ],
+        'birth_date' => [
+            'required' => 'Jangan Kosong dong',
+            'date_format' => 'yang valid dong',
+        ],
+        'phone' => [
+            'required' => 'Jangan Kosong dong',
+            'digits_between' => 'ga valid nih nomernya',
+            'numeric' => 'ga valid nih nomernya',
+        ],
+        'gender' => [
+            'required' => 'Jangan Kosong dong, butuh pilihan others nih?'
+        ],
+        'state' => [
+            'required' => 'Jangan Kosong dong'
+        ],
+        'city' => [
+            'required' => 'Jangan Kosong dong'
+        ],
+        'parent_name' => [
+            'required' => 'Jangan Kosong dong',
+            'max' => 'yakali panjang bener'
+        ],
+        'parent_phone' => [
+            'required' => 'Jangan Kosong dong',
+            'digits_between' => 'jangan ngasal sob',
+            'numeric' => 'sejak kapan nomer hp ada hurufnya?',
+        ],
+
     ],
 
     /*
