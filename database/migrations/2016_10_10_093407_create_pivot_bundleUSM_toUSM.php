@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateScoreTable extends Migration
+class CreatePivotBundleUSMToUSM extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,9 @@ class CreateScoreTable extends Migration
      */
     public function up()
     {
-        Schema::create('nilai', function(Blueprint $table) {
-            $table->increments('id');
-            $table->integer('user_id')->unsigned();
-            $table->string('TO_id',50)->nullable();
-            $table->string('last_name',50)->nullable();
-
+        Schema::create('bundleUSM_tryoutUSM', function (Blueprint $table) {
+            $table->integer('bundleUSM_id')->unsigned();
+            $table->integer('tryoutUSM_id')->unsigned();
         });
     }
 
@@ -29,6 +26,6 @@ class CreateScoreTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::drop('bundleUSM_tryoutUSM');
     }
 }
