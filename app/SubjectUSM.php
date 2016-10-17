@@ -16,6 +16,6 @@ class SubjectUSM extends Model
 
     public function bundleUsm()
     {
-        return $this->belongsTo('BundleUSM');
+        return $this->hasMany('BundleUSM');
     }
 }

@@ -20,7 +20,7 @@ class BundleUSM extends Model
 
     public function subjectUsm()
     {
-        return $this->hasOne('SubjectUSM');
+        return $this->belongsTo('SubjectUSM');
     }
 
     public function tryoutUsm()

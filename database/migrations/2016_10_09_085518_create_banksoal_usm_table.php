@@ -10,12 +10,12 @@ class CreateBanksoalUsmTable extends Migration {
 		Schema::create('banksoalUSM', function(Blueprint $table) {
 			$table->increments('id');
 			$table->integer('kdUSM_id')->unsigned()->index();
-			$table->string('isi_soal', 200);
-			$table->string('jawaban_a', 100);
-			$table->string('jawaban_b', 100);
-			$table->string('jawaban_c', 100);
-			$table->string('jawaban_d', 100);
-			$table->string('jawaban_e', 100);
+			$table->text('isi_soal');
+			$table->text('jawaban_a');
+			$table->text('jawaban_b');
+			$table->text('jawaban_c');
+			$table->text('jawaban_d');
+			$table->text('jawaban_e');
 			$table->integer('kunciUSM_id')->unsigned()->index();
 			$table->integer('pembahasanUSM_id')->unsigned()->index();
             $table->timestamps();

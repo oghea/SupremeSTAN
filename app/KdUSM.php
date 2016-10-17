@@ -16,6 +16,6 @@ class KdUSM extends Model
 
     public function bankSoalUsm()
     {
-        return $this->belongsTo('BankSoalUSM');
+        return $this->hasOne('BankSoalUSM');
     }
 }

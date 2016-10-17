@@ -11,7 +11,6 @@ class CreateSubjectUsmTable extends Migration {
 			$table->increments('id');
 			$table->string('nama', 10);
 			$table->string('Deskripsi', 50);
-			$table->integer('durasi');
 		});
 	}
 

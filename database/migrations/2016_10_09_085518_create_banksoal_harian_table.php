@@ -9,12 +9,12 @@ class CreateBanksoalHarianTable extends Migration {
 	{
 		Schema::create('bankquiz', function(Blueprint $table) {
 			$table->increments('id');
-			$table->string('isi_soal', 200);
-			$table->string('jawaban_a', 100);
-			$table->string('jawaban_b', 100);
-			$table->string('jawaban_c', 100);
-			$table->string('jawaban_d', 100);
-			$table->string('jawaban_e', 100);
+			$table->text('isi_soal');
+			$table->text('jawaban_a');
+			$table->text('jawaban_b');
+			$table->text('jawaban_c');
+			$table->text('jawaban_d');
+			$table->text('jawaban_e');
 			$table->integer('kunciQuiz_id')->unsigned();
 			$table->integer('pembahasanQuiz_id')->unsigned();
             $table->timestamps();

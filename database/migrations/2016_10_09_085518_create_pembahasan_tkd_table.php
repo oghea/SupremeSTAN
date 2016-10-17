@@ -9,7 +9,7 @@ class CreatePembahasanTkdTable extends Migration {
 	{
 		Schema::create('pembahasanTKD', function(Blueprint $table) {
 			$table->increments('id');
-			$table->string('description', 300)->nullable();
+			$table->text('description')->nullable();
 		});
 	}
 

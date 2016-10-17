@@ -9,7 +9,7 @@ class CreatePembahasanHarianTable extends Migration {
 	{
 		Schema::create('pembahasanquiz', function(Blueprint $table) {
 			$table->increments('id');
-			$table->string('description', 300);
+			$table->text('description');
 		});
 	}
 

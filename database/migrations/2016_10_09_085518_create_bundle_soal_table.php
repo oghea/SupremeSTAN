@@ -11,6 +11,7 @@ class CreateBundleSoalTable extends Migration {
 			$table->increments('id');
 			$table->string('judul', 50);
 			$table->integer('subjectUSM_id')->unsigned();
+            $table->integer('durasi');
 		});
 	}
 

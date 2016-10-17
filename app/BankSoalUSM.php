@@ -33,7 +33,7 @@ class BankSoalUSM extends Model
 
     public function kdUsm()
     {
-        return $this->hasOne('KdUSM');
+        return $this->belongsTo('KdUSM');
     }
 
     public function bundleUsm()
