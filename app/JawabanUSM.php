@@ -17,11 +17,11 @@ class JawabanUSM extends Model
 
     public function tryoutUsm()
     {
-        return $this->belongsTo('TryoutUSM');
+        return $this->belongsTo('SupremeSTAN\TryoutUSM');
     }
 
     public function user()
     {
-        return $this->belongsTo('User');
+        return $this->belongsTo('SupremeSTAN\User');
     }
 }

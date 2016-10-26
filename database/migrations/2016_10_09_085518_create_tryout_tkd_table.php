@@ -9,8 +9,10 @@ class CreateTryoutTkdTable extends Migration {
 	{
 		Schema::create('tryoutTKD', function(Blueprint $table) {
 			$table->increments('id');
-			$table->date('publish_date');
+            $table->string('judul');
+			$table->date('publish_date')->nullable();
 			$table->boolean('published')->default(0);
+            $table->integer('durasi');
             $table->timestamps();
 		});
 	}

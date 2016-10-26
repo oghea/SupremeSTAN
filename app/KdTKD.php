@@ -16,6 +16,9 @@ class KdTKD extends Model
 
     public function bankSoalTkd()
     {
-        return $this->belongsTo('BankSoalTKD');
+        return $this->hasOne('SupremeSTAN\BankSoalTKD');
+    }
+    public function tryoutTKD(){
+        return $this->belongsToMany('SupremeSTAN\TryoutTKD','kdTKD_tryoutTKD','kdTKD_id','tryoutTKD_id');
     }
 }

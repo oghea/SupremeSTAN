@@ -11,11 +11,10 @@ class SubjectUSM extends Model
     protected $fillable = [
         'nama',
         'Deskripsi',
-        'durasi'
     ];
 
     public function bundleUsm()
     {
-        return $this->hasMany('BundleUSM');
+        return $this->hasMany('SupremeSTAN\BundleUSM');
     }
 }

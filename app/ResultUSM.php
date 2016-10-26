@@ -21,11 +21,11 @@ class ResultUSM extends Model
 
     public function user()
     {
-        return $this->belongsTo('User');
+        return $this->belongsTo('SupremeSTAN\User');
     }
 
     public function tryoutUsm()
     {
-        return $this->belongsTo('TryoutUSM');
+        return $this->belongsTo('SupremeSTAN\TryoutUSM');
     }
 }

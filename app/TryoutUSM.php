@@ -16,16 +16,16 @@ class TryoutUSM extends Model
 
     public function bundleUsm()
     {
-        return $this->belongsToMany('BundleUSM');
+        return $this->belongsToMany('SupremeSTAN\BundleUSM');
     }
 
     public function jawabanUsm()
     {
-        return $this->hasOne('JawabanUSM');
+        return $this->hasOne('SupremeSTAN\JawabanUSM');
     }
 
     public function resultUsm()
     {
-        return $this->hasOne('ResultUSM');
+        return $this->hasOne('SupremeSTAN\ResultUSM');
     }
 }

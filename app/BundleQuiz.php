@@ -16,11 +16,11 @@ class BundleQuiz extends Model
 
     public function bankQuiz()
     {
-        return $this->belongsToMany('BankQuiz');
+        return $this->belongsToMany('SupremeSTAN\BankQuiz');
     }
 
     public function jawabanQuiz()
     {
-        return $this->belongsTo('JawabanQuiz');
+        return $this->belongsTo('SupremeSTAN\JawabanQuiz');
     }
 }

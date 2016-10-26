@@ -23,21 +23,21 @@ class BankSoalUSM extends Model
 
     public function kunciUsm()
     {
-        return $this->hasOne('KunciUSM');
+        return $this->belongsTo('SupremeSTAN\KunciUSM','kunciUSM_id');
     }
 
     public function pembahasanUsm()
     {
-        return $this->hasOne('PembahasanUSM');
+        return $this->belongsTo('SupremeSTAN\PembahasanUSM','pembahasanUSM_id');
     }
 
     public function kdUsm()
     {
-        return $this->belongsTo('KdUSM');
+        return $this->belongsTo('SupremeSTAN\KdUSM','kdUSM_id');
     }
 
     public function bundleUsm()
     {
-        return $this->belongsToMany('BundleUSM');
+        return $this->belongsToMany('SupremeSTAN\BundleUSM','banksoalUSM_bundleUSM','banksoalUSM_id','bundleUSM_id');
     }
 }

@@ -10,21 +10,25 @@ class BundleUSM extends Model
     public $timestamps = false;
     protected $fillable = [
         'judul',
-        'subject_id'
+        'subjectUSM_id',
+        'durasi'
     ];
 
     public function bankSoalUsm()
     {
-        return $this->belongsToMany('BankSoalUSM');
+        return $this->belongsToMany('SupremeSTAN\BankSoalUSM','banksoalUSM_bundleUSM','bundleUSM_id','banksoalUSM_id');
+    }
+    public function kdUSM(){
+        return $this->belongsToMany('SupremeSTAN\KdUSM','bundleUSM_kdUSM','bundleUSM_id','kdUSM_id');
     }
 
     public function subjectUsm()
     {
-        return $this->belongsTo('SubjectUSM');
+        return $this->belongsTo('SupremeSTAN\SubjectUSM','subjectUSM_id');
     }
 
     public function tryoutUsm()
     {
-        return $this->belongsToMany('TryoutUSM');
+        return $this->belongsToMany('SupremeSTAN\TryoutUSM');
     }
 }

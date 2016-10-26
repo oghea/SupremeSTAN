@@ -14,6 +14,6 @@ class ResultQuiz extends Model
 
     public function jawabanQuiz()
     {
-        return $this->belongsTo('JawabanQuiz');
+        return $this->belongsTo('SupremeSTAN\JawabanQuiz');
     }
 }

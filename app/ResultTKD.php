@@ -18,11 +18,11 @@ class ResultTKD extends Model
 
     public function user()
     {
-        return $this->belongsTo('User');
+        return $this->belongsTo('SupremeSTAN\User');
     }
 
     public function tryoutTkd()
     {
-        return $this->belongsTo('TryoutTKD');
+        return $this->belongsTo('SupremeSTAN\TryoutTKD');
     }
 }

@@ -16,6 +16,9 @@ class KdUSM extends Model
 
     public function bankSoalUsm()
     {
-        return $this->hasOne('BankSoalUSM');
+        return $this->hasMany('SupremeSTAN\BankSoalUSM');
+    }
+    public function bundleUSM(){
+        return $this->belongsToMany('SupremeSTAN\BundleUSM','bundleUSM_kdUSM','kdUSM_id','bundleUSM_id');
     }
 }

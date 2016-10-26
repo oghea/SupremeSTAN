@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class KunciUSM extends Model
 {
     protected $table = 'kunciUSM';
-    public $timestamps = true;
+    public $timestamps = false;
     protected $fillable = [
         'jawaban_benar'
     ];
@@ -15,6 +15,6 @@ class KunciUSM extends Model
 
     public function bankSoalUsm()
     {
-        return $this->belongsTo('BankSoalUSM');
+        return $this->hasOne('SupremeSTAN\BankSoalUSM');
     }
 }
