@@ -35,6 +35,16 @@ Route::get('email-verification/check/{token}', 'Auth\RegisterController@getVerif
     Route::group([ 'middleware' => ['auth','role:owner|superadmin|curriculum|finance|admin_account|admin_content']], function() {
         Route::get('admin/home', 'HomeAdminController@index');
 
+        Route::get('admin/tryout', ['uses'=>'ManageTryoutController@index', 'as' => 'tryout.list']);
+        Route::patch('admin/tryout/usm/{id}', ['uses'=>'ManageTryoutController@publishUSM', 'as' => 'tryout.publishUSM']);
+        Route::patch('admin/tryout/tkd/{id}', ['uses'=>'ManageTryoutController@publishTKD', 'as' => 'tryout.publishTKD']);
+
+        Route::patch('admin/tryout/UnUsm/{id}', ['uses'=>'ManageTryoutController@unPublishUSM', 'as' => 'tryout.unPublishUSM']);
+        Route::patch('admin/tryout/UnTkd/{id}', ['uses'=>'ManageTryoutController@unPublishTKD', 'as' => 'tryout.unPublishTKD']);
+
+        Route::get('admin/tryout/create', ['uses'=>'ManageTryoutController@create', 'as' => 'tryout.create']);
+        Route::post('admin/tryout/create', ['uses'=>'ManageTryoutController@store', 'as' => 'tryout.store']);
+
         Route::get('admin/bundle', ['uses'=>'ManageBundleController@listBundle', 'as' => 'bundle.list']);
         Route::delete('admin/bundle/usm/{id}', ['uses'=>'ManageBundleController@destroy', 'as' => 'bundle.delete']);
         Route::get('admin/bundle/tpa/create','ManageBundleController@createBundleTPA');
@@ -89,18 +99,20 @@ Route::get('email-verification/check/{token}', 'Auth\RegisterController@getVerif
 Route::get('logout', 'Auth\LoginController@logout');
 
 Route::get('/tes',function (){
-    $jk = 1;
-//    $soal = SupremeSTAN\KunciUSM::find(1);
-//    $soal->bankSoalUsm->jawaban_a;
-    $kd = SupremeSTAN\BankSoalUSM::find(1);
-    $kd->kunciUsm->jawaban_benar;
-//
-//    foreach ($kd as $data){
-//        $fuck = SupremeSTAN\KdUSM::find($data->id);
-//        $anjing[]=$fuck->nama;
+    $current_time = \Carbon\Carbon::now()->toDateString();
+
+    $jumlah_tkd = SupremeSTAN\KdTKD::select(DB::raw("SUM(jumlah_soal) as jumlah"))
+        ->leftJoin("kdTKD_tryoutTKD","kdTKD_tryoutTKD.kdTKD_id","=","kdTKD.id")
+        ->groupBy('kdTKD_tryoutTKD.tryoutTKD_id')->get();
+//    $jumlah_soal=0;
+//    foreach ($jumlah_tkd as $jumlah){
+//        $jumlah_soal=$jumlah_soal+$jumlah;
 //    }
-    dd($kd->kunciUsm->jawaban_benar);
-//            dd($kd);
+//    $total=array();
+//    foreach ($jumlah_tkd as $jumlah){
+//        $total[] = $jumlah->jumlah_soal;
+//    }
+    dd($current_time);
 });
 //});
 //Route::get('logout',function (){

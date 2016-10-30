@@ -16,7 +16,7 @@ class TryoutUSM extends Model
 
     public function bundleUsm()
     {
-        return $this->belongsToMany('SupremeSTAN\BundleUSM');
+        return $this->belongsToMany('SupremeSTAN\BundleUSM','bundleUSM_tryoutUSM','tryoutUSM_id','bundleUSM_id');
     }
 
     public function jawabanUsm()
