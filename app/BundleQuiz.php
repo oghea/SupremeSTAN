@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class BundleQuiz extends Model
 {
-    protected $table = 'bundlequiz';
+    protected $table = 'bundleQuiz';
     protected $fillable = [
         'publish_date',
         'published',

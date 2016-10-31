@@ -36,8 +36,9 @@
                     <li><a href="{{ url('admin/home') }}"><i class="fa fa-home"></i>Dashboard</a></li>
                     <li><a href="{{ url('admin/tryout') }}"><i class="fa fa-pencil"></i>Manage Tryout</a></li>
                     <li><a href="{{ url('admin/bundle') }}"><i class="fa fa-edit"></i>Upload Soal</a></li>
-                    <li><a href="javascript:void(0)"><i class="fa fa-bar-chart-o"></i>Manage Accounts</a></li>
-                    <li><a href="javascript:void(0)"><i class="fa fa-download"></i>Manage Home</a></li>
+                    <li><a href="{{ url('admin/roles') }}"><i class="fa fa-address-card-o"></i>Manage Roles</a></li>
+                    <li><a href="{{ url('admin/account') }}"><i class="fa fa-user-o"></i>Manage Accounts</a></li>
+                    <li><a href="javascript:void(0)"><i class="fa fa-comment-o"></i>Manage Home</a></li>
                     <li><a href="javascript:void(0)"><i class="fa fa-credit-card-alt"></i>Manage Payments</a></li>
                 </ul>
             </div>

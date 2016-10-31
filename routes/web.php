@@ -51,8 +51,12 @@ Route::get('email-verification/check/{token}', 'Auth\RegisterController@getVerif
         Route::post('admin/bundle/tpa/create','ManageBundleController@storeBundleTPA');
         Route::get('admin/bundle/tbi/create','ManageBundleController@createBundleTBI');
         Route::post('admin/bundle/tbi/create','ManageBundleController@storeBundleTBI');
-        Route::get('admin/bundle/tkd/create','ManageBundleController@createBundleTKD');
-        Route::post('admin/bundle/tkd/create','ManageBundleController@storeBundleTKD');
+        Route::get('admin/bundle/tiu/create','ManageBundleController@createBundleTIU');
+        Route::post('admin/bundle/tiu/create','ManageBundleController@storeBundleTIU');
+        Route::get('admin/bundle/twk/create','ManageBundleController@createBundleTWK');
+        Route::post('admin/bundle/twk/create','ManageBundleController@storeBundleTWK');
+        Route::get('admin/bundle/tkp/create','ManageBundleController@createBundleTKP');
+        Route::post('admin/bundle/tkp/create','ManageBundleController@storeBundleTKP');
 
         Route::get('admin/bundle/tkd/{id}',['uses'=>'ManageBundleController@viewBundleTKD','as' => 'bundle.viewTKD']);
         Route::get('admin/bundle/usm/{id}',['uses'=>'ManageBundleController@viewBundleUSM','as' => 'bundle.view']);
@@ -86,7 +90,8 @@ Route::get('email-verification/check/{token}', 'Auth\RegisterController@getVerif
 
 
         Route::get('admin/roles', ['as' => 'roles.index', 'uses' => 'RoleController@index', 'middleware' => ['permission:role-list|role-create|role-edit|role-delete']]);
-
+        Route::get('admin/account', ['uses'=>'ManageAccount@index', 'as' => 'account.list']);
+//        Route::get('admin/account/{id}', ['uses'=>'ManageAccount@show', 'as' => 'account.show']);
 
         Route::get('roles/create', ['as' => 'roles.create', 'uses' => 'RoleController@create', 'middleware' => ['permission:role-create']]);
         Route::post('roles/create', ['as' => 'roles.store', 'uses' => 'RoleController@store', 'middleware' => ['permission:role-create']]);

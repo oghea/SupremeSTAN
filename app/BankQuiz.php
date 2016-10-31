@@ -6,8 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class BankQuiz extends Model
 {
-    protected $table = 'banksoalquiz';
-    public $timestamps = true;
+    protected $table = 'banksoalQuiz';
+    public $timestamps = false;
     protected $fillable = [
         'isi_soal',
         'jawaban_a',

@@ -4,10 +4,13 @@ namespace SupremeSTAN\Http\Controllers;
 
 use Illuminate\Http\Request;
 use SupremeSTAN\BankSoalTKD;
+use SupremeSTAN\BankSoalTKP;
 use SupremeSTAN\BundleQuiz;
 use SupremeSTAN\KdTKD;
 use SupremeSTAN\SubjectUSM;
+use SupremeSTAN\SubjectTKD;
 use SupremeSTAN\TryoutTKD;
+use SupremeSTAN\BundleTKD;
 use SupremeSTAN\TryoutUSM;
 use SupremeSTAN\BundleUSM;
 use SupremeSTAN\BankSoalUSM;
@@ -22,9 +25,11 @@ class ManageBundleController extends Controller
     public function listBundle(Request $request){
         $users = Auth::user();
         $tpa = BundleUSM::where('subjectUSM_id','=',1)->orderBy('id','ASC')->paginate(5);
-        $tkd = TryoutTKD::orderBy('id','ASC')->paginate(5);
         $tbi = BundleUSM::where('subjectUSM_id','=',2)->orderBy('id','ASC')->paginate(5);
-        return view('bundle.index',compact('tpa','tkd','tbi','users'))
+        $tiu = BundleTKD::where('subjectTKD_id','=',1)->orderBy('id','ASC')->paginate(5);
+        $twk = BundleTKD::where('subjectTKD_id','=',2)->orderBy('id','ASC')->paginate(5);
+        $tkp = BundleTKD::where('subjectTKD_id','=',3)->orderBy('id','ASC')->paginate(5);
+        return view('bundle.index',compact('tpa','tbi','tiu','twk','tkp','users'))
             ->with('i', ($request->input('page', 1) - 1) * 5);
     }
     public function viewBundleUSM(Request $request, $id){
@@ -45,15 +50,6 @@ class ManageBundleController extends Controller
             ->where('tryoutTKD_id','=',$id)->orderBy('banksoalTKD_id','ASC')->paginate(10);
         return view('bundle.viewTKD',compact('soals','id','users'))->with('i',($request->input('page',1)-1)*10);
     }
-//    public function listBundleTPA(){
-//        return $tpa = BundleUSM::orderBy('id','DESC')->paginate(5);
-//    }
-//    public function listBundleTKD(){
-//        return $tkd = TryoutTKD::orderBy('id','DESC')->paginate(5);
-//    }
-//    public function listBundleQuiz(){
-//        return $quiz = BundleQuiz::orderBy('id','DESC')->paginate(5);
-//    }
     public function createBundleTPA(){
         $users = Auth::user();
         return view('bundle.createBundleTPA',compact('users'));
@@ -62,21 +58,28 @@ class ManageBundleController extends Controller
         $users = Auth::user();
         return view('bundle.createBundleTBI',compact('users'));
     }
-    public function createBundleTKD(){
+    public function createBundleTIU(){
         $users = Auth::user();
-        return view('bundle.createBundleTKD',compact('users'));
+        return view('bundle.createBundleTIU',compact('users'));
     }
-    public function storeBundleTKD(Request $request){
+    public function createBundleTWK(){
+        $users = Auth::user();
+        return view('bundle.createBundleTWK',compact('users'));
+    }
+    public function createBundleTKP(){
+        $users = Auth::user();
+        return view('bundle.createBundleTKP',compact('users'));
+    }
+    public function storeBundleTIU(Request $request){
         $this->validate($request, [
             'judul' => 'required',
-            'durasi' => 'required|numeric|digits_between:2,3',
             'kd.*.nama' => 'required',
             'kd.*.jumlah' => 'required|numeric|min:1|digits_between:1,3'
         ]);
-        $tryoutTKD = new TryoutTKD;
-        $tryoutTKD->judul = $request->input('judul');
-        $tryoutTKD->durasi = $request->input('durasi');
-        $tryoutTKD->save();
+        $bundleTIU = new BundleTKD;
+        $bundleTIU->judul = $request->input('judul');
+        $bundleTIU->subjectTkd()->associate(1);
+        $bundleTIU->save();
         $kdInputs = $request->kd;
 
         foreach ($kdInputs as $kd){
@@ -84,7 +87,7 @@ class ManageBundleController extends Controller
             $kdInput->nama = $kd['nama'];
             $kdInput->jumlah_soal = $kd['jumlah'];
             $kdInput->save();
-            $tryoutTKD->kdTKD()->attach($kdInput);
+            $bundleTIU->kdTKD()->attach($kdInput);
         }
         return redirect('admin/bundle');
     }
@@ -133,6 +136,48 @@ class ManageBundleController extends Controller
             $bundleUSM->kdUSM()->attach($kdInput);
         }
         return redirect('/admin/bundle');
+    }
+    public function storeBundleTWK(Request $request){
+        $this->validate($request, [
+            'judul' => 'required',
+            'kd.*.nama' => 'required',
+            'kd.*.jumlah' => 'required|numeric|min:1|digits_between:1,3'
+        ]);
+        $bundleTWK = new BundleTKD;
+        $bundleTWK->judul = $request->input('judul');
+        $bundleTWK->subjectTkd()->associate(2);
+        $bundleTWK->save();
+        $kdInputs = $request->kd;
+
+        foreach ($kdInputs as $kd){
+            $kdInput = new KdTKD();
+            $kdInput->nama = $kd['nama'];
+            $kdInput->jumlah_soal = $kd['jumlah'];
+            $kdInput->save();
+            $bundleTWK->kdTKD()->attach($kdInput);
+        }
+        return redirect('admin/bundle');
+    }
+    public function storeBundleTKP(Request $request){
+        $this->validate($request, [
+            'judul' => 'required',
+            'kd.*.nama' => 'required',
+            'kd.*.jumlah' => 'required|numeric|min:1|digits_between:1,3'
+        ]);
+        $bundleTKP = new BundleTKD;
+        $bundleTKP->judul = $request->input('judul');
+        $bundleTKP->subjectTkd()->associate(3);
+        $bundleTKP->save();
+        $kdInputs = $request->kd;
+
+        foreach ($kdInputs as $kd){
+            $kdInput = new KdTKD();
+            $kdInput->nama = $kd['nama'];
+            $kdInput->jumlah_soal = $kd['jumlah'];
+            $kdInput->save();
+            $bundleTKP->kdTKD()->attach($kdInput);
+        }
+        return redirect('admin/bundle');
     }
     public function editBundleUSM($id){
         $bundle = BundleUSM::find($id);

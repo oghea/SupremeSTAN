@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class BundleUSM extends Model
 {
     protected $table = 'bundleUSM';
-    public $timestamps = false;
+    public $timestamps = true;
     protected $fillable = [
         'judul',
         'subjectUSM_id',

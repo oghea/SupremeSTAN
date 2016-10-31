@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class KdUSM extends Model
 {
     protected $table = 'kdUSM';
-    public $timestamps = true;
+    public $timestamps = false;
     protected $fillable = [
         'nama',
         'jumlah_soal'

@@ -59,11 +59,11 @@ class ManageSoalUSM extends Controller
     }
 
     public function view($bundleId,$id){
+        $users = Auth::user();
         $soal = BankSoalUSM::find($id);
-        return view('success',compact('soal','bundleId','soal'));
-//        $questions = Soal::orderBy('id', 'asc')
-//                ->get();
-//        return view('/success',compact('questions'));
+        $usm = true;
+        $tkd = false;
+        return view('soal.preview',compact('soal','bundleId','users','usm','tkd'));
     }
     public function edit($bundleId,$id){
         $users = Auth::user();

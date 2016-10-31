@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class BankSoalUSM extends Model
 {
     protected $table = 'banksoalUSM';
-    public $timestamps = true;
+    public $timestamps = false;
     protected $fillable = [
         'kdUSM_id',
         'isi_soal',
@@ -15,7 +15,6 @@ class BankSoalUSM extends Model
         'jawaban_b',
         'jawaban_c',
         'jawaban_d',
-        'jawaban_e',
         'kunciUSM_id',
         'pembahasanUSM_id'
     ];

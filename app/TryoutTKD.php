@@ -13,13 +13,8 @@ class TryoutTKD extends Model
         'published',
         'durasi'
     ];
-
-    public function bankSoalTkd()
-    {
-        return $this->belongsToMany('SupremeSTAN\BankSoalTKD','banksoalTKD_tryoutTKD','tryoutTKD_id','banksoalTKD_id');
-    }
-    public function kdTKD(){
-        return $this->belongsToMany('SupremeSTAN\KdTKD','kdTKD_tryoutTKD','tryoutTKD_id','kdTKD_id');
+    public function bundleTkd(){
+        return $this->belongsToMany('SupremeSTAN\BundleTKD','bundleTKD_tryoutTKD','tryoutTKD_id','bundleTKD_id');
     }
 
     public function jawabanTkd()

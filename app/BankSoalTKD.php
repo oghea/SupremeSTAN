@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class BankSoalTKD extends Model
 {
     protected $table = 'banksoalTKD';
-    public $timestamps = true;
+    public $timestamps = false;
     protected $fillable = [
         'kdTKD_id',
         'isi_soal',
@@ -36,8 +36,8 @@ class BankSoalTKD extends Model
         return $this->belongsTo('SupremeSTAN\KdTKD','kdTKD_id');
     }
 
-    public function tryoutTKD()
+    public function bundleTkd()
     {
-        return $this->belongsToMany('SupremeSTAN\TryoutTKD','banksoalTKD_tryoutTKD','banksoalTKD_id','tryoutTKD_id');
+        return $this->belongsToMany('SupremeSTAN\BundleTKD','banksoalTKD_bundleTKD','banksoalTKD_id','bundleTKD_id');
     }
 }

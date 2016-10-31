@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class KunciQuiz extends Model
 {
-    protected $table = 'kunciquiz';
+    protected $table = 'kunciQuiz';
     public $timestamps = false;
     protected $fillable = [
         'jawaban_benar'

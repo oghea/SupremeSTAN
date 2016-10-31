@@ -7,7 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class TryoutUSM extends Model
 {
     protected $table = 'tryoutUSM';
-    public $timestamps = false;
     protected $fillable = [
         'judul',
         'publishdate',

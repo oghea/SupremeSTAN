@@ -6,8 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class PembahasanQuiz extends Model
 {
-    protected $table = 'pembahasanquiz';
-    public $timestamps = true;
+    protected $table = 'pembahasanQuiz';
+    public $timestamps = false;
     protected $fillable = [
         'description'
     ];

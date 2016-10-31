@@ -56,11 +56,11 @@ class ManageSoalTKD extends Controller
         return redirect('admin/bundle/tkd/'.$id);
     }
     public function view($bundleId,$id){
+        $users = Auth::user();
         $soal = BankSoalTKD::find($id);
-        return view('success',compact('soal','bundleId','soal'));
-//        $questions = Soal::orderBy('id', 'asc')
-//                ->get();
-//        return view('/success',compact('questions'));
+        $tkd = true;
+        $usm = false;
+        return view('soal.preview',compact('soal','bundleId','users','tkd','usm'));
     }
     public function edit($bundleId,$id){
         $users = Auth::user();
