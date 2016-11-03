@@ -17,6 +17,7 @@ class HomeController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        $this->middleware('role:free_member|siswa_tryout|bimbel_online|bimbel_premium');
     }
 
     /**
@@ -37,8 +38,7 @@ class HomeController extends Controller
 //        }
         if(Auth::user()->isVerified()) {
             $auth=Auth::user();
-            if (Auth::user()->hasRole(['owner', 'superadmin', 'curriculum', 'finance', 'siswa', 'siswa_tryout', 'banned',
-                'admin_account', 'admin_content' , 'free_member']))
+            if (Auth::user()->hasRole(['bimbel_premium','bimbel_online', 'siswa_tryout', 'banned', 'free_member']))
             {
                 $users=$auth;
 //                $user->roles->get();

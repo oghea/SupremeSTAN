@@ -3,6 +3,7 @@
 namespace SupremeSTAN\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use SupremeSTAN\Http\Controllers\Controller;
 use SupremeSTAN\Role;
 use SupremeSTAN\Permission;
@@ -17,8 +18,9 @@ class RoleController extends Controller
      */
     public function index(Request $request)
     {
+        $users=Auth::user();
         $roles = Role::orderBy('id','DESC')->paginate(5);
-        return view('roles.index',compact('roles'))
+        return view('roles.index',compact('roles','users'))
             ->with('i', ($request->input('page', 1) - 1) * 5);
     }
 
@@ -29,8 +31,9 @@ class RoleController extends Controller
      */
     public function create()
     {
+        $users=Auth::user();
         $permission = Permission::get();
-        return view('roles.create',compact('permission'));
+        return view('roles.create',compact('permission','users'));
     }
 
     /**
@@ -85,12 +88,13 @@ class RoleController extends Controller
      */
     public function edit($id)
     {
+        $users=Auth::user();
         $role = Role::find($id);
         $permission = Permission::get();
         $rolePermissions = DB::table("permission_role")->where("permission_role.role_id",$id)
             ->pluck('permission_role.permission_id','permission_role.permission_id');
 
-        return view('roles.edit',compact('role','permission','rolePermissions'));
+        return view('roles.edit',compact('role','permission','rolePermissions','users'));
     }
 
     /**

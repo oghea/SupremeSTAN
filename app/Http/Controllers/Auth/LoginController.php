@@ -4,6 +4,9 @@ namespace SupremeSTAN\Http\Controllers\Auth;
 
 use SupremeSTAN\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Lang;
 
 class LoginController extends Controller
 {
@@ -25,7 +28,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo;
 
     /**
      * Create a new controller instance.
@@ -36,4 +39,24 @@ class LoginController extends Controller
     {
         $this->middleware('guest', ['except' => 'logout']);
     }
+    protected function authenticated($user)
+    {
+        if(Auth::user()->hasRole('owner','superadmin','curriculum','finance','admin_account','admin_content')){
+            $this->redirectTo = 'admin/home';
+        }else if(Auth::user()->hasRole('bimbel_premium','bimbel_online','siswa_tryout','free_member')){
+            $this->redirectTo = 'home';
+        }else{
+            $this->redirectTo = 'home';
+        }
+    }
+//    public function logout(Request $request)
+//    {
+//        $this->guard()->logout();
+//
+//        $request->session()->flush();
+//
+//        $request->session()->regenerate();
+//
+//        return redirect()->route('/');
+//    }
 }
