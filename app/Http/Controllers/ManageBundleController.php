@@ -17,6 +17,7 @@ use SupremeSTAN\BankSoalUSM;
 use SupremeSTAN\PembahasanUSM;
 use SupremeSTAN\KunciUSM;
 use SupremeSTAN\KdUSM;
+use DB;
 use Illuminate\Support\Facades\Auth;
 use SupremeSTAN\Http\Requests;
 
@@ -39,16 +40,61 @@ class ManageBundleController extends Controller
             ->join("banksoalUSM_bundleUSM","banksoalUSM_bundleUSM.banksoalUSM_id","=","banksoalUSM.id")
             ->join("kdUSM","banksoalUSM.kdUSM_id","kdUSM.id")
             ->where('bundleUSM_id','=',$id)->orderBy('banksoalUSM_id','ASC')->paginate(10);
-        return view('bundle.view',compact('soals','id','users'))->with('i',($request->input('page',1)-1)*10);
+        $soal_terisiUSM=BankSoalUSM::select("id")
+            ->join("banksoalUSM_bundleUSM","banksoalUSM_bundleUSM.banksoalUSM_id","=","banksoalUSM.id")
+            ->where('bundleUSM_id','=',$id)->count("id");
+        $jumlah_soalusm = KdUSM::select("jumlah_soal")
+            ->leftJoin("bundleUSM_kdUSM","bundleUSM_kdUSM.kdUSM_id","=","kdUSM.id")
+            ->where('bundleUSM_id','=',$id)->sum("jumlah_soal");
+        if($soal_terisiUSM == $jumlah_soalusm){
+            $fullUSM=true;
+            $bundle=BundleTKD::find($id);
+            $bundle->full = 1;
+            $bundle->save();
+        }else{
+            $fullUSM=false;
+        }
+        return view('bundle.view',compact('soals','id','users','soal_terisiUSM','jumlah_soalusm','fullUSM'))->with('i',($request->input('page',1)-1)*10);
     }
     public function viewBundleTKD(Request $request, $id){
         $users = Auth::user();
-        $soals=BankSoalTKD::select("tryoutTKD_id", "banksoalTKD_id","kdTKD_id","isi_soal",
+        $fullTKD = false;
+        $fullTKP = false;
+        $soals=BankSoalTKD::select("bundleTKD_id", "banksoalTKD_id","kdTKD_id",
             "kdTKD.id","nama","jumlah_soal")
-            ->join("banksoalTKD_tryoutTKD","banksoalTKD_tryoutTKD.banksoalTKD_id","=","banksoalTKD.id")
+            ->join("banksoalTKD_bundleTKD","banksoalTKD_bundleTKD.banksoalTKD_id","=","banksoalTKD.id")
             ->join("kdTKD","banksoalTKD.kdTKD_id","kdTKD.id")
-            ->where('tryoutTKD_id','=',$id)->orderBy('banksoalTKD_id','ASC')->paginate(10);
-        return view('bundle.viewTKD',compact('soals','id','users'))->with('i',($request->input('page',1)-1)*10);
+            ->where('bundleTKD_id','=',$id)->orderBy('banksoalTKD_id','ASC')->paginate(10);
+        $soalTKP=BankSoalTKP::select("bundleTKD_id", "banksoalTKP_id","kdTKD_id",
+            "kdTKD.id","nama","jumlah_soal")
+            ->join("banksoalTKP_bundleTKD","banksoalTKP_bundleTKD.banksoalTKP_id","=","banksoalTKP.id")
+            ->join("kdTKD","banksoalTKP.kdTKD_id","kdTKD.id")
+            ->where('bundleTKD_id','=',$id)->orderBy('banksoalTKP_id','ASC')->paginate(10);
+        $currentSubj=BundleTKD::select("subjectTKD_id as subId")->where('id','=',$id)->get();
+        $soal_terisiTKD=BankSoalTKD::select("id")
+            ->join("banksoalTKD_bundleTKD","banksoalTKD_bundleTKD.banksoalTKD_id","=","banksoalTKD.id")
+            ->where('bundleTKD_id','=',$id)->count("id");
+        $soal_terisiTKP=BankSoalTKP::select("id")
+            ->join("banksoalTKP_bundleTKD","banksoalTKP_bundleTKD.banksoalTKP_id","=","banksoalTKP.id")
+            ->where('bundleTKD_id','=',$id)->count("id");
+        $jumlah_soaltkd = KdTKD::select("jumlah_soal")
+            ->leftJoin("bundleTKD_kdTKD","bundleTKD_kdTKD.kdTKD_id","=","kdTKD.id")
+            ->where('bundleTKD_id','=',$id)->sum("jumlah_soal");
+        if($soal_terisiTKD == $jumlah_soaltkd){
+            $fullTKD=true;
+            $bundle=BundleTKD::find($id);
+            $bundle->full = 1;
+            $bundle->save();
+        }elseif($soal_terisiTKP == $jumlah_soaltkd){
+            $fullTKP=true;
+            $bundle=BundleTKD::find($id);
+            $bundle->full = 1;
+            $bundle->save();
+        }else{
+            $fullTKP=false;
+            $fullTKD=false;
+        }
+        return view('bundle.viewTKD',compact('soals','soalTKP','fullTKD','fullTKP','currentSubj','soal_terisiTKD','soal_terisiTKP','jumlah_soaltkd','id','users'))->with('i',($request->input('page',1)-1)*10);
     }
     public function createBundleTPA(){
         $users = Auth::user();
@@ -223,10 +269,10 @@ class ManageBundleController extends Controller
             ->with('success','Soal deleted successfully');
     }
     public function destroyTKD($id){
-        $bundle = TryoutTKD::where('id','=',$id);
+        $bundle = BundleTKD::where('id','=',$id);
         $kd = KdTKD::select("kdTKD.id")
-            ->join("kdTKD_tryoutTKD","kdTKD_tryoutTKD.kdTKD_id","=","kdTKD.id")
-            ->where('tryoutTKD_id','=',$id)->get();
+            ->join("bundleTKD_kdTKD","bundleTKD_kdTKD.kdTKD_id","=","kdTKD.id")
+            ->where('bundleTKD_id','=',$id)->get();
         $bundle->delete();
         foreach ($kd as $id){
             $deleted = KdTKD::find($id->id);

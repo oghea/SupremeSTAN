@@ -44,6 +44,8 @@ Route::get('email-verification/check/{token}', 'Auth\RegisterController@getVerif
 
         Route::get('admin/tryout/create', ['uses'=>'ManageTryoutController@create', 'as' => 'tryout.create']);
         Route::post('admin/tryout/create', ['uses'=>'ManageTryoutController@store', 'as' => 'tryout.store']);
+        Route::get('admin/tryout/createTKD', ['uses'=>'ManageTryoutController@createTKD', 'as' => 'tryout.createTKD']);
+        Route::post('admin/tryout/createTKD', ['uses'=>'ManageTryoutController@storeTKD', 'as' => 'tryout.storeTKD']);
 
         Route::get('admin/bundle', ['uses'=>'ManageBundleController@listBundle', 'as' => 'bundle.list']);
         Route::delete('admin/bundle/usm/{id}', ['uses'=>'ManageBundleController@destroy', 'as' => 'bundle.delete']);
@@ -76,6 +78,13 @@ Route::get('email-verification/check/{token}', 'Auth\RegisterController@getVerif
         Route::get('admin/soal/tkd/{bundleId}/{id}/edit',['uses'=>'ManageSoalTKD@edit', 'as' => 'soal.editTKD']);
         Route::post('admin/soal/tkd/{bundleId}/{id}/edit',['uses'=>'ManageSoalTKD@update', 'as' => 'soal.updateTKD']);
 
+        Route::get('admin/soal/tkp/{id}',['uses' => 'ManageSoalTKD@createTKP', 'as' => 'soal.createTKP']);
+        Route::post('admin/soal/tkp/{id}','ManageSoalTKD@storeTKP');
+        Route::delete('admin/soal/tkp/{id}/{bundleId}',['uses'=>'ManageSoalTKD@destroyTKP', 'as' => 'soal.deleteTKP']);
+        Route::get('admin/soal/tkp/{bundleId}/{id}/view',['uses'=>'ManageSoalTKD@viewTKP', 'as' => 'soal.viewTKP']);
+        Route::get('admin/soal/tkp/{bundleId}/{id}/edit',['uses'=>'ManageSoalTKD@editTKP', 'as' => 'soal.editTKP']);
+        Route::post('admin/soal/tkp/{bundleId}/{id}/edit',['uses'=>'ManageSoalTKD@updateTKP', 'as' => 'soal.updateTKP']);
+
 
 
 
@@ -104,11 +113,11 @@ Route::get('email-verification/check/{token}', 'Auth\RegisterController@getVerif
 Route::get('logout', 'Auth\LoginController@logout');
 
 Route::get('/tes',function (){
-    $current_time = \Carbon\Carbon::now()->toDateString();
-
-    $jumlah_tkd = SupremeSTAN\KdTKD::select(DB::raw("SUM(jumlah_soal) as jumlah"))
-        ->leftJoin("kdTKD_tryoutTKD","kdTKD_tryoutTKD.kdTKD_id","=","kdTKD.id")
-        ->groupBy('kdTKD_tryoutTKD.tryoutTKD_id')->get();
+//    $current_time = \Carbon\Carbon::now()->toDateString();
+    $currentSubj=SupremeSTAN\BundleTKD::select("subjectTKD_id as subId")->where('id','=',1)->get();
+//    $jumlah_tkd = SupremeSTAN\KdTKD::select(DB::raw("SUM(jumlah_soal) as jumlah"))
+//        ->leftJoin("kdTKD_tryoutTKD","kdTKD_tryoutTKD.kdTKD_id","=","kdTKD.id")
+//        ->groupBy('kdTKD_tryoutTKD.tryoutTKD_id')->get();
 //    $jumlah_soal=0;
 //    foreach ($jumlah_tkd as $jumlah){
 //        $jumlah_soal=$jumlah_soal+$jumlah;
@@ -117,7 +126,7 @@ Route::get('/tes',function (){
 //    foreach ($jumlah_tkd as $jumlah){
 //        $total[] = $jumlah->jumlah_soal;
 //    }
-    dd($current_time);
+    dd($currentSubj->subId);
 });
 //});
 //Route::get('logout',function (){

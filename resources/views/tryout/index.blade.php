@@ -230,7 +230,7 @@
                                 @endif
                                 <hr>
                                 <div>
-                                    <a href="{{url('/admin/bundle/tkd/create')}}" class="btn btn-primary">Create Tryout TKD</a>
+                                    <a href="{{url('admin/tryout/createTKD')}}" class="btn btn-primary">Create Tryout TKD</a>
                                 </div>
                             </div>
                         </div>

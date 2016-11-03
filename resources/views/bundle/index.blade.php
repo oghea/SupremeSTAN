@@ -289,13 +289,13 @@
                                             </div>
                                             <div class="col-md-2">
 
-                                                {{--<a href="{{ route('bundle.viewTKD',$tw->id) }}" class="btn btn-success">Upload Soal</a>--}}
+                                                <a href="{{ route('bundle.viewTKD',$tw->id) }}" class="btn btn-success">Upload Soal</a>
 
                                             </div>
                                             <div class="col-md-2">
-                                                {{--{!! Form::open(['method' => 'DELETE','route' => ['bundle.deleteTKD', $tk->id]]) !!}--}}
-                                                {{--{!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}--}}
-                                                {{--{!! Form::close() !!}--}}
+                                                {!! Form::open(['method' => 'DELETE','route' => ['bundle.deleteTKD', $tw->id]]) !!}
+                                                {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
+                                                {!! Form::close() !!}
                                             </div>
                                         </div>
                                     @endforeach
@@ -373,13 +373,13 @@
                                             </div>
                                             <div class="col-md-2">
 
-{{--                                                <a href="{{ route('bundle.viewTKD',$ti->id) }}" class="btn btn-success">Upload Soal</a>--}}
+                                                <a href="{{ route('bundle.viewTKD',$ti->id) }}" class="btn btn-success">Upload Soal</a>
 
                                             </div>
                                             <div class="col-md-2">
-                                                {{--{!! Form::open(['method' => 'DELETE','route' => ['bundle.deleteTKD', $tk->id]]) !!}--}}
-                                                {{--{!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}--}}
-                                                {{--{!! Form::close() !!}--}}
+                                                {!! Form::open(['method' => 'DELETE','route' => ['bundle.deleteTKD', $ti->id]]) !!}
+                                                {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
+                                                {!! Form::close() !!}
                                             </div>
                                         </div>
                                     @endforeach
@@ -457,13 +457,13 @@
                                             </div>
                                             <div class="col-md-2">
 
-                                                {{--<a href="{{ route('bundle.viewTKD',$tk->id) }}" class="btn btn-success">Upload Soal</a>--}}
+                                                <a href="{{ route('bundle.viewTKD',$tk->id) }}" class="btn btn-success">Upload Soal</a>
 
                                             </div>
                                             <div class="col-md-2">
-                                                {{--{!! Form::open(['method' => 'DELETE','route' => ['bundle.deleteTKD', $tk->id]]) !!}--}}
-                                                {{--{!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}--}}
-                                                {{--{!! Form::close() !!}--}}
+                                                {!! Form::open(['method' => 'DELETE','route' => ['bundle.deleteTKD', $tk->id]]) !!}
+                                                {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
+                                                {!! Form::close() !!}
                                             </div>
                                         </div>
                                     @endforeach

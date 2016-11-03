@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Auth;
 use SupremeSTAN\BankSoalUSM;
+use SupremeSTAN\BundleTKD;
 use SupremeSTAN\BundleUSM;
 use SupremeSTAN\KunciUSM;
 use SupremeSTAN\PembahasanUSM;
@@ -29,8 +30,8 @@ class ManageTryoutController extends Controller
 //            ->join("kdTKD","kdTKD_tryoutTKD.kdTKD_id",'=',"kdTKD.id")
 //            ->where('tryoutTKD.id','=',5);
         $jumlah_tkd = KdTKD::select(DB::raw("SUM(jumlah_soal) as jumlah"))
-            ->leftJoin("kdTKD_tryoutTKD","kdTKD_tryoutTKD.kdTKD_id","=","kdTKD.id")
-            ->groupBy('kdTKD_tryoutTKD.tryoutTKD_id')->get();
+            ->leftJoin("bundleTKD_kdTKD","bundleTKD_kdTKD.kdTKD_id","=","kdTKD.id")
+            ->groupBy('bundleTKD_kdTKD.bundleTKD_id')->get();
 
         $jumlah_usm = KdUSM::select(DB::raw("SUM(jumlah_soal) as jumlah"))
             ->leftJoin("bundleUSM_kdUSM","bundleUSM_kdUSM.kdUSM_id","=","kdUSM.id")
@@ -46,9 +47,16 @@ class ManageTryoutController extends Controller
     }
     public function create(){
         $users = Auth::user();
-        $bundleTPA = BundleUSM::where('subjectUSM_id','=',1)->get();
-        $bundleTBI = BundleUSM::where('subjectUSM_id','=',2)->get();
+        $bundleTPA = BundleUSM::where([['subjectUSM_id','=',1],['full','=',1]])->get();
+        $bundleTBI = BundleUSM::where([['subjectUSM_id','=',2],['full','=',1]])->get();
         return view('tryout.create',compact('users','bundleTPA','bundleTBI'));
+    }
+    public function createTKD(){
+        $users = Auth::user();
+        $bundleTIU = BundleTKD::where([['subjectTKD_id','=',1],['full','=',1]])->get();
+        $bundleTWK = BundleTKD::where([['subjectTKD_id','=',2],['full','=',1]])->get();
+        $bundleTKP = BundleTKD::where([['subjectTKD_id','=',3],['full','=',1]])->get();
+        return view('tryout.createTKD',compact('users','bundleTIU','bundleTWK','bundleTKP'));
     }
     public function store(Request $request){
         $this->validate($request, [
@@ -66,10 +74,26 @@ class ManageTryoutController extends Controller
 //        }
         return redirect()->route('tryout.list');
     }
+    public function storeTKD(Request $request){
+        $this->validate($request, [
+            'judul' => 'required|unique:tryoutTKD,judul',
+            'bundleTIU' => 'required',
+            'bundleTWK' => 'required',
+            'bundleTKP' => 'required',
+        ]);
+        $tryoutTKD = new TryoutTKD();
+        $tryoutTKD->judul = $request->input('judul');
+        $tryoutTKD->durasi = 60;
+        $tryoutTKD->save();
+        $tryoutTKD->bundleTkd()->attach($request->input('bundleTIU'));
+        $tryoutTKD->bundleTkd()->attach($request->input('bundleTWK'));
+        $tryoutTKD->bundleTkd()->attach($request->input('bundleTKP'));
+        return redirect()->route('tryout.list');
+    }
     public function publishUSM($id){
         $tryoutUSM = TryoutUSM::find($id);
         $current_time = Carbon::now()->toDateString();
-        $tryoutUSM->publishdate = $current_time;
+        $tryoutUSM->publish_date = $current_time;
         $tryoutUSM->publish = 1;
         $tryoutUSM->save();
         return redirect()->route('tryout.list');

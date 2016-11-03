@@ -88,6 +88,21 @@
                                 </div>
                             </div>
                         </div>
+                        @if($tkd || $tkp)
+                            <div class="col-md-5 col-md-offset-2">
+                                <div class="panel panel-primary">
+                                    <div class="panel-heading">
+                                        {!! Form::radio('jawaban', 5) !!}
+                                        <label>
+                                            E
+                                        </label>
+                                    </div>
+                                    <div class="panel-body">
+                                        {!! $soal->jawaban_e !!}
+                                    </div>
+                                </div>
+                            </div>
+                        @endif
                         <div class="col-md-2 col-md-offset-5">
                             @if($usm)
                                 <a href="{{ route('bundle.view',$bundleId) }}" class="btn btn-warning">Back</a>

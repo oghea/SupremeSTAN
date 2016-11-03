@@ -15,6 +15,9 @@
             <div class="col-md-12 profile-content">
                 <div class="x_title">
                     <h2>Upload bundle</h2>
+                    <div class="col-md-4 pull-right">
+                        <h2>Jumlah Soal Terisi : {{$soal_terisiUSM}}/{{$jumlah_soalusm}}</h2>
+                    </div>
                     <div class="clearfix"></div>
                 </div>
                 <div class="x_content">
@@ -118,7 +121,9 @@
                                     @endif
                                     <hr>
                                     <div>
-                                        <a href="{{route('soal.create',$id)}}" class="btn btn-primary">Input new Soal</a>
+                                        @if(!$fullUSM)
+                                            <a href="{{route('soal.create',$id)}}" class="btn btn-primary">Input new Soal</a>
+                                        @endif
                                     </div>
                                 </div>
                             </div>

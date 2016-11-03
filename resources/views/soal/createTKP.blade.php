@@ -26,7 +26,7 @@
                 </div>
                 <div class="x_content">
                     <div class="col-xs-10 col-xs-offset-1">
-                        {!!Form::open(['route' => ['soal.createTKD', $id] , 'role' => 'form','files' => true,'method'=>'POST'])!!}
+                        {!!Form::open(['route' => ['soal.createTKP', $id] , 'role' => 'form','files' => true,'method'=>'POST'])!!}
                         {{--{{ csrf_field() }}--}}
                         <select name="kdPilihan">
                             @foreach($kds as $kd)
@@ -48,7 +48,7 @@
                         <div class="col-md-5">
                             <div class="panel panel-primary">
                                 <div class="panel-heading">
-                                    {!! Form::radio('jawaban', 1) !!}
+                                    {!! Form::select('bobot_a', ['1' => '1', '2' => '2', '3' => '3', '4' => '4', '5' => '5']) !!}
                                     <label>
                                         A
                                     </label>
@@ -61,7 +61,7 @@
                         <div class="col-md-5 col-md-offset-2">
                             <div class="panel panel-primary">
                                 <div class="panel-heading">
-                                    {!! Form::radio('jawaban', 2) !!}
+                                    {!! Form::select('bobot_b', ['1' => '1', '2' => '2', '3' => '3', '4' => '4', '5' => '5']) !!}
                                     <label>
                                         B
                                     </label>
@@ -74,7 +74,7 @@
                         <div class="col-md-5">
                             <div class="panel panel-primary">
                                 <div class="panel-heading">
-                                    {!! Form::radio('jawaban', 3) !!}
+                                    {!! Form::select('bobot_c', ['1' => '1', '2' => '2', '3' => '3', '4' => '4', '5' => '5']) !!}
                                     <label>
                                         C
                                     </label>
@@ -87,7 +87,7 @@
                         <div class="col-md-5 col-md-offset-2">
                             <div class="panel panel-primary">
                                 <div class="panel-heading">
-                                    {!! Form::radio('jawaban', 4) !!}
+                                    {!! Form::select('bobot_d', ['1' => '1', '2' => '2', '3' => '3', '4' => '4', '5' => '5']) !!}
                                     <label>
                                         D
                                     </label>
@@ -100,7 +100,7 @@
                         <div class="col-md-5 col-md-offset-2">
                             <div class="panel panel-primary">
                                 <div class="panel-heading">
-                                    {!! Form::radio('jawaban', 5) !!}
+                                    {!! Form::select('bobot_e', ['1' => '1', '2' => '2', '3' => '3', '4' => '4', '5' => '5']) !!}
                                     <label>
                                         E
                                     </label>

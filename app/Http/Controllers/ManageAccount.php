@@ -14,7 +14,7 @@ class ManageAccount extends Controller
         $users = Auth::user();
         $user_list = User::orderBy('id','DESC')->paginate(10);
         return view('accounts.index',compact('user_list','users'))
-            ->with('i', ($request->input('page', 1) - 1) * 10);;
+            ->with('i', ($request->input('page', 1) - 1) * 10);
     }
 //    public function show($id){
 //        $users = Auth::user();

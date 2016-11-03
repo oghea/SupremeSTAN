@@ -26,7 +26,7 @@
             </div>
             <div class="x_content">
                 <div class="col-xs-10 col-xs-offset-1">
-                    {!!Form::open(['route' => ['soal.updateTKD', $bundleId,$id] , 'role' => 'form','files' => true,'method'=>'POST'])!!}
+                    {!!Form::open(['route' => ['soal.updateTKP', $bundleId,$id] , 'role' => 'form','files' => true,'method'=>'POST'])!!}
                     {{--{{ csrf_field() }}--}}
                     {{--{!!Form::select('kdPilihan',$kds->pluck('nama')->all(), ['placeholder' => 'Pilih Salah Satu...','class' => 'form-control']) !!}--}}
                     <div class="col-md-12">
@@ -43,7 +43,7 @@
                     <div class="col-md-5">
                         <div class="panel panel-primary">
                             <div class="panel-heading">
-                                {!! Form::radio('jawaban', 1,$soal->kunciTkd->jawaban_benar==1) !!}
+                                {!! Form::select('bobot_a', ['1' => '1', '2' => '2', '3' => '3', '4' => '4', '5' => '5'],$soal->bobot_a) !!}
                                 <label>
                                     A
                                 </label>
@@ -56,7 +56,7 @@
                     <div class="col-md-5 col-md-offset-2">
                         <div class="panel panel-primary">
                             <div class="panel-heading">
-                                {!! Form::radio('jawaban', 2,$soal->kunciTkd->jawaban_benar==2) !!}
+                                {!! Form::select('bobot_b', ['1' => '1', '2' => '2', '3' => '3', '4' => '4', '5' => '5'],$soal->bobot_b) !!}
                                 <label>
                                     B
                                 </label>
@@ -69,7 +69,7 @@
                     <div class="col-md-5">
                         <div class="panel panel-primary">
                             <div class="panel-heading">
-                                {!! Form::radio('jawaban', 3,$soal->kunciTkd->jawaban_benar==3) !!}
+                                {!! Form::select('bobot_c', ['1' => '1', '2' => '2', '3' => '3', '4' => '4', '5' => '5'],$soal->bobot_c) !!}
                                 <label>
                                     C
                                 </label>
@@ -82,7 +82,7 @@
                     <div class="col-md-5 col-md-offset-2">
                         <div class="panel panel-primary">
                             <div class="panel-heading">
-                                {!! Form::radio('jawaban', 4,$soal->kunciTkd->jawaban_benar==4) !!}
+                                {!! Form::select('bobot_d', ['1' => '1', '2' => '2', '3' => '3', '4' => '4', '5' => '5'],$soal->bobot_d) !!}
                                 <label>
                                     D
                                 </label>
@@ -95,7 +95,7 @@
                     <div class="col-md-5 col-md-offset-2">
                         <div class="panel panel-primary">
                             <div class="panel-heading">
-                                {!! Form::radio('jawaban', 5,$soal->kunciTkd->jawaban_benar==5) !!}
+                                {!! Form::select('bobot_e', ['1' => '1', '2' => '2', '3' => '3', '4' => '4', '5' => '5'],$soal->bobot_e) !!}
                                 <label>
                                     E
                                 </label>
@@ -111,7 +111,7 @@
                                 Pembahasan
                             </div>
                             <div class="panel-body">
-                                {!! Form::textarea('pembahasan', $soal->pembahasanTkd->description, array('class ' => 'form-control soal')) !!}
+                                {!! Form::textarea('pembahasan', $soal->pembahasanTKP, array('class ' => 'form-control soal')) !!}
                             </div>
                         </div>
                     </div>
