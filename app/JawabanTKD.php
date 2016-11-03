@@ -15,11 +15,11 @@ class JawabanTKD extends Model
 
     public function tryoutTkd()
     {
-        return $this->belongsTo('TryoutTKD');
+        return $this->belongsTo('SupremeSTAN\TryoutTKD');
     }
 
     public function user()
     {
-        return $this->belongsTo('User');
+        return $this->belongsTo('SupremeSTAN\User');
     }
 }

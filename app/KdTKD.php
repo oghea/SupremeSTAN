@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class KdTKD extends Model
 {
     protected $table = 'kdTKD';
-    public $timestamps = true;
+    public $timestamps = false;
     protected $fillable = [
         'nama',
         'jumlah_soal'
@@ -16,6 +16,12 @@ class KdTKD extends Model
 
     public function bankSoalTkd()
     {
-        return $this->belongsTo('BankSoalTKD');
+        return $this->hasOne('SupremeSTAN\BankSoalTKD');
+    }
+    public function bankSoalTkp(){
+        return $this->hasOne('SupremeSTAN\BankSoalTKP');
+    }
+    public function bundleTkd(){
+        return $this->belongsToMany('SupremeSTAN\BundleTKD','kdTKD_bundleTKD','kdTKD_id','bundleTKD_id');
     }
 }

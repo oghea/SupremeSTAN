@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class ResultQuiz extends Model
 {
-    protected $table = 'resultquiz';
+    protected $table = 'resultQuiz';
     protected $fillable = [
         'result',
         'nilai_quiz'
@@ -14,6 +14,6 @@ class ResultQuiz extends Model
 
     public function jawabanQuiz()
     {
-        return $this->belongsTo('JawabanQuiz');
+        return $this->belongsTo('SupremeSTAN\JawabanQuiz');
     }
 }

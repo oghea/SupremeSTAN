@@ -6,8 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class BankQuiz extends Model
 {
-    protected $table = 'banksoalquiz';
-    public $timestamps = true;
+    protected $table = 'banksoalQuiz';
+    public $timestamps = false;
     protected $fillable = [
         'isi_soal',
         'jawaban_a',
@@ -22,16 +22,16 @@ class BankQuiz extends Model
 
     public function kunciQuiz()
     {
-        return $this->hasOne('KunciQuiz');
+        return $this->hasOne('SupremeSTAN\KunciQuiz');
     }
 
     public function pembahasanQuiz()
     {
-        return $this->hasOne('PembahasanQuiz');
+        return $this->hasOne('SupremeSTAN\PembahasanQuiz');
     }
 
     public function bundleQuiz()
     {
-        return $this->belongsToMany('BundleQuiz');
+        return $this->belongsToMany('SupremeSTAN\BundleQuiz');
     }
 }

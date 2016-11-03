@@ -7,7 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class TryoutUSM extends Model
 {
     protected $table = 'tryoutUSM';
-    public $timestamps = false;
     protected $fillable = [
         'judul',
         'publishdate',
@@ -16,16 +15,16 @@ class TryoutUSM extends Model
 
     public function bundleUsm()
     {
-        return $this->belongsToMany('BundleUSM');
+        return $this->belongsToMany('SupremeSTAN\BundleUSM','bundleUSM_tryoutUSM','tryoutUSM_id','bundleUSM_id');
     }
 
     public function jawabanUsm()
     {
-        return $this->hasOne('JawabanUSM');
+        return $this->hasOne('SupremeSTAN\JawabanUSM');
     }
 
     public function resultUsm()
     {
-        return $this->hasOne('ResultUSM');
+        return $this->hasOne('SupremeSTAN\ResultUSM');
     }
 }

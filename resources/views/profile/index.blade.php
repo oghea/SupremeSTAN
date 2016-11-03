@@ -1,10 +1,18 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="col-md-9">
-        <div class="col-md-12 col-xs-12 profile-content">
-            <div class="col-md-12 profile-font">
-                <h3>Personal info !!!</h3>
+    <div class="container">
+        <div class="page-title">
+            <div class="col-md-12">
+                <h3>
+                    Info Profile
+                    <small>Detail info your profile</small>
+                </h3>
+            </div>
+        </div>
+        <div class="row">
+        <div class="col-md-12 col-xs-12 ">
+            <div class="col-md-12 profile-content">
                 <div class="row">
                     <div class="col-md-4 col-xs-4">
                         <label>
@@ -14,7 +22,7 @@
                     <div class="col-md-1 col-xs-1 supreme-1">
                         <span>:</span>
                     </div>
-                    <div class="col-md-7 col-xs-7 raleway-italic ">
+                    <div class="col-md-7 col-xs-7  ">
                         <label>
                             @if(Auth::user()->user_profile->first_name==null)
                                 {{Auth::user()->name}}
@@ -33,7 +41,7 @@
                     <div class="col-md-1 col-xs-1 supreme-1">
                         <span>:</span>
                     </div>
-                    <div class="col-md-7 col-xs-7 raleway-italic">
+                    <div class="col-md-7 col-xs-7 ">
                         <label>
                             @if(Auth::user()->user_profile->address==null)
                                 Belum ada data cuk,isi makanya
@@ -52,7 +60,7 @@
                     <div class="col-md-1 col-xs-1 supreme-1">
                         <span>:</span>
                     </div>
-                    <div class="col-md-7 col-xs-7 raleway-italic">
+                    <div class="col-md-7 col-xs-7 ">
                         <label>
                             @foreach($users->roles as $role)
                                 {{$role->display_name}}
@@ -63,13 +71,13 @@
                 <div class="row">
                     <div class="col-md-4 col-xs-4">
                         <label>
-                            Email:
+                            Email
                         </label>
                     </div>
                     <div class="col-md-1 col-xs-1 supreme-1">
                         <span>:</span>
                     </div>
-                    <div class="col-md-7 col-xs-7 raleway-italic">
+                    <div class="col-md-7 col-xs-7 ">
                         <label>
                             {{Auth::user()->email}}
                         </label>
@@ -84,7 +92,7 @@
                     <div class="col-md-1 col-xs-1 supreme-1">
                         <span>:</span>
                     </div>
-                    <div class="col-md-7 col-xs-7 raleway-italic">
+                    <div class="col-md-7 col-xs-7 ">
                         <label>
                             @if(Auth::user()->user_profile->phone==null)
                                 Belum ada data cuk,isi makanya
@@ -103,7 +111,7 @@
                     <div class="col-md-1 col-xs-1 supreme-1">
                         <span>:</span>
                     </div>
-                    <div class="col-md-7 col-xs-7 raleway-italic">
+                    <div class="col-md-7 col-xs-7 ">
                         <label>
                             @if(Auth::user()->user_profile->gender==null)
                                 Belum ada data cuk,isi makanya
@@ -122,7 +130,7 @@
                     <div class="col-md-1 col-xs-1 supreme-1">
                         <span>:</span>
                     </div>
-                    <div class="col-md-7 col-xs-7 raleway-italic">
+                    <div class="col-md-7 col-xs-7 ">
                         <label>
                             @if(Auth::user()->user_profile->line_id==null)
                                 Belum ada data cuk,isi makanya
@@ -141,7 +149,7 @@
                     <div class="col-md-1 col-xs-1 supreme-1">
                         <span>:</span>
                     </div>
-                    <div class="col-md-7 col-xs-7 raleway-italic">
+                    <div class="col-md-7 col-xs-7 ">
                         <label>
                             @if(Auth::user()->user_profile->state==null)
                                 Belum ada data cuk,isi makanya
@@ -160,7 +168,7 @@
                     <div class="col-md-1 col-xs-1 supreme-1">
                         <span>:</span>
                     </div>
-                    <div class="col-md-7 col-xs-7 raleway-italic">
+                    <div class="col-md-7 col-xs-7 ">
                         <label>
                             @if(Auth::user()->user_profile->city==null)
                                 Belum ada data cuk,isi makanya
@@ -179,7 +187,7 @@
                     <div class="col-md-1 col-xs-1 supreme-1">
                         <span>:</span>
                     </div>
-                    <div class="col-md-7 col-xs-7 raleway-italic">
+                    <div class="col-md-7 col-xs-7 ">
                         <label>
                             @if(Auth::user()->user_profile->school_origin==null)
                                 Belum ada data cuk,isi makanya
@@ -195,5 +203,6 @@
                 </div>
             </div>
         </div>
+    </div>
     </div>
 @endsection

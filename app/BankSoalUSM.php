@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class BankSoalUSM extends Model
 {
     protected $table = 'banksoalUSM';
-    public $timestamps = true;
+    public $timestamps = false;
     protected $fillable = [
         'kdUSM_id',
         'isi_soal',
@@ -15,7 +15,6 @@ class BankSoalUSM extends Model
         'jawaban_b',
         'jawaban_c',
         'jawaban_d',
-        'jawaban_e',
         'kunciUSM_id',
         'pembahasanUSM_id'
     ];
@@ -23,21 +22,21 @@ class BankSoalUSM extends Model
 
     public function kunciUsm()
     {
-        return $this->hasOne('KunciUSM');
+        return $this->belongsTo('SupremeSTAN\KunciUSM','kunciUSM_id');
     }
 
     public function pembahasanUsm()
     {
-        return $this->hasOne('PembahasanUSM');
+        return $this->belongsTo('SupremeSTAN\PembahasanUSM','pembahasanUSM_id');
     }
 
     public function kdUsm()
     {
-        return $this->hasOne('KdUSM');
+        return $this->belongsTo('SupremeSTAN\KdUSM','kdUSM_id');
     }
 
     public function bundleUsm()
     {
-        return $this->belongsToMany('BundleUSM');
+        return $this->belongsToMany('SupremeSTAN\BundleUSM','banksoalUSM_bundleUSM','banksoalUSM_id','bundleUSM_id');
     }
 }

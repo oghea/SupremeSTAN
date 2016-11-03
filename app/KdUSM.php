@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class KdUSM extends Model
 {
     protected $table = 'kdUSM';
-    public $timestamps = true;
+    public $timestamps = false;
     protected $fillable = [
         'nama',
         'jumlah_soal'
@@ -16,6 +16,9 @@ class KdUSM extends Model
 
     public function bankSoalUsm()
     {
-        return $this->belongsTo('BankSoalUSM');
+        return $this->hasMany('SupremeSTAN\BankSoalUSM');
+    }
+    public function bundleUSM(){
+        return $this->belongsToMany('SupremeSTAN\BundleUSM','bundleUSM_kdUSM','kdUSM_id','bundleUSM_id');
     }
 }

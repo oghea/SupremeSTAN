@@ -7,7 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class JawabanUSM extends Model
 {
     protected $table = 'jawabanUSM';
-    public $timestamps = true;
     protected $fillable = [
         'tryoutUSM_id',
         'user_id',
@@ -17,11 +16,11 @@ class JawabanUSM extends Model
 
     public function tryoutUsm()
     {
-        return $this->belongsTo('TryoutUSM');
+        return $this->belongsTo('SupremeSTAN\TryoutUSM');
     }
 
     public function user()
     {
-        return $this->belongsTo('User');
+        return $this->belongsTo('SupremeSTAN\User');
     }
 }

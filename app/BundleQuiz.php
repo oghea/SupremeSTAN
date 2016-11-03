@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class BundleQuiz extends Model
 {
-    protected $table = 'bundlequiz';
+    protected $table = 'bundleQuiz';
     protected $fillable = [
         'publish_date',
         'published',
@@ -16,11 +16,11 @@ class BundleQuiz extends Model
 
     public function bankQuiz()
     {
-        return $this->belongsToMany('BankQuiz');
+        return $this->belongsToMany('SupremeSTAN\BankQuiz');
     }
 
     public function jawabanQuiz()
     {
-        return $this->belongsTo('JawabanQuiz');
+        return $this->belongsTo('SupremeSTAN\JawabanQuiz');
     }
 }
