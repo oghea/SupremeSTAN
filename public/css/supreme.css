@@ -6,12 +6,15 @@ html {
 }
 body {
     /* Margin bottom by footer height */
-    margin-bottom: 60px;
+    /*margin-bottom: 60px;*/
     background: #F1F3FA;
 }
-body > .container {
-    padding: 60px 15px 0;
-}
+
+/*-----------------*/
+
+
+/*--------------*/
+
 .container .text-muted {
     margin: 20px 0;
 }
@@ -27,7 +30,7 @@ body > .container {
     padding-top: 120px;
 }
 .supreme-1{
-	width: 1%;
+  width: 1%;
 }
 .raleway-italic{
     font-family: 'Times New Roman', sans-serif;
@@ -48,8 +51,8 @@ body > .container {
     border-top: 0;
 }
 .navbar-default{
-	opacity: 1;
-	background-image: linear-gradient(to bottom,#333 0,#333 100%);
+  opacity: 1;
+  background-image: linear-gradient(to bottom,#333 0,#333 100%);
 }
 
 .navbar-default .navbar-nav>li>a {
@@ -57,8 +60,8 @@ body > .container {
 }
 
 .nice-padding{
-	padding: 20px;
-	background-color: #333;
+  padding: 20px;
+  background-color: #333;
     color: #ffffff;
 }
 
@@ -87,7 +90,7 @@ body > .container {
     padding-top: 8px;
 }
 .relative{
-	position: relative;
+  position: relative;
 }
 
 .tryout-attempt{
@@ -250,17 +253,19 @@ Side-bar use profile
 .profile-content {
   padding: 20px;
   background: #fff;
-  min-height: 510px;
+  /*min-height: 510px;*/
+  margin: 5px 0;
+  border: 1px solid #E6E9ED;
 }
 
 .profile-font{
-	font-family: 'Raleway', sans-serif;
+  font-family: 'Raleway', sans-serif;
     font-size: 20px;
 }
-.input-group[class*=col-]{
-    padding-left: 15px;
-    padding-right: 15px;
-}
+
+
+
+
 /*blockquote*/
 
 blockquote{
@@ -302,19 +307,19 @@ blockquote{
     /*font-family: "Comic Sans MS", cursive, sans-serif;*/
 }
 .w1dget-head{
-	padding-bottom: 10px;
-	/*height:32px;*/
-	padding-left: 5px;
-	padding-right: 5px;
-	background-color: #ffffff;
-	max-height: 202px;
+  padding-bottom: 10px;
+  /*height:32px;*/
+  padding-left: 5px;
+  padding-right: 5px;
+  background-color: #ffffff;
+  max-height: 202px;
 }
 .widget-tengah{
     text-align:center;font-size: 90px;color: black;font-family: 'Lobster Two', cursive;
 }
 
 .gly{
-	vertical-align: middle;
+  vertical-align: middle;
     margin-right: 10px;
     padding-right: 10px;
     border-right: 1px solid #929396;
@@ -329,12 +334,12 @@ blockquote{
 }
 
 .edit-profile-buttons{
-	text-align: center;
-  	margin-top: 20px;
+  text-align: center;
+    margin-top: 20px;
 }
 
 .w-title{
-	font-size: 20px
+  font-size: 20px
 }
 .marpad-nice{
     /*margin-top: 10px;*/
@@ -356,21 +361,21 @@ blockquote{
     border-bottom: 1px solid #929396;
 }
 .no-marpad{
-	margin: 1px;
-	padding: 1px;
+  margin: 1px;
+  padding: 1px;
 }
 .no-marpad-1{
-	/*padding-bottom: 3px;*/
+  /*padding-bottom: 3px;*/
     padding-top: 7px;
     margin: auto 0;
 }
 .no-marpad-2{
-	min-height: 45px;
+  min-height: 45px;
 }
 
 .no-marpad-3{
-	height: 150px;
-	padding: 5px;
+  height: 150px;
+  padding: 5px;
 }
 .widget-kotak{
     border: 2px solid #929396;
@@ -387,8 +392,8 @@ blockquote{
     font-size: 60px;
 }
 h5{
-	text-align: center;
-	vertical-align: middle;
+  text-align: center;
+  vertical-align: middle;
     font-weight: 600;
 }
 .penampung-isi-wigdet{
@@ -396,6 +401,10 @@ h5{
     margin: 25px 0;
 }
 /*progressbar*/
+
+.canvasjs-chart-credit{
+  display: none;
+}
 
 .tooltip{ 
   position:relative;
@@ -408,22 +417,25 @@ section{
     margin: 0 auto 140px auto;
     padding: 20px;
 }
-.progress{
-  /*border-radius:0;*/
+/*.progress{
+  border-radius:0;
   overflow:visible;
     border-radius: 1em;
     height: 40px;
     margin-bottom: 0;
 }
+
 .progress-bar{
    background:rgb(23,44,60); 
   -webkit-transition: width 1.5s ease-in-out;
   transition: width 1.5s ease-in-out;
     border-radius: 1em;
-}
+}*/
+
+
 .height-bar{
-	height: 150px;
-	padding-top: 50px;
+  height: 150px;
+  padding-top: 50px;
 }
 .height-bar-1{
     height: 150px;
@@ -460,4 +472,28 @@ section{
         width: 90px;
         height: 60px;
     }
+}
+.field-error .control-label,
+.field-error .help-block,
+.field-error .form-control-feedback {
+    color: #ff0039;
+}
+
+.field-success .control-label,
+.field-success .help-block,
+.field-success .form-control-feedback {
+    color: #2780e3;
+}
+
+/*Tryout manager*/
+
+.tryout-manage{
+    border: 2px solid #929396;
+    padding: 0;
+}
+.tryout-manage-box{
+    border: 2px solid #929396;
+}
+.tryout-manage-box{
+    border: 2px solid #929396;
 }

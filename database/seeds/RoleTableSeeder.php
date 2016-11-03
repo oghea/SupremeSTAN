@@ -21,7 +21,7 @@ class RoleTableSeeder extends Seeder
         $owner->description = 'pemegang hak akses penuh';
         $owner->save();
         $owner->attachPermissions(['1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16','17','18',
-            '19','20','21','22','23','24','25','26','27','28','29','30','31']);
+            '19','20','21','22','23','24','25','26','27','28','29','30','31','32','33','34']);
 
         $superadmin = new Role();
         $superadmin->name = 'superadmin';
@@ -29,7 +29,7 @@ class RoleTableSeeder extends Seeder
         $superadmin->description = 'admin tertinggi';
         $superadmin->save();
         $superadmin->attachPermissions(['1','2','3','4','9','10','11','12','13','14','15','16','17','18',
-            '19','20','21','22','23','24','25','26','27','28','29','30','31']);
+            '19','20','21','22','23','24','25','26','27','28','29','30','31','32','33','34']);
 
         $curriculum = new Role();
         $curriculum->name = 'curriculum';
@@ -61,20 +61,34 @@ class RoleTableSeeder extends Seeder
         $admin_content->attachPermissions(['14','15','16']);
 
         $siswa = new Role();
-        $siswa->name = 'siswa';
-        $siswa->display_name = 'siswa SupremeSTAN';
-        $siswa->description = 'siswa';
+        $siswa->name = 'bimbel_premium';
+        $siswa->display_name = 'siswa bimbel';
+        $siswa->description = 'siswa bimbel Premium SupremeSTAN';
         $siswa->save();
         $siswa->attachPermissions(['10','17','18',
-            '19','20','28','31']);
+            '19','20','28','31','32','33']);
+
+        $siswa_online = new Role();
+        $siswa_online->name = 'bimbel_online';
+        $siswa_online->display_name = 'bimbel online';
+        $siswa_online->description = 'siswa bimbel online SupremeSTAN';
+        $siswa_online->save();
+        $siswa_online->attachPermissions(['10','17','18',
+            '19','20','28','31','32','33']);
 
         $siswa_tryout = new Role();
         $siswa_tryout->name = 'siswa_tryout';
         $siswa_tryout->display_name = 'siswa tryout';
         $siswa_tryout->description = 'siswa tryout';
         $siswa_tryout->save();
-        $siswa_tryout->attachPermissions(['1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16','17','18',
-            '19','20','21','22','23','24','25','26','27','28','29','30','31']);
+        $siswa_tryout->attachPermissions(['17','18','20','31','32','33']);
+
+        $free = new Role();
+        $free->name = 'free_member';
+        $free->display_name = 'Free User Account';
+        $free->description = 'free user account';
+        $free->save();
+        $free->attachPermissions(['17','18','20','31','33']);
 
         $user_owner =  new User();
         $user_owner->name = 'owner';

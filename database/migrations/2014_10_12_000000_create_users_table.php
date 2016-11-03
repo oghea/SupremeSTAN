@@ -19,7 +19,9 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->rememberToken();
-            $table->integer('jatahTO')->default(2);
+            $table->integer('TO_USM')->default(2);
+            $table->integer('TO_TKD')->default(1);
+            $table->boolean('TO_harian')->default(1);
             $table->timestamps();
             $table->boolean('banned')->default(0);
             $table->timestamp('activated_at')->nullable();

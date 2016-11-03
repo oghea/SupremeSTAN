@@ -168,6 +168,22 @@ class PermissionTableSeeder extends Seeder
                 'display_name' => 'view analisa',
                 'description' => 'bisa melihat hasil analisa tryout'
             ],
+            [
+                'name' => 'view-pembahasan-online',
+                'display_name' => 'view pembahasan online',
+                'description' => 'bisa melihat pembahasan tryout secara online'
+            ],
+            [
+                'name' => 'do-to-harian',
+                'display_name' => 'tryout harian',
+                'description' => 'bisa mengerjakan tryout harian'
+            ],
+            [
+                'name' => 'manage-to',
+                'display_name' => 'memanage tryout',
+                'description' => 'memanage tryout'
+            ]
+
         ];
 
         foreach ($permission as $key => $value) {

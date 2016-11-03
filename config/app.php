@@ -171,6 +171,7 @@ return [
         Laratrust\LaratrustServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
         Jrean\UserVerification\UserVerificationServiceProvider::class,
+        Unisharp\Laravelfilemanager\LaravelFilemanagerServiceProvider::class,
 
 
 
