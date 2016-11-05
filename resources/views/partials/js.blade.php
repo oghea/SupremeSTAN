@@ -8,7 +8,7 @@
 <script src="/vendor/canvasjs/jquery.canvasjs.min.js"></script>
 <script src="/vendor/fastclick/lib/fastclick.js"></script>
 <!-- NProgress -->
-<script src="/vendor/nprogress/npr.ogress.js"></script>
+<script src="/vendor/nprogress/nprogress.js"></script>
 <!-- Chart.js -->
 <script src="/vendor/Chart.js/dist/Chart.min.js"></script>
 <!-- gauge.js -->
