@@ -177,7 +177,7 @@
                 </div>
                 <div class="x_content">
                     <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
+                        we are ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
                     </p>
                     <div class="content-buttons">
                         <a href="#" class="btn btn-success btn-sm" role="button">Upgrade Member</a>
