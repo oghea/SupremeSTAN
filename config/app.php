@@ -172,6 +172,9 @@ return [
         Intervention\Image\ImageServiceProvider::class,
         Jrean\UserVerification\UserVerificationServiceProvider::class,
         Unisharp\Laravelfilemanager\LaravelFilemanagerServiceProvider::class,
+        Maatwebsite\Excel\ExcelServiceProvider::class,
+        Laracasts\Utilities\JavaScript\JavaScriptServiceProvider::class,
+
 
 
 
@@ -236,6 +239,8 @@ return [
         'Laratrust'   => Laratrust\LaratrustFacade::class,
         'Image' => Intervention\Image\Facades\Image::class,
         'UserVerification' => Jrean\UserVerification\Facades\UserVerification::class,
+        'Excel' => Maatwebsite\Excel\Facades\Excel::class,
+
 //        'Entrust' => Zizaco\Entrust\EntrustFacade::class,
 
     ],

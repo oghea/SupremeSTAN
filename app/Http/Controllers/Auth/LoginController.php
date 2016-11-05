@@ -41,12 +41,17 @@ class LoginController extends Controller
     }
     protected function authenticated($user)
     {
-        if(Auth::user()->hasRole('owner','superadmin','curriculum','finance','admin_account','admin_content')){
-            $this->redirectTo = 'admin/home';
-        }else if(Auth::user()->hasRole('bimbel_premium','bimbel_online','siswa_tryout','free_member')){
-            $this->redirectTo = 'home';
+        if(Auth::user()->isVerified()){
+            if (Auth::user()->hasRole(['owner', 'superadmin', 'curriculum', 'finance', 'admin_account', 'admin_content'])) {
+                $this->redirectTo = 'admin/home';
+            }else if(Auth::user()->hasRole(['bimbel_premium', 'bimbel_online', 'siswa_tryout', 'free_member'])) {
+                $this->redirectTo = 'home';
+            }else{
+                Auth::user()->attachRole('10');
+                $this->redirectTo = 'home';
+            }
         }else{
-            $this->redirectTo = 'home';
+            $this->redirectTo = '/verf';
         }
     }
 //    public function logout(Request $request)

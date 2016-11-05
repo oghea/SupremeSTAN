@@ -18,11 +18,14 @@ Route::get('/', function () {
 Auth::routes();
 Route::get('email-verification/error', 'Auth\RegisterController@getVerificationError')->name('email-verification.error');
 Route::get('email-verification/check/{token}', 'Auth\RegisterController@getVerification')->name('email-verification.check');
+Route::get('verf', function (){
+    return view('notVerified');
+});
 
 
 //Route::group(['middleware' => ['auth']], function() {
     Route::group([ 'middleware' => ['auth' ,'role:free_member|siswa_tryout|bimbel_online|bimbel_premium']], function() {
-        Route::get('home', 'HomeController@index');
+        Route::get('home', ['uses'=>'HomeController@index','as'=>'dashboard.user']);
         //    Route::resource('users', 'UserController');
         Route::get('profile', 'UserProfileController@create');
         Route::get('profile/change-pass', 'UserController@ChangePassword');
@@ -85,22 +88,12 @@ Route::get('email-verification/check/{token}', 'Auth\RegisterController@getVerif
         Route::get('admin/soal/tkp/{bundleId}/{id}/edit',['uses'=>'ManageSoalTKD@editTKP', 'as' => 'soal.editTKP']);
         Route::post('admin/soal/tkp/{bundleId}/{id}/edit',['uses'=>'ManageSoalTKD@updateTKP', 'as' => 'soal.updateTKP']);
 
-
-
-
-
-
-//        Route::get('admin/bundle', 'ManageBundleController@listBundle');
-//        Route::get('admin/bundle/createUSM', 'ManageBundleController@createBundleUSM');
-//        Route::post('admin/bundle/createUSM', 'ManageBundleController@storeBundleUSM');
-//
-//        Route::get('admin/soal/create', 'ManageBundleController@createSoalUSM');
-//        Route::post('admin/soal/create', 'ManageBundleController@storeSoalUSM');
-
-
         Route::get('admin/roles', ['as' => 'roles.index', 'uses' => 'RoleController@index', 'middleware' => ['permission:role-list|role-create|role-edit|role-delete']]);
         Route::get('admin/account', ['uses'=>'ManageAccount@index', 'as' => 'account.list']);
-//        Route::get('admin/account/{id}', ['uses'=>'ManageAccount@show', 'as' => 'account.show']);
+        Route::get('admin/account/show/{id}', ['uses'=>'ManageAccount@show', 'as' => 'account.show']);
+        Route::post('admin/account/download', ['uses'=>'ManageAccount@download', 'as' => 'account.download']);
+        Route::delete('admin/account/delete/{id}', ['uses'=>'ManageAccount@delete', 'as' => 'account.delete']);
+        Route::post('admin/account/banned/{id}', ['uses'=>'ManageAccount@banned', 'as' => 'account.banned']);
 
         Route::get('roles/create', ['as' => 'roles.create', 'uses' => 'RoleController@create', 'middleware' => ['permission:role-create']]);
         Route::post('roles/create', ['as' => 'roles.store', 'uses' => 'RoleController@store', 'middleware' => ['permission:role-create']]);
@@ -108,9 +101,8 @@ Route::get('email-verification/check/{token}', 'Auth\RegisterController@getVerif
         Route::get('roles/{id}/edit', ['as' => 'roles.edit', 'uses' => 'RoleController@edit', 'middleware' => ['permission:role-edit']]);
         Route::patch('roles/{id}', ['as' => 'roles.update', 'uses' => 'RoleController@update', 'middleware' => ['permission:role-edit']]);
         Route::delete('roles/{id}', ['as' => 'roles.destroy', 'uses' => 'RoleController@destroy', 'middleware' => ['permission:role-delete']]);
-//        Route::get('logout', 'Auth\LoginController@logout');
     });
-Route::get('logout', 'Auth\LoginController@logout');
+Route::get('logout', ['uses'=>'Auth\LoginController@logout','as'=>'logout']);
 
 Route::get('/tes',function (){
 //    $current_time = \Carbon\Carbon::now()->toDateString();

@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use SupremeSTAN\User;
 use SupremeSTAN\Role;
+use SupremeSTAN\UserProfile;
+use JavaScript;
 
 class HomeController extends Controller
 {
@@ -27,36 +29,37 @@ class HomeController extends Controller
      */
     public function index()
     {
-//        if(Auth::user()->isVerified() && (Auth::user()->hasRole('owner') || Auth::user()->hasRole('superadmin')
-//            || Auth::user()->hasRole('curriculum') || Auth::user()->hasRole('finance') || Auth::user()->hasRole('siswa'))
-//            || Auth::user()->hasRole('siswa_tryout') || Auth::user()->hasRole('banned') || Auth::user()->hasRole('admin_account')
-//            || Auth::user()->hasRole('admin_content')
-//        ){
-//            return view('home');
-//        }else{
-//            return view('welcome');
-//        }
         if(Auth::user()->isVerified()) {
-            $auth=Auth::user();
+            $users=Auth::user();
+            $id=Auth::user()->id;
+            $checkId=UserProfile::where('user_id','=',$id)->get();
+            JavaScript::put([
+                'usm' => $users->TO_USM,
+                'tkd' => $users->TO_TKD,
+                'quiz' => $users->TO_harian
+            ]);
             if (Auth::user()->hasRole(['bimbel_premium','bimbel_online', 'siswa_tryout', 'banned', 'free_member']))
             {
-                $users=$auth;
+                if($checkId->isEmpty()){
+                    $profile = new UserProfile();
+                    $profile->user()->associate($users);
+                    $profile->save();
+                }
 //                $user->roles->get();
                 return view('dashboard.user',compact('users'));
             } else {
                 Auth::user()->attachRole('10');
-                $users=$auth;
+                if($checkId->isEmpty()){
+                    $profile = new UserProfile();
+                    $profile->user()->associate($users);
+                    $profile->save();
+                }
 //                $user->roles->get();
                 return view('dashboard.user',compact('users'));
             }
         }else{
-            $users=User::find(Auth::user());
-            return view('dashboard.user',compact('users'));
+//            return view('dashboard.user',compact('users'));
+            return redirect()->route('logout');
         }
-//        Auth::User();
-//        if(){
-//
-//        }
-
     }
 }
