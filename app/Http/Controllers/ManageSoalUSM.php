@@ -18,7 +18,7 @@ class ManageSoalUSM extends Controller
     public function create($id){
         $users = Auth::user();
         $kds = KdUSM::join("bundleUSM_kdUSM","bundleUSM_kdUSM.kdUSM_id","=","kdUSM.id")
-            ->where('bundleUSM_id','=',$id)->get();
+            ->where([['bundleUSM_id','=',$id],['kdUSM.full','=',0]])->get();
         $jumlah_soal = KdUSM::join("bundleUSM_kdUSM","bundleUSM_kdUSM.kdUSM_id","=","kdUSM.id")
             ->select('kdUSM.jumlah_soal')->where('bundleUSM_kdUSM.bundleUSM_id','=',$id)->get();
         return view('soal.create',compact('kds','jumlah_soal','id','users'));
@@ -35,7 +35,6 @@ class ManageSoalUSM extends Controller
             'jawaban' => 'required',
             'pembahasan' => 'required',
         ]);
-//        $pilihanKD = $request->get('kdPilihan');
         $kunci = new KunciUSM;
         $kunci->jawaban_benar = $request->jawaban;
         $kunci->save();
@@ -54,6 +53,15 @@ class ManageSoalUSM extends Controller
         $soal->pembahasanUsm()->associate($pembahasan);
         $soal->save();
         $soal->bundleUsm()->attach($id);
+
+        $checkKD = BankSoalUSM::select("kdUSM_id")->where('kdUSM_id','=',$request->get('kdPilihan'))->count();
+        $jumlahsoal = KdUSM::select("jumlah_soal")
+            ->where('id','=',$request->get('kdPilihan'))->first();
+        if($checkKD == $jumlahsoal->jumlah_soal){
+            $kd = KdUSM::findOrFail($request->get('kdPilihan'));
+            $kd->full = 1;
+            $kd->save();
+        }
 
         return redirect('admin/bundle/usm/'.$id);
     }

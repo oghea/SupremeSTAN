@@ -34,6 +34,7 @@
                 <h3>General</h3>
                 <ul class="nav side-menu">
                     <li><a href="{{url('/home')}}"><i class="fa fa-home"></i>Overview</a></li>
+                    <li><a href="{{url('/tryout')}}"><i class="fa fa-edit"></i>Tryout</a></li>
                     <li><a href="{{url('/profile')}}"><i class="fa fa-edit"></i>Info Profile</a></li>
                     <li><a href="javascript:void(0)"><i class="fa fa-bar-chart-o"></i>Results</a></li>
                     <li><a href="javascript:void(0)"><i class="fa fa-download"></i>Downloads</a></li>

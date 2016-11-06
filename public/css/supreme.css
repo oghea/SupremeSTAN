@@ -497,3 +497,81 @@ section{
 .tryout-manage-box{
     border: 2px solid #929396;
 }
+
+/*---kerjain TO*/
+
+.jawaban-user{
+    /*color: #AAAAAA;*/
+    display: block;
+    /*position: relative;*/
+    float: left;
+    /*height: 100px;*/
+    /*width: 100%;*/
+    /*border-bottom: 1px solid #111111;*/
+}
+
+.jawaban-user input[type=radio]{
+    position: absolute;
+    visibility: hidden;
+}
+
+.jawaban-user label{
+    display: block;
+    /*position: relative;*/
+    font-weight: 300;
+    font-size: 1.35em;
+    padding: 25px 25px 25px 80px;
+    margin: 10px auto;
+    /*height: 100%;*/
+    z-index: 9;
+    cursor: pointer;
+    -webkit-transition: all 0.25s linear;
+}
+
+.jawaban-user:hover label{
+    color: #666666;
+}
+
+.jawaban-user .check{
+    display: block;
+    position: absolute;
+    border: 5px solid #AAAAAA;
+    border-radius: 100%;
+    height: 30px;
+    width: 30px;
+    top: 30px;
+    left: 20px;
+    z-index: 5;
+    transition: border .25s linear;
+    -webkit-transition: border .25s linear;
+}
+
+.jawaban-user:hover .check {
+    border: 5px solid #666666;
+}
+
+.jawaban-user .check::before {
+    display: block;
+    position: absolute;
+    content: '';
+    border-radius: 100%;
+    height: 13px;
+    width: 13px;
+    top: 3.45px;
+    left: 3.45px;
+    margin: auto;
+    transition: background 0.25s linear;
+    -webkit-transition: background 0.25s linear;
+}
+
+input[type=radio]:checked ~ .check {
+    border: 5px solid #0DFF92;
+}
+
+input[type=radio]:checked ~ .check::before{
+    background: #0DFF92;
+}
+
+input[type=radio]:checked ~ label{
+    color: #0DFF92;
+}

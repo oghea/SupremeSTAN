@@ -31,7 +31,8 @@ class ManageTryoutController extends Controller
 //            ->where('tryoutTKD.id','=',5);
         $jumlah_tkd = KdTKD::select(DB::raw("SUM(jumlah_soal) as jumlah"))
             ->leftJoin("bundleTKD_kdTKD","bundleTKD_kdTKD.kdTKD_id","=","kdTKD.id")
-            ->groupBy('bundleTKD_kdTKD.bundleTKD_id')->get();
+            ->join("bundleTKD_tryoutTKD","bundleTKD_tryoutTKD.bundleTKD_id","=","bundleTKD_kdTKD.bundleTKD_id")
+            ->groupBy('bundleTKD_tryoutTKD.tryoutTKD_id')->get();
 
         $jumlah_usm = KdUSM::select(DB::raw("SUM(jumlah_soal) as jumlah"))
             ->leftJoin("bundleUSM_kdUSM","bundleUSM_kdUSM.kdUSM_id","=","kdUSM.id")
@@ -102,7 +103,7 @@ class ManageTryoutController extends Controller
         $tryoutTKD = TryoutTKD::find($id);
         $current_time = Carbon::now()->toDateString();
         $tryoutTKD->publish_date = $current_time;
-        $tryoutTKD->publish = 1;
+        $tryoutTKD->published = 1;
         $tryoutTKD->save();
         return redirect()->route('tryout.list');
     }
@@ -114,7 +115,7 @@ class ManageTryoutController extends Controller
     }
     public function unPublishTKD($id){
         $tryoutTKD = TryoutTKD::find($id);
-        $tryoutTKD->publish = 0;
+        $tryoutTKD->published = 0;
         $tryoutTKD->save();
         return redirect()->route('tryout.list');
     }

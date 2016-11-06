@@ -42,9 +42,15 @@
                         {!! Form::close() !!}
                     </div>
                     <div class="col-md-4" data-form="bannedModal">
-                        {!! Form::model('banned', ['method' => 'post', 'route' => ['account.banned', $userlist->id], 'class' =>'form-banned']) !!}
-                        {!! Form::submit(trans('banned'), ['class' => 'btn btn-warning banned', 'name' => 'banned_modal']) !!}
-                        {!! Form::close() !!}
+                        @if($userlist->isBanned())
+                            {!! Form::open(['method' => 'post','route' => ['account.unBanned', $userlist->id]]) !!}
+                            {!! Form::submit('UnBan', ['class' => 'btn btn-success']) !!}
+                            {!! Form::close() !!}
+                        @else
+                            {!! Form::model('banned', ['method' => 'post', 'route' => ['account.banned', $userlist->id], 'class' =>'form-banned']) !!}
+                            {!! Form::submit(trans('banned'), ['class' => 'btn btn-warning banned', 'name' => 'banned_modal']) !!}
+                            {!! Form::close() !!}
+                        @endif
                     </div>
                     {{--{{ route('account.show',$userlist->id) }}--}}
                     {{--@permission('role-edit')--}}

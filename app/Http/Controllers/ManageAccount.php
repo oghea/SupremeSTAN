@@ -42,6 +42,12 @@ class ManageAccount extends Controller
         $user->save();
         return redirect()->route('account.list');
     }
+    public function unBanned($id){
+        $user = User::findOrFail($id);
+        $user->banned = 0;
+        $user->save();
+        return redirect()->route('account.list');
+    }
     public function delete($id){
         $user = User::findOrFail($id);
         $user_profile = UserProfile::where('user_id','=',$id)->first();

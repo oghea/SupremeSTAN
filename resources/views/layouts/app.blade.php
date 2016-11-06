@@ -14,8 +14,8 @@
     {{--our css--}}
     <link rel="stylesheet" href="/vendor/normalize-css/normalize.css">
     <link rel="stylesheet" href="/vendor/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="/css/supreme.css">
     <link rel="stylesheet" href="/css/custom.min.css">
+    <link rel="stylesheet" href="/css/supreme.css">
     <!-- NProgress -->
     <link href="/vendor/nprogress/nprogress.css" rel="stylesheet">
     <!-- iCheck -->
@@ -24,6 +24,8 @@
     <link href="/vendor/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
     <!-- JQVMap -->
     <link href="/vendor/jqvmap/dist/jqvmap.min.css" rel="stylesheet"/>
+    {{--clock--}}
+    <link href="/vendor/FlipClock/compiled/flipclock.css" rel="stylesheet"/>
     {{--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css" integrity="sha384-XdYbMnZ/QjLh6iI4ogqCTaIjrFk87ip+ekIjefZch0Y+PvJ8CDYtEs1ipDmPorQ+" crossorigin="anonymous">--}}
     {{--<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700">--}}
 </head>
@@ -31,7 +33,7 @@
 <body id="app-layout @if(Route::is('login') || str_contains(Request::fullUrl(), 'register')|| str_contains(Request::fullUrl(), 'password/reset')) background-login @endif" class="nav-md">
 
 {{--Header--}}
-@if(\Route::current()->getName() == 'login')
+@if(\Route::current()->getName() == 'login' || \Route::current()->getName() == 'user.notVerfied' || \Route::current()->getName() == 'user.banned')
     @include('partials.kosong')
     <section>
         <div class="container">
@@ -56,15 +58,28 @@
                 @include('partials.sidebar-admin')
                 @include('partials.topnav')
             @elseif(Auth::user()->hasRole(['bimbel_premium', 'bimbel_online', 'siswa_tryout', 'free_member']))
-                @include('partials.sidebar')
-                @include('partials.topnav')
+                @if(\Route::current()->getName() == 'tryout.doUSM' || \Route::current()->getName() == 'tryout.doTKD' )
+                    @include('partials.tryout-topnav')
+                    @include('partials.kosong')
+                @else
+                    @include('partials.topnav')
+                    @include('partials.sidebar')
+                @endif
             @else
                 @include('partials.notVerified')
             @endif
-            <div class="right_col" role="main">
+            @if(\Route::current()->getName() == 'tryout.doUSM' || \Route::current()->getName() == 'tryout.doTKD' )
                 @yield('content')
-            </div>
-            @include('partials.footer')
+            @else
+                <div class="right_col" role="main">
+                    @yield('content')
+                </div>
+            @endif
+            @if(\Route::current()->getName() == 'tryout.doUSM' || \Route::current()->getName() == 'tryout.doTKD' )
+                @include('partials.tryout-footer')
+            @else
+                @include('partials.footer')
+            @endif
         </div>
     </div>
 @endif

@@ -18,9 +18,8 @@ Route::get('/', function () {
 Auth::routes();
 Route::get('email-verification/error', 'Auth\RegisterController@getVerificationError')->name('email-verification.error');
 Route::get('email-verification/check/{token}', 'Auth\RegisterController@getVerification')->name('email-verification.check');
-Route::get('verf', function (){
-    return view('notVerified');
-});
+Route::get('verf', ['uses'=>'UserController@notVerified', 'as'=>'user.notVerified']);
+Route::get('banned',['uses'=>'UserController@banned', 'as'=>'user.banned']);
 
 
 //Route::group(['middleware' => ['auth']], function() {
@@ -33,6 +32,11 @@ Route::get('verf', function (){
         Route::get('profile/edit', 'UserProfileController@edit');
         Route::post('profile/edit', 'UserProfileController@update');
         //    Route::get('profile/{id}','UserProfileController@show');
+        Route::get('tryout', ['uses'=>'TryoutController@index','as'=>'tryout.index']);
+        Route::get('tryout/usm', ['uses'=>'TryoutController@listUSM','as'=>'tryout.listUSM']);
+        Route::get('tryout/tkd', ['uses'=>'TryoutController@listTKD','as'=>'tryout.listTKD']);
+        Route::get('tryout/usm/{id}', ['uses'=>'TryoutController@doUSM','as'=>'tryout.doUSM']);
+        Route::get('tryout/tkd/{id}', ['uses'=>'TryoutController@doTKD','as'=>'tryout.doTKD']);
 
     });
     Route::group([ 'middleware' => ['auth','role:owner|superadmin|curriculum|finance|admin_account|admin_content']], function() {
@@ -94,6 +98,7 @@ Route::get('verf', function (){
         Route::post('admin/account/download', ['uses'=>'ManageAccount@download', 'as' => 'account.download']);
         Route::delete('admin/account/delete/{id}', ['uses'=>'ManageAccount@delete', 'as' => 'account.delete']);
         Route::post('admin/account/banned/{id}', ['uses'=>'ManageAccount@banned', 'as' => 'account.banned']);
+        Route::post('admin/account/unbanned/{id}', ['uses'=>'ManageAccount@unBanned', 'as' => 'account.unBanned']);
 
         Route::get('roles/create', ['as' => 'roles.create', 'uses' => 'RoleController@create', 'middleware' => ['permission:role-create']]);
         Route::post('roles/create', ['as' => 'roles.store', 'uses' => 'RoleController@store', 'middleware' => ['permission:role-create']]);
@@ -106,7 +111,21 @@ Route::get('logout', ['uses'=>'Auth\LoginController@logout','as'=>'logout']);
 
 Route::get('/tes',function (){
 //    $current_time = \Carbon\Carbon::now()->toDateString();
-    $currentSubj=SupremeSTAN\BundleTKD::select("subjectTKD_id as subId")->where('id','=',1)->get();
+//    $currentSubj=SupremeSTAN\BundleTKD::select("subjectTKD_id as subId")->where('id','=',1)->get();
+//    $checkKD = SupremeSTAN\BankSoalUSM::select("kdUSM_id")->where('kdUSM_id','=',5)->count();
+//    $soal_terisiUSM=SupremeSTAN\BankSoalUSM::select("id")
+//        ->join("banksoalUSM_bundleUSM","banksoalUSM_bundleUSM.banksoalUSM_id","=","banksoalUSM.id")
+//        ->where('bundleUSM_id','=',3)->count("id");
+//    $jumlah_soalusm = SupremeSTAN\KdUSM::select("jumlah_soal")
+//        ->leftJoin("bundleUSM_kdUSM","bundleUSM_kdUSM.kdUSM_id","=","kdUSM.id")
+//        ->where('bundleUSM_id','=',3)->sum("jumlah_soal");
+    $soalTKD = SupremeSTAN\BankSoalTKD::select("kdTKD_id","isi_soal","jawaban_a","jawaban_b","jawaban_c","jawaban_d",
+        "jawaban_e","banksoalTKD_bundleTKD.bundleTKD_id","tryoutTKD_id")
+        ->join("banksoalTKD_bundleTKD","banksoalTKD_bundleTKD.banksoalTKD_id","=","banksoalTKD.id")
+        ->join("bundleTKD_tryoutTKD","bundleTKD_tryoutTKD.bundleTKD_id","=","banksoalTKD_bundleTKD.bundleTKD_id")
+        ->where('bundleTKD_tryoutTKD.tryoutTKD_id','=',2)
+        ->orderBy('id','ASC')->get();
+    $durasi = SupremeSTAN\TryoutTKD::where('id','=',2)->first();
 //    $jumlah_tkd = SupremeSTAN\KdTKD::select(DB::raw("SUM(jumlah_soal) as jumlah"))
 //        ->leftJoin("kdTKD_tryoutTKD","kdTKD_tryoutTKD.kdTKD_id","=","kdTKD.id")
 //        ->groupBy('kdTKD_tryoutTKD.tryoutTKD_id')->get();
@@ -115,10 +134,11 @@ Route::get('/tes',function (){
 //        $jumlah_soal=$jumlah_soal+$jumlah;
 //    }
 //    $total=array();
-//    foreach ($jumlah_tkd as $jumlah){
-//        $total[] = $jumlah->jumlah_soal;
+//    foreach ($soalTKD as $tkd){
+//        $total[] = $tkd->isi_soal;
 //    }
-    dd($currentSubj->subId);
+//    $total = $durasi->durasi;
+    dd($durasi->durasi);
 });
 //});
 //Route::get('logout',function (){

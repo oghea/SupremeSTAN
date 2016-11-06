@@ -135,9 +135,11 @@
                                             </div>
                                         @endforeach
                                         {!! $soals->render() !!}
-                                            <div>
-                                                <a href="{{route('soal.createTKD',$id)}}" class="btn btn-primary">Input new Soal</a>
-                                            </div>
+                                            @if(!$fullTKD)
+                                                <div>
+                                                    <a href="{{route('soal.createTKD',$id)}}" class="btn btn-primary">Input new Soal</a>
+                                                </div>
+                                            @endif
                                     @elseif($soals->isEmpty())
                                         @foreach($soalTKP as $soal_tkp)
                                             <div class="row">
@@ -180,9 +182,11 @@
                                             </div>
                                         @endforeach
                                         {!! $soalTKP->render() !!}
-                                            <div>
-                                                <a href="{{route('soal.createTKP',$id)}}" class="btn btn-primary">Input new Soal</a>
-                                            </div>
+                                            @if(!$fullTKP)
+                                                <div>
+                                                    <a href="{{route('soal.createTKP',$id)}}" class="btn btn-primary">Input new Soal</a>
+                                                </div>
+                                            @endif
                                     @endif
                                     <div>
                                         <a href="{{route('bundle.list')}}" class="btn btn-warning">Back</a>

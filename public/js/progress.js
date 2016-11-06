@@ -1,11 +1,23 @@
 var i=0;
-console.log(usm);
-console.log(tkd);
-console.log(quiz);
 $(function () {
   $('[data-toggle="tooltip"]').tooltip({trigger: 'manual'}).tooltip('show');
-});  
+});
+var clock;
 
+$(document).ready(function() {
+
+  clock = $('.clock').FlipClock(durasi*60, {
+    clockFace: 'MinuteCounter',
+    countdown: true,
+    callbacks: {
+      stop: function() {
+        // window.location.href = 'http://google.com';
+        // $('.message').html('The clock has stopped!');
+      }
+    }
+  });
+
+});
 $( window ).load(function() {
   // if($( window ).scrollTop() > 10){   scroll down abit and get the action   
   $(".progress-bar").each(function(){
@@ -344,6 +356,5 @@ window.onload = function () {
         ]
       });
   chart1.render();
-
-
 }
+

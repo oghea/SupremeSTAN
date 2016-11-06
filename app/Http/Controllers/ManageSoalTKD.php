@@ -18,7 +18,7 @@ class ManageSoalTKD extends Controller
     public function create($id){
         $users = Auth::user();
         $kds = KdTKD::join("bundleTKD_kdTKD","bundleTKD_kdTKD.kdTKD_id","=","kdTKD.id")
-            ->where('bundleTKD_id','=',$id)->get();
+            ->where([['bundleTKD_id','=',$id],['kdTKD.full','=',0]])->get();
         $jumlah_soal = KdTKD::join("bundleTKD_kdTKD","bundleTKD_kdTKD.kdTKD_id","=","kdTKD.id")
             ->select('kdTKD.jumlah_soal')->where('bundleTKD_kdTKD.bundleTKD_id','=',$id)->get();
         return view('soal.createTKD',compact('kds','jumlah_soal','id','users'));
@@ -26,7 +26,7 @@ class ManageSoalTKD extends Controller
     public function createTKP($id){
         $users = Auth::user();
         $kds = KdTKD::join("bundleTKD_kdTKD","bundleTKD_kdTKD.kdTKD_id","=","kdTKD.id")
-            ->where('bundleTKD_id','=',$id)->get();
+            ->where([['bundleTKD_id','=',$id],['kdTKD.full','=',0]])->get();
         $jumlah_soal = KdTKD::join("bundleTKD_kdTKD","bundleTKD_kdTKD.kdTKD_id","=","kdTKD.id")
             ->select('kdTKD.jumlah_soal')->where('bundleTKD_kdTKD.bundleTKD_id','=',$id)->get();
         return view('soal.createTKP',compact('kds','jumlah_soal','id','users'));
@@ -63,6 +63,14 @@ class ManageSoalTKD extends Controller
         $soal->save();
         $soal->bundleTkd()->attach($id);
 
+        $checkKD = BankSoalTKD::select("kdTKD_id")->where('kdTKD_id','=',$request->get('kdPilihan'))->count();
+        $jumlahsoal = KdTKD::select("jumlah_soal")
+            ->where('id','=',$request->get('kdPilihan'))->first();
+        if($checkKD == $jumlahsoal->jumlah_soal){
+            $kd = KdTKD::findOrFail($request->get('kdPilihan'));
+            $kd->full = 1;
+            $kd->save();
+        }
         return redirect('admin/bundle/tkd/'.$id);
     }
     public function storetKP(Request $request, $id){
@@ -99,6 +107,14 @@ class ManageSoalTKD extends Controller
         $soal->save();
         $soal->bundleTkd()->attach($id);
 
+        $checkKD = BankSoalTKP::select("kdTKD_id")->where('kdTKD_id','=',$request->get('kdPilihan'))->count();
+        $jumlahsoal = KdTKD::select("jumlah_soal")
+            ->where('id','=',$request->get('kdPilihan'))->first();
+        if($checkKD == $jumlahsoal->jumlah_soal){
+            $kd = KdTKD::findOrFail($request->get('kdPilihan'));
+            $kd->full = 1;
+            $kd->save();
+        }
         return redirect('admin/bundle/tkd/'.$id);
     }
     public function view($bundleId,$id){

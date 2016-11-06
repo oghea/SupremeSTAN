@@ -1,5 +1,8 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="/js/custom.min.js"></script>
+<!-- jQuery Smart Wizard -->
+<script src="/vendor/jQuery-Smart-Wizard/js/jquery.smartWizard.js"></script>
 <script src="/js/bootstrap-datepicker.min.js"></script>
 <script src="/vendor/tinymce/tinymce/plugins/tiny_mce_wiris/integration/WIRISplugins.js?viewer=image"></script>
 <script src="/vendor/tinymce/tinymce/tinymce.min.js"></script>
@@ -19,6 +22,8 @@
 <script src="/vendor/iCheck/icheck.min.js"></script>
 <!-- Skycons -->
 <script src="/vendor/skycons/skycons.js"></script>
+{{--clock--}}
+<script src="/vendor/FlipClock/compiled/flipclock.min.js"></script>
 <!-- Flot -->
 <script src="/vendor/Flot/jquery.flot.js"></script>
 <script src="/vendor/Flot/jquery.flot.pie.js"></script>
@@ -35,8 +40,5 @@
 <script src="/vendor/jqvmap/dist/jquery.vmap.js"></script>
 <script src="/vendor/jqvmap/dist/maps/jquery.vmap.world.js"></script>
 <script src="/vendor/jqvmap/examples/js/jquery.vmap.sampledata.js"></script>
-<!-- jQuery Smart Wizard -->
-<script src="/vendor/jQuery-Smart-Wizard/js/jquery.smartWizard.js"></script>
 <!-- bootstrap-daterangepicker -->
 <script src="/js/moment/moment.min.js"></script>
-<script src="/js/custom.min.js"></script>

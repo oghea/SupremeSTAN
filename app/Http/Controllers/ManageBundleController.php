@@ -48,7 +48,7 @@ class ManageBundleController extends Controller
             ->where('bundleUSM_id','=',$id)->sum("jumlah_soal");
         if($soal_terisiUSM == $jumlah_soalusm){
             $fullUSM=true;
-            $bundle=BundleTKD::find($id);
+            $bundle=BundleUSM::find($id);
             $bundle->full = 1;
             $bundle->save();
         }else{

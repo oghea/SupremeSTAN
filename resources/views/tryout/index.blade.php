@@ -105,7 +105,7 @@
                                                 @if($us->publish == 0)
                                                     not yet published
                                                 @else
-                                                    {{$us->publishdate}}
+                                                    {{$us->publish_date}}
                                                 @endif
 
                                             </div>
@@ -206,7 +206,7 @@
                                             </div>
                                             <div class="col-md-2">
 
-                                                @if($tk->publish == 0)
+                                                @if($tk->published == 0)
                                                     not yet published
                                                 @else
                                                     {{$tk->publish_date}}
@@ -214,7 +214,7 @@
 
                                             </div>
                                             <div class="col-md-1">
-                                                @if($tk->publish == 0)
+                                                @if($tk->published == 0)
                                                     {!! Form::open(['method' => 'PATCH','route' => ['tryout.publishTKD', $tk->id]]) !!}
                                                     {!! Form::submit('Publish', ['class' => 'btn btn-success']) !!}
                                                     {!! Form::close() !!}

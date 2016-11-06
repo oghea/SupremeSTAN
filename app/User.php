@@ -40,4 +40,7 @@ class User extends Authenticatable
 //        }
 //        return $this;
 //    }
+    public function isBanned(){
+        return (bool) $this->banned;
+    }
 }

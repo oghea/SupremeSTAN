@@ -193,6 +193,14 @@ class UserController extends Controller
 //        return view('profile.index', array('user' => $user) );
 //    }
 
+    public function notVerified(){
+
+        return view('notVerified');
+    }
+    public function banned(){
+
+        return view('banned');
+    }
     /**
      * Remove the specified resource from storage.
      *

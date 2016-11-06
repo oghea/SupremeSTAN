@@ -27,7 +27,6 @@
             <div class="x_content">
                 <div class="col-xs-10 col-xs-offset-1">
                     {!!Form::open(['route' => ['soal.updateTKP', $bundleId,$id] , 'role' => 'form','files' => true,'method'=>'POST'])!!}
-                    {{--{{ csrf_field() }}--}}
                     {{--{!!Form::select('kdPilihan',$kds->pluck('nama')->all(), ['placeholder' => 'Pilih Salah Satu...','class' => 'form-control']) !!}--}}
                     <div class="col-md-12">
                         <div class="panel panel-primary">

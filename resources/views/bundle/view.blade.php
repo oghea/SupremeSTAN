@@ -124,6 +124,9 @@
                                         @if(!$fullUSM)
                                             <a href="{{route('soal.create',$id)}}" class="btn btn-primary">Input new Soal</a>
                                         @endif
+                                        <div>
+                                            <a href="{{route('bundle.list')}}" class="btn btn-warning">Back</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
