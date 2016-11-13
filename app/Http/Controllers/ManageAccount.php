@@ -29,7 +29,7 @@ class ManageAccount extends Controller
             {
                 $sheet->fromArray($data);
             });
-        })->download('xlsx');
+        })->download('xls');
     }
     public function show($id){
         $users = Auth::user();

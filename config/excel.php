@@ -58,8 +58,8 @@ return array(
     ),
 
     'properties' => array(
-        'creator'        => 'Maatwebsite',
-        'lastModifiedBy' => 'Maatwebsite',
+        'creator'        => 'SupremeSTAN',
+        'lastModifiedBy' => 'SupremeSTAN',
         'title'          => 'Spreadsheet',
         'description'    => 'Default spreadsheet export',
         'subject'        => 'Spreadsheet export',
@@ -314,7 +314,7 @@ return array(
                 |--------------------------------------------------------------------------
                 */
                 'DomPDF' => array(
-                    'path' => base_path('vendor/dompdf/dompdf/')
+                    'path' => base_path('vendors/dompdf/dompdf/')
                 ),
 
                 /*
@@ -323,7 +323,7 @@ return array(
                 |--------------------------------------------------------------------------
                 */
                 'tcPDF'  => array(
-                    'path' => base_path('vendor/tecnick.com/tcpdf/')
+                    'path' => base_path('vendors/tecnick.com/tcpdf/')
                 ),
 
                 /*
@@ -332,7 +332,7 @@ return array(
                 |--------------------------------------------------------------------------
                 */
                 'mPDF'   => array(
-                    'path' => base_path('vendor/mpdf/mpdf/')
+                    'path' => base_path('vendors/mpdf/mpdf/')
                 ),
             )
         )

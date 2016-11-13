@@ -12,20 +12,20 @@ class ResultUSM extends Model
         'user_id',
         'tryoutUSM_id',
         'nilai',
-        'result_TPA',
-        'result_TBI',
-        'skor_tpa',
-        'skor_tbi',
+        'resultTPA',
+        'resultTBI',
+        'skorTPA',
+        'skorTBI',
         'keterangan'
     ];
 
     public function user()
     {
-        return $this->belongsTo('SupremeSTAN\User');
+        return $this->belongsTo('SupremeSTAN\User','user_id');
     }
 
     public function tryoutUsm()
     {
-        return $this->belongsTo('SupremeSTAN\TryoutUSM');
+        return $this->belongsTo('SupremeSTAN\TryoutUSM','tryoutUSM_id');
     }
 }

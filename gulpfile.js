@@ -1,6 +1,6 @@
 const elixir = require('laravel-elixir');
 
-require('laravel-elixir-vue');
+require('laravel-elixir-vue-2');
 
 /*
  |--------------------------------------------------------------------------
@@ -13,7 +13,24 @@ require('laravel-elixir-vue');
  |
  */
 
-elixir(mix => {
-    mix.sass('app.scss')
-       .webpack('app.js');
+
+elixir(function(mix) {
+    mix.sass([
+        'app.scss'
+    ], 'public/assets/css');
 });
+
+elixir(function(mix) {
+    mix.browserSync([
+        'app/**/*',
+        'public/**/*',
+        'resources/views/**/*'
+    ], {
+        proxy: 'localhost'
+    });
+    // mix.browserSync({
+    //     proxy: 'localhost:8000'
+    // });
+});
+
+

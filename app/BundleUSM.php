@@ -11,7 +11,8 @@ class BundleUSM extends Model
     protected $fillable = [
         'judul',
         'subjectUSM_id',
-        'durasi'
+        'durasi',
+        'full'
     ];
 
     public function bankSoalUsm()

@@ -32,15 +32,22 @@ Route::get('banned',['uses'=>'UserController@banned', 'as'=>'user.banned']);
         Route::get('profile/edit', 'UserProfileController@edit');
         Route::post('profile/edit', 'UserProfileController@update');
         //    Route::get('profile/{id}','UserProfileController@show');
-        Route::get('tryout', ['uses'=>'TryoutController@index','as'=>'tryout.index']);
-        Route::get('tryout/usm', ['uses'=>'TryoutController@listUSM','as'=>'tryout.listUSM']);
-        Route::get('tryout/tkd', ['uses'=>'TryoutController@listTKD','as'=>'tryout.listTKD']);
-        Route::get('tryout/usm/{id}', ['uses'=>'TryoutController@doUSM','as'=>'tryout.doUSM']);
-        Route::get('tryout/tkd/{id}', ['uses'=>'TryoutController@doTKD','as'=>'tryout.doTKD']);
+        Route::get('tryout', ['uses'=>'TryoutController@index','as'=>'tryoutUser.index']);
+        Route::get('tryout/notAuthorize', ['uses'=>'TryoutController@notAuthorize','as'=>'tryoutUser.notAuthorize']);
+        Route::get('tryout/usm', ['uses'=>'TryoutController@listUSM','as'=>'tryoutUser.listUSM']);
+        Route::get('tryout/tkd', ['uses'=>'TryoutController@listTKD','as'=>'tryoutUser.listTKD']);
+        Route::get('tryout/tpa/{id}', ['uses'=>'TryoutController@doTPA','as'=>'tryoutUser.doTPA']);
+        Route::post('tryout/tpa/{id}', ['uses'=>'TryoutController@storeTPA','as'=>'tryoutUser.storeTPA']);
+        Route::get('tryout/tbi/{id}', ['uses'=>'TryoutController@doTBI','as'=>'tryoutUser.doTBI']);
+        Route::post('tryout/tbi/{id}', ['uses'=>'TryoutController@storeTBI','as'=>'tryoutUser.storeTBI']);
+        Route::get('tryout/tkd/{id}', ['uses'=>'TryoutController@doTKD','as'=>'tryoutUser.doTKD']);
+        Route::post('tryout/tkd/{id}', ['uses'=>'TryoutController@storeTKD','as'=>'tryoutUser.doTKD']);
 
+        Route::get('result', ['uses'=>'ResultController@index','as'=>'result.index']);
+        Route::get('result/{id}', ['uses'=>'ResultController@pembahasan','as'=>'result.pembahasan']);
     });
     Route::group([ 'middleware' => ['auth','role:owner|superadmin|curriculum|finance|admin_account|admin_content']], function() {
-        Route::get('admin/home', 'HomeAdminController@index');
+        Route::get('admin/home', ['uses'=>'HomeAdminController@index', 'as'=>'dashboard.admin']);
 
         Route::get('admin/tryout', ['uses'=>'ManageTryoutController@index', 'as' => 'tryout.list']);
         Route::patch('admin/tryout/usm/{id}', ['uses'=>'ManageTryoutController@publishUSM', 'as' => 'tryout.publishUSM']);
@@ -119,13 +126,23 @@ Route::get('/tes',function (){
 //    $jumlah_soalusm = SupremeSTAN\KdUSM::select("jumlah_soal")
 //        ->leftJoin("bundleUSM_kdUSM","bundleUSM_kdUSM.kdUSM_id","=","kdUSM.id")
 //        ->where('bundleUSM_id','=',3)->sum("jumlah_soal");
-    $soalTKD = SupremeSTAN\BankSoalTKD::select("kdTKD_id","isi_soal","jawaban_a","jawaban_b","jawaban_c","jawaban_d",
-        "jawaban_e","banksoalTKD_bundleTKD.bundleTKD_id","tryoutTKD_id")
-        ->join("banksoalTKD_bundleTKD","banksoalTKD_bundleTKD.banksoalTKD_id","=","banksoalTKD.id")
-        ->join("bundleTKD_tryoutTKD","bundleTKD_tryoutTKD.bundleTKD_id","=","banksoalTKD_bundleTKD.bundleTKD_id")
-        ->where('bundleTKD_tryoutTKD.tryoutTKD_id','=',2)
-        ->orderBy('id','ASC')->get();
-    $durasi = SupremeSTAN\TryoutTKD::where('id','=',2)->first();
+//    $soalTKD = SupremeSTAN\BankSoalTKD::select("kdTKD_id","isi_soal","jawaban_a","jawaban_b","jawaban_c","jawaban_d",
+//        "jawaban_e","banksoalTKD_bundleTKD.bundleTKD_id","tryoutTKD_id")
+//        ->join("banksoalTKD_bundleTKD","banksoalTKD_bundleTKD.banksoalTKD_id","=","banksoalTKD.id")
+//        ->join("bundleTKD_tryoutTKD","bundleTKD_tryoutTKD.bundleTKD_id","=","banksoalTKD_bundleTKD.bundleTKD_id")
+//        ->where('bundleTKD_tryoutTKD.tryoutTKD_id','=',2)
+//        ->orderBy('id','ASC')->get();
+//    $durasi = SupremeSTAN\TryoutTKD::where('id','=',2)->first();
+//    $link = storage_path();
+//    $apa = \Route::current()->getPath();
+//
+//    $time = Carbon\Carbon::now()->toTimeString();
+//
+//    $durasiTPA = SupremeSTAN\BundleUSM::select("bundleUSM.id","subjectUSM_id","durasi","bundleUSM_tryoutUSM.tryoutUSM_id")
+//        ->join("bundleUSM_tryoutUSM","bundleUSM_tryoutUSM.bundleUSM_id","=","bundleUSM.id")
+//        ->where([['bundleUSM_tryoutUSM.tryoutUSM_id','=',1],['subjectUSM_id','=',1]])
+//        ->first();
+//    $judul1 = SupremeSTAN\TryoutUSM::findOrFail(1);
 //    $jumlah_tkd = SupremeSTAN\KdTKD::select(DB::raw("SUM(jumlah_soal) as jumlah"))
 //        ->leftJoin("kdTKD_tryoutTKD","kdTKD_tryoutTKD.kdTKD_id","=","kdTKD.id")
 //        ->groupBy('kdTKD_tryoutTKD.tryoutTKD_id')->get();
@@ -138,7 +155,77 @@ Route::get('/tes',function (){
 //        $total[] = $tkd->isi_soal;
 //    }
 //    $total = $durasi->durasi;
-    dd($durasi->durasi);
+//    $jawabUSM = SupremeSTAN\JawabanUSM::where([['tryoutUSM_id','=',1],['user_id','=',7]])->first();
+//    $ini = array([
+//        '1','2','3'
+//    ]);
+//    $serial = serialize($ini);
+//    $verification = SupremeSTAN\TryoutUSM::select("jawabanUSM.tryoutUSM_id" , "jawabanUSM.user_id")
+//        ->join("jawabanUSM","jawabanUSM.tryoutUSM_id","=","tryoutUSM.id")
+//        ->where('jawabanUSM.user_id','=',7)->first();
+//    $jawabUSM = SupremeSTAN\JawabanUSM::where([['tryoutUSM_id','=',1],['user_id','=',7]])->first();
+//    $userTPA = $jawabUSM->jawaban_tpa;
+
+//    $jawabUSM = SupremeSTAN\JawabanUSM::where([['tryoutUSM_id','=',1],['user_id','=',7]])->first();
+//    $jwbUserTPA = unserialize($jawabUSM->jawaban_tpa);
+//    $jwbUserTBI = unserialize($jawabUSM->jawaban_tbi);
+//    $urutTPA = unserialize($jawabUSM->urutanTPA);
+//    $urutTBI = unserialize($jawabUSM->urutanTBI);
+//
+//    $resTPA = array();
+//    foreach ($urutTPA as $key => $tpaKey){
+//        $banksoal = SupremeSTAN\BankSoalUSM::findOrFail($tpaKey);
+//        if($banksoal->kunciUsm->jawaban_benar == $jwbUserTPA[$key]){
+//            $resTPA[] = 4;
+//        }else{
+//            if($jwbUserTPA[$key] == 0){
+//                $resTPA[] = 0;
+//            }else{
+//                $resTPA[] = -1;
+//            }
+//        }
+//    }
+//    $resTBI = array();
+//    foreach ($urutTBI as $key => $tbiKey){
+//        $banksoal = SupremeSTAN\BankSoalUSM::findOrFail($tbiKey);
+//        if($banksoal->kunciUsm->jawaban_benar == $jwbUserTBI[$key]){
+//            $resTBI[] = 4;
+//        }else{
+//            if($jwbUserTBI[$key] == 0){
+//                $resTBI[] = 0;
+//            }else{
+//                $resTBI[] = -1;
+//            }
+//        }
+//    }
+//    $skorTPA = 0;
+//    foreach ($resTPA as $res_tpa){
+//        $skorTPA = $skorTPA + $res_tpa;
+//    }
+//    $skorTBI = 0;
+//    foreach ($resTBI as $res_tbi){
+//        $skorTBI = $skorTBI + $res_tbi;
+//    }
+//    $nilai = $skorTPA + $skorTBI;
+//    if($nilai >= 8){
+//        $ket = "lulus";
+//    }else{
+//        $ket = "coba tahun depan";
+//    }
+//    dd($resTPA,$resTBI,$skorTPA,$skorTBI,$nilai,$ket);
+//    $verification = SupremeSTAN\TryoutUSM::select("jawabanUSM.tryoutUSM_id" , "jawabanUSM.user_id")
+//        ->join("jawabanUSM","jawabanUSM.tryoutUSM_id","=","tryoutUSM.id")
+//        ->where('jawabanUSM.user_id','=',7)->first();
+////    $tes = SupremeSTAN\JawabanUSM::find(1);
+//    dd($verification);
+    $jawabUSM = SupremeSTAN\JawabanUSM::where([['tryoutUSM_id','=',1],['user_id','=',7]])->first();
+    $jwbdia = unserialize($jawabUSM->jawaban_tpa);
+    dd($jwbdia);
+//    $soalnya = array();
+//    foreach ($soalTBI as $tb){
+//        $soalnya[] = $tb->kunciUSM_id;
+//    }
+//    dd($jwbUserTBI);
 });
 //});
 //Route::get('logout',function (){

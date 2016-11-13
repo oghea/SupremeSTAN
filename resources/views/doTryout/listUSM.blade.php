@@ -13,7 +13,17 @@
                 <td>{{ ++$i }}</td>
                 <td>{{$tryoutUSM->judul}}</td>
                 <td>{{$tryoutUSM->publish_date}}</td>
-                <td><a class="btn btn-primary" href="{{ route('tryout.doUSM',$tryoutUSM->id) }}">Kerjakan</a></td>
+                <td>
+                    @if($verification != NULL)
+                        @if($verification->tryoutUSM_id == $tryoutUSM->id)
+                            <a class="btn btn-primary disabled" href="{{ route('tryoutUser.doTPA',$tryoutUSM->id) }}">Kerjakan</a>
+                        @else
+                            <a class="btn btn-primary" href="{{ route('tryoutUser.doTPA',$tryoutUSM->id) }}">Kerjakan</a>
+                        @endif
+                    @else
+                        <a class="btn btn-primary" href="{{ route('tryoutUser.doTPA',$tryoutUSM->id) }}">Kerjakan</a>
+                    @endif
+                </td>
             </tr>
         @endforeach
     </table>

@@ -13,7 +13,7 @@
                 <td>{{ ++$i }}</td>
                 <td>{{$tryoutTKD->judul}}</td>
                 <td>{{$tryoutTKD->publish_date}}</td>
-                <td><a class="btn btn-primary" href="{{ route('tryout.doTKD',$tryoutTKD->id) }}">Kerjakan</a></td>
+                <td><a class="btn btn-primary" href="{{ route('tryoutUser.doTKD',$tryoutTKD->id) }}">Kerjakan</a></td>
             </tr>
         @endforeach
     </table>

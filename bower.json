@@ -1,0 +1,34 @@
+{
+  "name": "supremestan",
+  "description": "Front-End Dependiency  for supremestan.com",
+  "main": "css,js",
+  "authors": [
+    "oghea <a.pprayoga18@gmail.com>"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "css",
+    "js"
+  ],
+  "homepage": "papahcreative.id",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.1.1",
+    "font-awesome": "^4.7.0",
+    "fastclick": "^1.0.6",
+    "bootstrap": "^3.3.7",
+    "normalize-strings": "normalize#^1.1.0",
+    "normalize-css": "normalize.css#^5.0.0",
+    "jQuery-Smart-Wizard": "^3.3.1",
+    "animate.css": "^3.5.2",
+    "flipclock": "^0.7.7",
+    "chart.js": "^2.3.0"
+  }
+}

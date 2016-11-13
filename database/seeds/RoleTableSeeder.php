@@ -94,6 +94,7 @@ class RoleTableSeeder extends Seeder
         $user_owner->name = 'owner';
         $user_owner->email = 'widodo@supremestan.com';
         $user_owner->password = bcrypt('sayaowner');
+        $user_owner->verified = 1;
         $user_owner->save();
         $user_owner->attachRole($owner);
 
@@ -101,6 +102,7 @@ class RoleTableSeeder extends Seeder
         $user_superadmin->name = 'superadmin';
         $user_superadmin->email = 'super@supremestan.com';
         $user_superadmin->password = bcrypt('djarum');
+        $user_superadmin->verified = 1;
         $user_superadmin->save();
         $user_superadmin->attachRole($superadmin);
 
@@ -108,6 +110,7 @@ class RoleTableSeeder extends Seeder
         $user_curriculum->name = 'curriculum_admin';
         $user_curriculum->email = 'curriculum@supremestan.com';
         $user_curriculum->password = bcrypt('password');
+        $user_curriculum->verified = 1;
         $user_curriculum->save();
         $user_curriculum->attachRole($curriculum);
 
@@ -115,6 +118,7 @@ class RoleTableSeeder extends Seeder
         $user_finance->name = 'finance_admin';
         $user_finance->email = 'finance@supremestan.com';
         $user_finance->password = bcrypt('password');
+        $user_finance->verified = 1;
         $user_finance->save();
         $user_finance->attachRole($finance);
 
@@ -122,6 +126,7 @@ class RoleTableSeeder extends Seeder
         $user_account->name = 'account_admin';
         $user_account->email = 'account@supremestan.com';
         $user_account->password = bcrypt('password');
+        $user_account->verified = 1;
         $user_account->save();
         $user_account->attachRole($admin_account);
 
@@ -129,6 +134,7 @@ class RoleTableSeeder extends Seeder
         $user_content->name = 'content_admin';
         $user_content->email = 'content@supremestan.com';
         $user_content->password = bcrypt('password');
+        $user_content->verified = 1;
         $user_content->save();
         $user_content->attachRole($admin_content);
 

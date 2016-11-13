@@ -10,7 +10,8 @@ class BundleTKD extends Model
     public $timestamps = true;
     protected $fillable = [
         'judul',
-        'subjectUSM_id'
+        'subjectUSM_id',
+        'full'
     ];
     public function bankSoalTkd()
     {

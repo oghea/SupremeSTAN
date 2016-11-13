@@ -109,8 +109,12 @@
 
                                             </div>
                                             <div class="col-md-2">
+                                                @if($tp->full)
+                                                    <a href="{{ route('bundle.view',$tp->id) }}" class="btn btn-success disabled">Upload Soal</a>
+                                                @else
+                                                    <a href="{{ route('bundle.view',$tp->id) }}" class="btn btn-success">Upload Soal</a>
+                                                @endif
 
-                                                <a href="{{ route('bundle.view',$tp->id) }}" class="btn btn-success">Upload Soal</a>
 
                                             </div>
                                             <div class="col-md-2">
@@ -204,9 +208,11 @@
 
                                             </div>
                                             <div class="col-md-2">
-
-                                                <a href="{{ route('bundle.view',$tb->id) }}" class="btn btn-success">Upload Soal</a>
-
+                                                @if($tb->full)
+                                                    <a href="{{ route('bundle.view',$tb->id) }}" class="btn btn-success disabled">Upload Soal</a>
+                                                @else
+                                                    <a href="{{ route('bundle.view',$tb->id) }}" class="btn btn-success">Upload Soal</a>
+                                                @endif
                                             </div>
                                             <div class="col-md-2">
                                                 {!! Form::open(['method' => 'DELETE','route' => ['bundle.delete', $tb->id]]) !!}
@@ -288,8 +294,11 @@
 
                                             </div>
                                             <div class="col-md-2">
-
-                                                <a href="{{ route('bundle.viewTKD',$tw->id) }}" class="btn btn-success">Upload Soal</a>
+                                                @if($tw->full)
+                                                    <a href="{{ route('bundle.viewTKD',$tw->id) }}" class="btn btn-success disabled">Upload Soal</a>
+                                                @else
+                                                    <a href="{{ route('bundle.viewTKD',$tw->id) }}" class="btn btn-success">Upload Soal</a>
+                                                @endif
 
                                             </div>
                                             <div class="col-md-2">
@@ -372,9 +381,11 @@
 
                                             </div>
                                             <div class="col-md-2">
-
-                                                <a href="{{ route('bundle.viewTKD',$ti->id) }}" class="btn btn-success">Upload Soal</a>
-
+                                                @if($ti->full)
+                                                    <a href="{{ route('bundle.viewTKD',$ti->id) }}" class="btn btn-success disabled">Upload Soal</a>
+                                                @else
+                                                    <a href="{{ route('bundle.viewTKD',$ti->id) }}" class="btn btn-success">Upload Soal</a>
+                                                @endif
                                             </div>
                                             <div class="col-md-2">
                                                 {!! Form::open(['method' => 'DELETE','route' => ['bundle.deleteTKD', $ti->id]]) !!}
@@ -456,8 +467,11 @@
 
                                             </div>
                                             <div class="col-md-2">
-
-                                                <a href="{{ route('bundle.viewTKD',$tk->id) }}" class="btn btn-success">Upload Soal</a>
+                                                @if($tk->full)
+                                                    <a href="{{ route('bundle.viewTKD',$tk->id) }}" class="btn btn-success disabled">Upload Soal</a>
+                                                @else
+                                                    <a href="{{ route('bundle.viewTKD',$tk->id) }}" class="btn btn-success">Upload Soal</a>
+                                                @endif
 
                                             </div>
                                             <div class="col-md-2">

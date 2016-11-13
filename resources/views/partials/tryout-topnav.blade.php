@@ -10,7 +10,7 @@
             Sekolah Asal: {{$users->user_profile->school_origin}}
         </div>
         <div class="col-md-12">
-            Jenis Tryout: {{$durasi->judul}}
+            Jenis Tryout: {{$judul->judul}}
         </div>
     </div>
     <div class="col-md-3" style="margin-bottom:10px;">

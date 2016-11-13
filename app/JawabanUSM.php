@@ -11,16 +11,18 @@ class JawabanUSM extends Model
         'tryoutUSM_id',
         'user_id',
         'jawaban_tpa',
-        'jawaban_tbi'
+        'jawaban_tbi',
+        'urutanTPA',
+        'urutanTBI'
     ];
 
     public function tryoutUsm()
     {
-        return $this->belongsTo('SupremeSTAN\TryoutUSM');
+        return $this->belongsTo('SupremeSTAN\TryoutUSM','tryoutUSM_id');
     }
 
     public function user()
     {
-        return $this->belongsTo('SupremeSTAN\User');
+        return $this->belongsTo('SupremeSTAN\User','user_id');
     }
 }

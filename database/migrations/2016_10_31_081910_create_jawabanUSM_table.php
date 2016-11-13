@@ -17,8 +17,8 @@ class CreateJawabanUSMTable extends Migration
             $table->increments('id');
             $table->integer('tryoutUSM_id')->unsigned()->index();
             $table->integer('user_id')->unsigned();
-            $table->string('jawaban_tpa')->nullable();
-            $table->string('jawaban_tbi')->nullable();
+            $table->text('jawaban_tpa')->nullable();
+            $table->text('jawaban_tbi')->nullable();
             $table->timestamps();
         });
     }

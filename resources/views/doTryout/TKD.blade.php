@@ -66,15 +66,15 @@
                     </div>
                     <div class="row">
                         <div class="col-md-6 jawaban-user">
-                            <input type="radio" name="{{$TKP->id}}jawaban" id="{{$TKP->id}}a-option">
-                            <label for="{{$TKP->id}}a-option">
+                            <input type="radio" name="{{$TKP->id}}jawaban" id="{{$i}}a-option">
+                            <label for="{{$i}}a-option">
                                 {!!$TKP->jawaban_a !!}
                             </label>
                             <div class="check"></div>
                         </div>
                         <div class="col-md-6 jawaban-user">
-                            <input type="radio" name="{{$TKP->id}}jawaban" id="{{$TKP->id}}b-option">
-                            <label for="{{$TKP->id}}b-option">
+                            <input type="radio" name="{{$TKP->id}}jawaban" id="{{$i}}b-option">
+                            <label for="{{$i}}b-option">
                                 {!! $TKP->jawaban_b !!}
                             </label>
                             <div class="check"><div class="inside"></div></div>
@@ -82,15 +82,15 @@
                     </div>
                     <div class="row">
                         <div class="col-md-6 jawaban-user">
-                            <input type="radio" name="{{$TKP->id}}jawaban" id="{{$TKP->id}}c-option">
-                            <label for="{{$TKP->id}}c-option">
+                            <input type="radio" name="{{$TKP->id}}jawaban" id="{{$i}}c-option">
+                            <label for="{{$i}}c-option">
                                 {!! $TKP->jawaban_c !!}
                             </label>
                             <div class="check"></div>
                         </div>
                         <div class="col-md-6 jawaban-user">
-                            <input type="radio" name="{{$TKP->id}}jawaban" id="{{$TKP->id}}d-option">
-                            <label for="{{$TKP->id}}d-option">
+                            <input type="radio" name="{{$TKP->id}}jawaban" id="{{$i}}d-option">
+                            <label for="{{$i}}d-option">
                                 {!! $TKP->jawaban_d !!}
                             </label>
                             <div class="check"><div class="inside"></div></div>
@@ -98,8 +98,8 @@
                     </div>
                     <div class="row">
                         <div class="col-md-6 jawaban-user">
-                            <input type="radio" name="{{$TKP->id}}jawaban" id="{{$TKP->id}}e-option">
-                            <label for="{{$TKP->id}}e-option">
+                            <input type="radio" name="{{$TKP->id}}jawaban" id="{{$i}}e-option">
+                            <label for="{{$i}}e-option">
                                 {!! $TKP->jawaban_e !!}
                             </label>
                             <div class="check"></div>
