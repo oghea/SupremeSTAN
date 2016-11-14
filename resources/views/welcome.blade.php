@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SupremeSTAN Under Development!</title>
+    <title>SupremeSTAN</title>
 
     <!-- Bootstrap Core CSS -->
 
