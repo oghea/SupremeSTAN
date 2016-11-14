@@ -2,11 +2,12 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 <script src="/vendors/fastclick/lib/fastclick.js"></script>
 <!-- bootstrap-daterangepicker -->
+<script src="/js/bootstrap-datepicker.min.js"></script>
+<script src="/js/datepicker/daterangepicker.js"></script>
 <script src="/js/moment/moment.min.js"></script>
 @if(str_contains(\Route::current()->getPath(),'admin/bundle/'))
     <!-- jQuery Smart Wizard -->
     <script src="/vendors/jQuery-Smart-Wizard/js/jquery.smartWizard.js"></script>
-    <script src="/js/bootstrap-datepicker.min.js"></script>
     <script src="/js/smartwiz.js"></script>
     <script src="/js/addrow.js"></script>
 @endif
