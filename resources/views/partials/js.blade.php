@@ -6,7 +6,7 @@
 {{--<script src="/js/datepicker/daterangepicker.js"></script>--}}
 <script src="/js/moment/moment.min.js"></script>
 <script src="/vendors/datepick/js/bootstrap-datepicker.min.js"></script>
-<script src="/js/date/date.js"></script>
+<script src="/js/date.js"></script>
 @if(str_contains(\Route::current()->getPath(),'admin/bundle/'))
     <!-- jQuery Smart Wizard -->
     <script src="/vendors/jQuery-Smart-Wizard/js/jquery.smartWizard.js"></script>
