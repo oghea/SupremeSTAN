@@ -81,7 +81,7 @@
             <ul class="nav navbar-nav nav-right">
                 <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
                 <li class="login-nav">
-                    <a class="page-scroll " href="{{ url('/login') }}">LOGIN</a>
+                    <a class="page-scroll " href="{{ url('/') }}">LOGIN</a>
                 </li>
                 <li class="signup-nav">
                     <a class="page-scroll " href="{{ url('/register') }}">SIGN UP</a>
@@ -128,10 +128,10 @@
                     <a class="page-scroll" href="#where">CONTACT US</a>
                 </li>
                 <li >
-                    <a class="page-scroll" href="#">LOGIN</a>
+                    <a class="page-scroll" href="{{ url('/') }}">LOGIN</a>
                 </li>
                 <li >
-                    <a class="page-scroll" href="#">SIGN UP</a>
+                    <a class="page-scroll" href="{{ url('/register') }}">SIGN UP</a>
                 </li>
             </ul>
 
