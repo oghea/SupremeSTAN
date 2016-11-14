@@ -46,6 +46,7 @@ class UserProfileController extends Controller
         ]);
         $input = $request->all();
         $user->user_profile->update($input);
+        $user->birth_date = $request->birth_date->format('Y/m/d');
         if($request->hasFile('avatar')){
             $avatar = $request->file('avatar');
             if($user->user_profile->avatar == 'default.jpg') {
