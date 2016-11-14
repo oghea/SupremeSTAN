@@ -147,10 +147,10 @@
     <div class="container mid-dv">
         <div class="row">
             <div class="col-md-12 papah">
-                <h1 class="super">HELPING CLIENT ACHIEVE <br><span class="super-color">THEIR GOALS</span></h1>
+                <h1 class="super">THE BEST WAY TO <br><span class="super-color">GO IN PKN STAN</span></h1>
             </div>
             <div class="col-md-12">
-                <h4 style="color:#ffffff;">we'll make you smart more than Albert Einstein.</h4>
+                <h4 style="color:#ffffff;">Help to maximize all your potential in learning.</h4>
             </div>
         </div>
     </div>
@@ -182,7 +182,7 @@
                                 terdiri atas program:<br>
                                 - DIII Akuntansi <br>
                                 - DIV Akuntansi <br>
-                                Alumni jurusan akuntansi dapat ditempatkan di berbagai instansi pemerintahan di bawah Kementrian Keuangan, seperti Badan Keuangan Fiskal (BKF), Direktorat Jenderal Bea dan Cukai (DJBC), Direktorat Jenderal Pajak (DJP), serta lainnya. Selain itu, Badan Pemeriksa Keuangan (BPK) dan Kementrian Perhubungan pun diperkirakan akan mengambil lulusan jurusan akuntansi untuk bekerja di organisasinya.
+                                Alumni jurusan akuntansi dapat ditempatkan di berbagai instansi pemerintahan di bawah Kementrian Keuangan, seperti <strong> Badan Keuangan Fiskal (BKF), Direktorat Jenderal Bea dan Cukai (DJBC), Direktorat Jenderal Pajak (DJP), Badan Pemeriksa Keuangan (BPK), Kementrian Perhubungan</strong>, dan instansi pemerintahan lainnya.
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -207,7 +207,7 @@
                                 - DI Pajak <br>
                                 - DIII Pajak <br>
                                 - DIII PBB/Penilai <br>
-                                Para alumnus Pajak kemungkinan besar akan ditempatkan di Direktorat Jenderal Pajak. Namun tidak menutup kemungkinan penempatan pada Badan Keuangan Fiskal maupun Badan Pendidikan dan Pelatihan Keuangan (BPPK). Sementara untuk lulusan PBB/Penilai dapat diterima di instansi Direktorat Jenderal Pajak dan Direktorat Jenderal Kekayaan Negara (DJKN).
+                                Para alumnus Pajak kemungkinan besar akan ditempatkan di <strong> Direktorat Jenderal Pajak (DJP)</strong>. Namun tidak menutup kemungkinan penempatan pada <strong> Badan Keuangan Fiskal maupun Badan Pendidikan dan Pelatihan Keuangan (BPPK)</strong>. Sementara untuk lulusan PBB/Penilai dapat diterima di instansi <strong>Direktorat Jenderal Pajak dan Direktorat Jenderal Kekayaan Negara (DJKN).</strong>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -232,7 +232,7 @@
                             <div class="modal-body">
                                 - DI Kepabeanan dan Cukai <br>
                                 - DIII Kepabeanan dan Cukai <br>
-                                Lulusan Kepabeanan dan Cukai akan bekerja di Direktorat Jenderal Bea dan Cukai.
+                                Lulusan Kepabeanan dan Cukai akan bekerja di <strong>Direktorat Jenderal Bea dan Cukai.</strong>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -257,7 +257,7 @@
                                 - DI Kebendaharaan Negara <br>
                                 - DIII Kebendaharaan Negara <br>
                                 - DIII Manajemen Aset <br>
-                                Untuk jurusan terakhir, program Kebendaharaan Negara biasanya menempatkan lulusannya di Direktorat Jenderal Perbendaharaan (DJPBN). Namun instansi lain seperti Direktorat Jenderal Pajak dan Direktorat Jenderal Bea dan Cukai tetap dapat menerima alumni Kebendaharaan Negara. Sedangkan program Manajemen Aset umumnya ditempatkan di Direktorat Jenderal Kekayaan Negara, meskipun ada juga yang direkrut Badan Pendidikan dan Pelatihan Keuangan.
+                                Untuk jurusan terakhir, program Kebendaharaan Negara biasanya menempatkan lulusannya di <strong>Direktorat Jenderal Perbendaharaan (DJPBN), Direktorat Jenderal Pajak (DJP) </strong>dan Direktorat Jenderal Bea dan Cukai (DJBC). Sedangkan lulusan program Manajemen Aset umumnya ditempatkan di <strong>Direktorat Jendral Kekayaan Negara (DJKN)</strong>, meskipun ada juga yang direkrut <strong>Badan Pendidikan dan Pelatihan Keuangan (BPPK)</strong>.
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -291,7 +291,7 @@
                             <img class="icon-jur" src="images/icon-14.png" style="margin: 0 auto;">
                             <div class="caption-slider">
                                 <h3>Exclusive</h3>
-                                <h4>The atmosphere in Chania has a touch of Florence and Venice.</h4>
+                                <h4>Bimbingan belajar USM STAN supreme hanya menerima 50 siswa untuk bergabung. dengan sistem penerimaan siswa yang sedikit berbeda, kami menawarkan suasan pembelajaran yang tak bisa sembarang ditemui.</h4>
                             </div>
                         </div>
 
@@ -299,7 +299,7 @@
                             <img class="icon-jur" src="images/icon-14.png" style="margin: 0 auto;">
                             <div class="caption-slider">
                                 <h3>Comfortable</h3>
-                                <h4>The atmosphere in Chania has a touch of Florence and Venice.</h4>
+                                <h4>Tanpa melupakan progresivitas dalam proses pembelajaran, kami menjamin kenyamanan yang akan terjalin dilingkungan Bimbingan Belajar supreme. Baik maupun siswa dan tentor, maupun baik pihak supreme dan orang tua siswa.</h4>
                             </div>
                         </div>
 
@@ -307,7 +307,7 @@
                             <img class="icon-jur" src="images/icon-14.png" style="margin: 0 auto;">
                             <div class="caption-slider">
                                 <h3>Guarantee</h3>
-                                <h4>The atmosphere in Chania has a touch of Florence and Venice.</h4>
+                                <h4>Sebagai jaminan untuk siswa supreme yang belum berhasil lolos Ujian Saringan masuk PKN STAN, kami memberikan kesempatan bagi siswa yang bersangkutan untuk kembali bergabung bersama supreme ditahun berikutnya.</h4>
                             </div>
                         </div>
                     </div>
@@ -359,7 +359,7 @@
                 <div class="hovereffect">
                     <img class="img-responsive" src="images/team1.jpg" alt="">
                     <div class="overlay">
-                        <h2>Muhammad Widodo<br>CEO-FOUNDER</h2>
+                        <h2>Andi Setyo Wicaksono<br>D3-Akuntasi 2014</h2>
                         <p class="set1">
                             <a href="#">
                                 <i class="fa fa-twitter"></i>
@@ -385,7 +385,7 @@
                 <div class="hovereffect">
                     <img class="img-responsive" src="images/team1.jpg" alt="">
                     <div class="overlay">
-                        <h2>Fadil Wiguna<br>CEO-FOUNDER</h2>
+                        <h2>Gandes Palupi<br>D3-Kebendaharaan 2014</h2>
                         <p class="set1">
                             <a href="#">
                                 <i class="fa fa-twitter"></i>
@@ -411,7 +411,7 @@
                 <div class="hovereffect">
                     <img class="img-responsive" src="images/team1.jpg" alt="">
                     <div class="overlay">
-                        <h2>Muhammad Widodo<br>CEO-FOUNDER</h2>
+                        <h2>Zufar Lutfi Wisanggeni<br>D3-Pajak 2014</h2>
                         <p class="set1">
                             <a href="#">
                                 <i class="fa fa-twitter"></i>
@@ -446,35 +446,35 @@
                 <h1>Connect socially with us</h1>
             </div>
             <div class="col-md-3">
-                    <span class="fa-stack fa-lg fa-3x">
+                    <a href="http://facebook.com/groups/163484537384503"><span  class="fa-stack fa-lg fa-3x">
                         <i class="fa fa-square fa-stack-3x" style="color:black;"></i>
                         <i class="fa fa-square fa-stack-2x kotak" style="color:white;"></i>
                         <i class="fa fa-facebook fa-stack-1x sos-med-color"></i>
-                    </span>
+                    </span></a>
                 <h3 style="color:#ffffff;">LIKE US ON FACEBOOK</h3>
             </div>
             <div class="col-md-3">
-                    <span class="fa-stack fa-lg fa-3x">
+                    <a href="http://youtube.com"><span class="fa-stack fa-lg fa-3x">
                         <i class="fa fa-square fa-stack-3x" style="color:black;"></i>
                         <i class="fa fa-square fa-stack-2x kotak" style="color:white;"></i>
                         <i class="fa fa-youtube fa-stack-1x sos-med-color"></i>
-                    </span>
+                    </span></a>
                 <h3 style="color:#ffffff;">WATCH ON YOUTUBE</h3>
             </div>
             <div class="col-md-3">
-                    <span class="fa-stack fa-lg fa-3x">
+                    <a href="http://instagram.com/bimbelsupreme"><span class="fa-stack fa-lg fa-3x">
                         <i class="fa fa-square fa-stack-3x" style="color:black;"></i>
                         <i class="fa fa-square fa-stack-2x kotak" style="color:white;"></i>
                         <i class="fa fa-instagram fa-stack-1x sos-med-color"></i>
-                    </span>
+                    </span></a>
                 <h3 style="color:#ffffff;">FOLLOW US ON INSTAGRAM</h3>
             </div>
             <div class="col-md-3">
-                    <span class="fa-stack fa-lg fa-3x">
+                    <a href="mailto:bimbelsupreme@gmail.com?Subject=Hello%20again"><span class="fa-stack fa-lg fa-3x">
                         <i class="fa fa-square fa-stack-3x" style="color:black;"></i>
                         <i class="fa fa-square fa-stack-2x kotak" style="color:white;"></i>
-                        <i class="fa fa-google-plus-official fa-stack-1x sos-med-color"></i>
-                    </span>
+                        <i class="fa fa-google fa-stack-1x sos-med-color"></i>
+                    </span></a>
                 <h3 style="color:#ffffff;">ASK US ON EMAIL</h3>
             </div>
         </div>
