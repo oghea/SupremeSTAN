@@ -10,6 +10,7 @@
     <meta name="author" content="">
 
     <title>SupremeSTAN</title>
+    <!--Kita ngetes harusnya bisa -->
 
     <!-- Bootstrap Core CSS -->
 
