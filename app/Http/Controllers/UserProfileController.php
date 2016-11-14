@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Storage;
 use SupremeSTAN\Http\Requests;
 use SupremeSTAN\User;
 use SupremeSTAN\UserProfile;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Intervention\Image\ImageManagerStatic as Image;
@@ -46,6 +47,8 @@ class UserProfileController extends Controller
         ]);
         $input = $request->all();
         $user->user_profile->update($input);
+        $date = Carbon::createFromFormat('Y/m/d', $request->birth_date);
+        $user->birth_date = $date;
         if($request->hasFile('avatar')){
             $avatar = $request->file('avatar');
             if($user->user_profile->avatar == 'default.jpg') {
