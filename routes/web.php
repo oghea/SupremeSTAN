@@ -220,7 +220,10 @@ Route::get('/tes',function (){
 //    dd($verification);
     $jawabUSM = SupremeSTAN\JawabanUSM::where([['tryoutUSM_id','=',1],['user_id','=',7]])->first();
     $jwbdia = unserialize($jawabUSM->jawaban_tpa);
-    dd($jwbdia);
+    $date = Carbon\Carbon::createFromFormat('Y/m/d', '21/12/1995')->toDateString();
+//    $date = '21/12/1995';
+//    $apa = $date->format('m/d/Y');
+    dd($date);
 //    $soalnya = array();
 //    foreach ($soalTBI as $tb){
 //        $soalnya[] = $tb->kunciUSM_id;

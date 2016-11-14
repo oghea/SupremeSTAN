@@ -47,8 +47,6 @@ class UserProfileController extends Controller
         ]);
         $input = $request->all();
         $user->user_profile->update($input);
-        $date = Carbon::createFromFormat('Y/m/d', $request->birth_date);
-        $user->birth_date = $date;
         if($request->hasFile('avatar')){
             $avatar = $request->file('avatar');
             if($user->user_profile->avatar == 'default.jpg') {
