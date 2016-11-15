@@ -7,6 +7,10 @@ use Illuminate\Support\Facades\Auth;
 use SupremeSTAN\User;
 use SupremeSTAN\Role;
 use SupremeSTAN\UserProfile;
+use SupremeSTAN\ResultQuiz;
+use SupremeSTAN\ResultUSM;
+use SupremeSTAN\ResultTKD;
+use SupremeSTAN\JawabanQuiz;
 use JavaScript;
 
 class HomeController extends Controller
@@ -33,10 +37,28 @@ class HomeController extends Controller
             $users=Auth::user();
             $id=Auth::user()->id;
             $checkId=UserProfile::where('user_id','=',$id)->get();
+            $harianArray = array();
+            $harian = JawabanQuiz::where('user_id','=',$id)->get();
+            foreach ($harian as $hari){
+                $harianArray[] = $hari->resultQuiz->nilai;
+            }
+            $USMarray = array();
+            $USMSkors = ResultUSM::where('user_id','=',$id)->get();
+            foreach ($USMSkors as $USM){
+                $USMarray[] = $USM->nilai;
+            }
+            $TKDarray = array();
+            $TKDSkors = ResultTKD::where('user_id','=',$id)->get();
+            foreach ($TKDSkors as $TKD){
+                $TKDarray[] = $TKD->nilai;
+            }
             JavaScript::put([
                 'usm' => $users->TO_USM,
                 'tkd' => $users->TO_TKD,
-                'quiz' => $users->TO_harian
+                'quiz' => $users->TO_harian,
+                'TO_harian'=>$harianArray,
+                'TO_USM'=>$USMarray,
+                'TO_TKD'=>$TKDarray,
             ]);
             if (Auth::user()->hasRole(['bimbel_premium','bimbel_online', 'siswa_tryout', 'banned', 'free_member']))
             {

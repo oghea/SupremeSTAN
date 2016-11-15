@@ -44,6 +44,11 @@ Route::get('verification',['uses'=>'Auth\RegisterController@checkVerification', 
         Route::get('tryout/tkd/{id}', ['uses'=>'TryoutController@doTKD','as'=>'tryoutUser.doTKD']);
         Route::post('tryout/tkd/{id}', ['uses'=>'TryoutController@storeTKD','as'=>'tryoutUser.doTKD']);
 
+        Route::get('tryout/quiz', ['uses'=>'TryoutController@listQuiz','as'=>'tryoutUser.listQuiz']);
+
+        Route::get('tryout/quiz/{id}', ['uses'=>'TryoutController@doQuiz','as'=>'tryoutUser.doQuiz']);
+        Route::post('tryout/quiz/{id}', ['uses'=>'TryoutController@storeQuiz','as'=>'tryoutUser.storeQuiz']);
+
         Route::get('result', ['uses'=>'ResultController@index','as'=>'result.index']);
         Route::get('result/{id}', ['uses'=>'ResultController@pembahasan','as'=>'result.pembahasan']);
     });

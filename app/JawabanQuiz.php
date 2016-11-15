@@ -6,18 +6,19 @@ use Illuminate\Database\Eloquent\Model;
 
 class JawabanQuiz extends Model
 {
-    protected $table = 'jawabanquiz';
+    protected $table = 'jawabanQuiz';
     public $timestamps = false;
     protected $fillable = [
-        'bundlequiz_id',
+        'bundleQuiz_id',
         'user_id',
-        'resultquiz_id',
+        'resultQuiz_id',
         'isi_jawaban',
+        'urutan',
     ];
 
     public function bundleQuiz()
     {
-        return $this->hasOne('SupremeSTAN\BundleQuiz');
+        return $this->belongsTo('SupremeSTAN\BundleQuiz','bundleQuiz_id');
     }
 
     public function user()
@@ -26,6 +27,6 @@ class JawabanQuiz extends Model
     }
     public function resultQuiz()
     {
-        return $this->hasOne('SupremeSTAN\ResultQuiz');
+        return $this->belongsTo('SupremeSTAN\ResultQuiz','resultQuiz_id');
     }
 }

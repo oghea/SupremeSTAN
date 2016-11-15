@@ -10,7 +10,11 @@
             Sekolah Asal: {{$users->user_profile->school_origin}}
         </div>
         <div class="col-md-12">
-            Jenis Tryout: {{$judul->judul}}
+            @if(\Route::current()->getName() == 'tryoutUser.doQuiz' )
+                Jenis Tryout: {{$bundleQuiz->judul}}
+            @else
+                Jenis Tryout: {{$judul->judul}}
+            @endif
         </div>
     </div>
     <div class="col-md-3" style="margin-bottom:10px;">
