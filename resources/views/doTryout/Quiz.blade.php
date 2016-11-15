@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="col-md-12" style="margin-top:20px;">
-        {!!Form::open(['route' => ['tryoutUser.doQuiz', $id] ,'role' => 'form','method'=>'POST','id'=>'form-tpa'])!!}
+        {!!Form::open(['route' => ['tryoutUser.doQuiz', $id,$time] ,'role' => 'form','method'=>'POST','id'=>'form-tpa'])!!}
         @foreach($soalQuiz as $Quiz)
             <div id="{{++$i}}" class="col-md-12">
                 <div class="col-md-1" style="text-align:center;margin-bottom:10px;font-size:18px!important;">

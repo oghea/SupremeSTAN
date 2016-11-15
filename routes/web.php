@@ -45,9 +45,10 @@ Route::get('verification',['uses'=>'Auth\RegisterController@checkVerification', 
         Route::post('tryout/tkd/{id}', ['uses'=>'TryoutController@storeTKD','as'=>'tryoutUser.doTKD']);
 
         Route::get('tryout/quiz', ['uses'=>'TryoutController@listQuiz','as'=>'tryoutUser.listQuiz']);
+        Route::post('tryout/quiz{id}', ['uses'=>'TryoutController@waktuQuiz','as'=>'tryoutUser.listQuiz']);
 
-        Route::get('tryout/quiz/{id}', ['uses'=>'TryoutController@doQuiz','as'=>'tryoutUser.doQuiz']);
-        Route::post('tryout/quiz/{id}', ['uses'=>'TryoutController@storeQuiz','as'=>'tryoutUser.storeQuiz']);
+        Route::get('tryout/quiz/{id}/{time}', ['uses'=>'TryoutController@doQuiz','as'=>'tryoutUser.doQuiz']);
+        Route::post('tryout/quiz/{id}/{time}', ['uses'=>'TryoutController@storeQuiz','as'=>'tryoutUser.storeQuiz']);
 
         Route::get('result', ['uses'=>'ResultController@index','as'=>'result.index']);
         Route::get('result/{id}', ['uses'=>'ResultController@pembahasan','as'=>'result.pembahasan']);
@@ -258,10 +259,16 @@ Route::get('/tes',function (){
 //    $jumlah_soalusm = SupremeSTAN\BundleQuiz::select("jumlah_soal")
 //        ->where('bundleQuiz.id','=',1)->first();
 
-    $soal_terisiQuiz=SupremeSTAN\BankQuiz::select("banksoalQuiz_bundleQuiz.bundleQuiz_id","banksoalQuiz_bundleQuiz.banksoalQuiz_id")
-        ->leftjoin("banksoalQuiz_bundleQuiz","banksoalQuiz_bundleQuiz.banksoalQuiz_id","=","banksoalQuiz.id")
-        ->groupBy('bundleQuiz_id')->count("banksoalQuiz_bundleQuiz.banksoalQuiz_id");
-    dd($soal_terisiQuiz);
+//    $soal_terisiQuiz=SupremeSTAN\BankQuiz::select("banksoalQuiz_bundleQuiz.bundleQuiz_id","banksoalQuiz_bundleQuiz.banksoalQuiz_id")
+//        ->leftjoin("banksoalQuiz_bundleQuiz","banksoalQuiz_bundleQuiz.banksoalQuiz_id","=","banksoalQuiz.id")
+//        ->groupBy('bundleQuiz_id')->count("banksoalQuiz_bundleQuiz.banksoalQuiz_id");
+    $durasi = 20;
+    $now = \Carbon\Carbon::now()->toDateTimeString();
+
+    $waktu = Carbon\Carbon::createFromFormat('Y-m-d H:i:s',$now);
+    $jam = Carbon\Carbon::createFromFormat('Y-m-d H:i:s',$now)->addMinutes($durasi);
+//    $jam = $waktu->addMinutes($durasi);
+    dd($waktu,$now,$jam);
 });
 //});
 //Route::get('logout',function (){
