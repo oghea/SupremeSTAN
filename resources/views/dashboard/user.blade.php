@@ -87,42 +87,25 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-6 col-xs-12">
+        <div class="col-md-12 col-xs-12">
             <div class="col-md-12 col-xs-12 profile-content">
                 <div class="x_title">
-                    <h2>Grafik Score USM</h2>
+                    <h2>Grafik Score Tryout UMUM</h2>
 
                     <div class="clearfix"></div>
                 </div>
                 <div class="x_content">
                     <!-- <div id="chartContainerUSM" style="height: 300px; width: 100%;">
                     </div> -->
-                    <canvas id="myChart" width="300" height="200"></canvas>
-                    <div class="col-xs-12" style="margin-top:50px">
-                        <button type="button" class="btn btn-danger disabled" style="cursor:default">Tidak lulus</button>
+                    <canvas id="myChart" width="300" height="100"></canvas>
+                    <div class="col-xs-12">
+                        <h4>Keterangan:</h4>
                     </div>
                     <div class="col-xs-12" style="margin-top:10px">
-                        <button type="button" class="btn btn-success disabled" style="cursor:default">Lulus</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-6 col-xs-12">
-            <div class="col-md-12 col-xs-12 profile-content">
-                <div class="x_title">
-                    <h2>Grafik Score TKD</h2>
-
-                    <div class="clearfix"></div>
-                </div>
-                <div class="x_content">
-                    <!-- <div id="chartContainerTKD" style="height: 300px; width: 100%;">
-                    </div> -->
-                    <canvas id="myChart1" width="300" height="200"></canvas>
-                    <div class="col-xs-12" style="margin-top:50px">
-                        <button type="button" class="btn btn-danger disabled" style="cursor:default">Tidak lulus</button>
+                        <button type="button" class="btn btn-danger disabled" style="cursor:default;opacity:1;">Tidak lulus</button>
                     </div>
                     <div class="col-xs-12" style="margin-top:10px">
-                        <button type="button" class="btn btn-success disabled" style="cursor:default">Lulus</button>
+                        <button type="button" class="btn btn-success disabled" style="cursor:default;opacity:1;">Lulus</button>
                     </div>
                 </div>
             </div>
@@ -191,10 +174,10 @@
                 <div class="x_content">
                     <canvas id="myChart2" width="300" height="100"></canvas>
                     <div class="col-xs-12" style="margin-top:50px">
-                        <button type="button" class="btn btn-danger disabled" style="cursor:default">Tidak lulus</button>
+                        <button type="button" class="btn btn-danger disabled" style="cursor:default;opacity:1;">Tidak lulus</button>
                     </div>
                     <div class="col-xs-12" style="margin-top:10px">
-                        <button type="button" class="btn btn-success disabled" style="cursor:default">Lulus</button>
+                        <button type="button" class="btn btn-success disabled" style="cursor:default;opacity:1;">Lulus</button>
                     </div>
                 </div>
             </div>
