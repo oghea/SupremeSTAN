@@ -3,6 +3,7 @@
 namespace SupremeSTAN\Http\Controllers;
 
 use Illuminate\Http\Request;
+use SupremeSTAN\BankQuiz;
 use SupremeSTAN\BankSoalTKD;
 use SupremeSTAN\BankSoalTKP;
 use SupremeSTAN\BundleQuiz;
@@ -30,7 +31,11 @@ class ManageBundleController extends Controller
         $tiu = BundleTKD::where('subjectTKD_id','=',1)->orderBy('id','ASC')->paginate(5);
         $twk = BundleTKD::where('subjectTKD_id','=',2)->orderBy('id','ASC')->paginate(5);
         $tkp = BundleTKD::where('subjectTKD_id','=',3)->orderBy('id','ASC')->paginate(5);
-        return view('bundle.index',compact('tpa','tbi','tiu','twk','tkp','users'))
+        $quiz = BundleQuiz::orderBy('id','ASC')->paginate(5);
+//        $soal_terisiQuiz=BankQuiz::select("id")
+//            ->join("banksoalQuiz_bundleQuiz","banksoalQuiz_bundleQuiz.banksoalQuiz_id","=","banksoalQuiz.id")
+//            ->where('bundleQuiz_id','=',$id)->count("id");
+        return view('bundle.index',compact('tpa','tbi','tiu','twk','tkp','users','quiz'))
             ->with('i', ($request->input('page', 1) - 1) * 5);
     }
     public function viewBundleUSM(Request $request, $id){
@@ -96,6 +101,28 @@ class ManageBundleController extends Controller
         }
         return view('bundle.viewTKD',compact('soals','soalTKP','fullTKD','fullTKP','currentSubj','soal_terisiTKD','soal_terisiTKP','jumlah_soaltkd','id','users'))->with('i',($request->input('page',1)-1)*10);
     }
+    public function viewBundleQuiz(Request $request, $id){
+        $users = Auth::user();
+        $soals=BankQuiz::select("bundleQuiz_id", "banksoalQuiz_id","isi_soal",
+            "judul","jumlah_soal")
+            ->join("banksoalQuiz_bundleQuiz","banksoalQuiz_bundleQuiz.banksoalQuiz_id","=","banksoalQuiz.id")
+            ->join("bundleQuiz","banksoalQuiz_bundleQuiz.bundleQuiz_id","=","bundleQuiz.id")
+            ->where('bundleQuiz_id','=',$id)->orderBy('banksoalQuiz_id','ASC')->paginate(10);
+        $soal_terisiQuiz=BankQuiz::select("id")
+            ->join("banksoalQuiz_bundleQuiz","banksoalQuiz_bundleQuiz.banksoalQuiz_id","=","banksoalQuiz.id")
+            ->where('bundleQuiz_id','=',$id)->count("id");
+        $jumlah_soalQuiz = BundleQuiz::select("jumlah_soal")
+            ->where('bundleQuiz.id','=',$id)->first();
+        if($soal_terisiQuiz == $jumlah_soalQuiz->jumlah_soal){
+            $fullQuiz=true;
+            $bundle=BundleQuiz::find($id);
+            $bundle->full = 1;
+            $bundle->save();
+        }else{
+            $fullQuiz=false;
+        }
+        return view('bundle.viewQuiz',compact('soals','id','users','soal_terisiQuiz','jumlah_soalQuiz','fullQuiz'))->with('i',($request->input('page',1)-1)*10);
+    }
     public function createBundleTPA(){
         $users = Auth::user();
         return view('bundle.createBundleTPA',compact('users'));
@@ -116,6 +143,10 @@ class ManageBundleController extends Controller
         $users = Auth::user();
         return view('bundle.createBundleTKP',compact('users'));
     }
+    public function createBundleQuiz(){
+        $users = Auth::user();
+        return view('bundle.createBundleQuiz',compact('users'));
+    }
     public function storeBundleTIU(Request $request){
         $this->validate($request, [
             'judul' => 'required',
@@ -135,6 +166,20 @@ class ManageBundleController extends Controller
             $kdInput->save();
             $bundleTIU->kdTKD()->attach($kdInput);
         }
+        return redirect('admin/bundle');
+    }
+    public function storeBundleQuiz(Request $request){
+        $this->validate($request, [
+            'judul' => 'required',
+            'durasi' => 'required|numeric|digits_between:2,3',
+            'jumlah' => 'required|numeric|min:5|digits_between:1,3'
+        ]);
+        $bundleQuiz = new BundleQuiz;
+        $bundleQuiz->judul = $request->input('judul');
+        $bundleQuiz->durasi = $request->input('durasi');
+        $bundleQuiz->jumlah_soal = $request->input('jumlah');
+        $bundleQuiz->save();
+
         return redirect('admin/bundle');
     }
     public function storeBundleTPA(Request $request){
@@ -278,6 +323,12 @@ class ManageBundleController extends Controller
             $deleted = KdTKD::find($id->id);
             $deleted->delete();
         }
+        return redirect()->route('bundle.list')
+            ->with('success','Soal deleted successfully');
+    }
+    public function destroyQuiz($id){
+        $bundle = BundleQuiz::where('id','=',$id);
+        $bundle->delete();
         return redirect()->route('bundle.list')
             ->with('success','Soal deleted successfully');
     }

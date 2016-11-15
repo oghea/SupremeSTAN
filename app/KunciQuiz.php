@@ -15,6 +15,6 @@ class KunciQuiz extends Model
 
     public function bankQuiz()
     {
-        return $this->belongsTo('SupremeSTAN\BankQuiz');
+        return $this->hasOne('SupremeSTAN\BankQuiz');
     }
 }

@@ -31,6 +31,8 @@
                             </li>
                             <li role="presentation" class=""><a href="#tab_content5" role="tab" id="tkp-tab2" data-toggle="tab" aria-expanded="false">TKP</a>
                             </li>
+                            <li role="presentation" class=""><a href="#tab_content6" role="tab" id="quiz-tab2" data-toggle="tab" aria-expanded="false">Quiz Harian</a>
+                            </li>
                         </ul>
                         <div id="myTabContent" class="tab-content">
                             <div role="tabpanel" class="tab-pane fade active in" id="tab_content1" aria-labelledby="tpa-tab">
@@ -486,6 +488,113 @@
                                 <hr>
                                 <div>
                                     <a href="{{url('/admin/bundle/tkp/create')}}" class="btn btn-primary">Create Bundle TKP</a>
+                                </div>
+                            </div>
+                            <div role="tabpanel" class="tab-pane fade" id="tab_content6" aria-labelledby="quiz-tab">
+                                <div class="row">
+                                    <div class="col-md-1">
+
+                                        No
+
+                                    </div>
+                                    <div class="col-md-1">
+
+                                        ID
+
+                                    </div>
+                                    <div class="col-md-3">
+
+                                        Nama Bundle
+
+                                    </div>
+                                    <div class="col-md-2">
+
+                                        Jumlah Soal
+
+                                    </div>
+                                    <div class="col-md-2">
+
+                                        Durasi
+
+                                    </div>
+                                    <div class="col-md-2">
+
+                                        Upload Soal
+
+                                    </div>
+                                    <div class="col-md-1">
+
+                                        Delete
+
+                                    </div>
+                                </div>
+                                <hr>
+                                @if($quiz->isEmpty())
+                                    <div class="row">
+                                        <div class="col-md-1">
+
+                                            0
+
+                                        </div>
+                                        <div class="col-md-4">
+
+                                            kosong
+
+                                        </div>
+                                        <div class="col-md-7">
+
+                                            bebas berapa aja
+
+                                        </div>
+                                    </div>
+                                @else
+                                    @foreach($quiz as $qu)
+                                        <div class="row">
+                                            <div class="col-md-1">
+
+                                                {{++$i}}
+
+                                            </div>
+                                            <div class="col-md-1">
+
+                                                {{$qu->id}}
+
+                                            </div>
+                                            <div class="col-md-3">
+
+                                                {{$qu->judul}}
+
+                                            </div>
+                                            <div class="col-md-2">
+
+                                                {{$qu->jumlah_soal}}
+
+                                            </div>
+                                            <div class="col-md-2">
+
+                                                {{$qu->durasi}}
+
+                                            </div>
+                                            <div class="col-md-2">
+                                                @if($qu->full)
+                                                    <a href="{{ route('bundle.viewQuiz',$qu->id) }}" class="btn btn-success disabled">Upload Soal</a>
+                                                @else
+                                                    <a href="{{ route('bundle.viewQuiz',$qu->id) }}" class="btn btn-success">Upload Soal</a>
+                                                @endif
+                                            </div>
+                                            <div class="col-md-1">
+                                                {{--<a href="{{ route('bundle.delete',$tp->id) }}" class="btn btn-danger">Delete</a>--}}
+                                                {!! Form::open(['method' => 'DELETE','route' => ['bundle.deleteQuiz', $qu->id]]) !!}
+                                                {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
+                                                {!! Form::close() !!}
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                    {!! $quiz->render() !!}
+                                @endif
+                                <hr>
+                                <div>
+                                    <a href="{{url('/admin/bundle/quiz/create')}}" class="btn btn-primary">Create Bundle Harian</a>
                                 </div>
                             </div>
                         </div>

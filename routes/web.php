@@ -53,9 +53,11 @@ Route::get('verification',['uses'=>'Auth\RegisterController@checkVerification', 
         Route::get('admin/tryout', ['uses'=>'ManageTryoutController@index', 'as' => 'tryout.list']);
         Route::patch('admin/tryout/usm/{id}', ['uses'=>'ManageTryoutController@publishUSM', 'as' => 'tryout.publishUSM']);
         Route::patch('admin/tryout/tkd/{id}', ['uses'=>'ManageTryoutController@publishTKD', 'as' => 'tryout.publishTKD']);
+        Route::patch('admin/tryout/quiz/{id}', ['uses'=>'ManageTryoutController@publishQuiz', 'as' => 'tryout.publishQuiz']);
 
         Route::patch('admin/tryout/UnUsm/{id}', ['uses'=>'ManageTryoutController@unPublishUSM', 'as' => 'tryout.unPublishUSM']);
         Route::patch('admin/tryout/UnTkd/{id}', ['uses'=>'ManageTryoutController@unPublishTKD', 'as' => 'tryout.unPublishTKD']);
+        Route::patch('admin/tryout/UnQuiz/{id}', ['uses'=>'ManageTryoutController@unPublishQuiz', 'as' => 'tryout.unPublishQuiz']);
 
         Route::get('admin/tryout/create', ['uses'=>'ManageTryoutController@create', 'as' => 'tryout.create']);
         Route::post('admin/tryout/create', ['uses'=>'ManageTryoutController@store', 'as' => 'tryout.store']);
@@ -74,6 +76,18 @@ Route::get('verification',['uses'=>'Auth\RegisterController@checkVerification', 
         Route::post('admin/bundle/twk/create','ManageBundleController@storeBundleTWK');
         Route::get('admin/bundle/tkp/create','ManageBundleController@createBundleTKP');
         Route::post('admin/bundle/tkp/create','ManageBundleController@storeBundleTKP');
+        Route::get('admin/bundle/quiz/create','ManageBundleController@createBundleQuiz');
+        Route::post('admin/bundle/quiz/create','ManageBundleController@storeBundleQuiz');
+
+        Route::get('admin/bundle/quiz/{id}',['uses'=>'ManageBundleController@viewBundleQuiz','as' => 'bundle.viewQuiz']);
+        Route::delete('admin/bundle/quiz/{id}', ['uses'=>'ManageBundleController@destroyQuiz', 'as' => 'bundle.deleteQuiz']);
+
+        Route::get('admin/soal/quiz/{id}',['uses' => 'ManageSoalQuiz@create', 'as' => 'soal.createQuiz']);
+        Route::post('admin/soal/quiz/{id}','ManageSoalQuiz@store');
+        Route::delete('admin/soal/quiz/{id}/{bundleId}',['uses'=>'ManageSoalQuiz@destroy', 'as' => 'soal.deleteQuiz']);
+        Route::get('admin/soal/quiz/{bundleId}/{id}/view',['uses'=>'ManageSoalQuiz@view', 'as' => 'soal.viewQuiz']);
+        Route::get('admin/soal/quiz/{bundleId}/{id}/edit',['uses'=>'ManageSoalQuiz@edit', 'as' => 'soal.editQuiz']);
+        Route::post('admin/soal/quiz/{bundleId}/{id}/edit',['uses'=>'ManageSoalQuiz@update', 'as' => 'soal.updateQuiz']);
 
         Route::get('admin/bundle/tkd/{id}',['uses'=>'ManageBundleController@viewBundleTKD','as' => 'bundle.viewTKD']);
         Route::get('admin/bundle/usm/{id}',['uses'=>'ManageBundleController@viewBundleUSM','as' => 'bundle.view']);
@@ -229,7 +243,20 @@ Route::get('/tes',function (){
 //    foreach ($soalTBI as $tb){
 //        $soalnya[] = $tb->kunciUSM_id;
 //    }
-//    dd($jwbUserTBI);
+//    $soals=SupremeSTAN\BankQuiz::select("bundleQuiz_id", "banksoalQuiz_id","isi_soal",
+//        "judul","jumlah_soal")
+//        ->join("banksoalQuiz_bundleQuiz","banksoalQuiz_bundleQuiz.banksoalQuiz_id","=","banksoalQuiz.id")
+//        ->where('bundleQuiz_id','=',1)->orderBy('banksoalQuiz_id','ASC')->paginate(10);
+//    $soal_terisiUSM=SupremeSTAN\BankQuiz::select("id")
+//        ->join("banksoalQuiz_bundleQuiz","banksoalQuiz_bundleQuiz.banksoalQuiz_id","=","banksoalQuiz.id")
+//        ->where('bundleQuiz_id','=',1)->count("id");
+//    $jumlah_soalusm = SupremeSTAN\BundleQuiz::select("jumlah_soal")
+//        ->where('bundleQuiz.id','=',1)->first();
+
+    $soal_terisiQuiz=SupremeSTAN\BankQuiz::select("id")
+        ->join("banksoalQuiz_bundleQuiz","banksoalQuiz_bundleQuiz.banksoalQuiz_id","=","banksoalQuiz.id")
+        ->groupBy('bundleQuizf_id')->count("id");
+    dd($soal_terisiQuiz);
 });
 //});
 //Route::get('logout',function (){

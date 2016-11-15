@@ -23,6 +23,8 @@
                             </li>
                             <li role="presentation" class=""><a href="#tab_content2" role="tab" id="TKD-tab" data-toggle="tab" aria-expanded="false">TKD</a>
                             </li>
+                            <li role="presentation" class=""><a href="#tab_content3" role="tab" id="Quiz-tab" data-toggle="tab" aria-expanded="false">Quiz Harian</a>
+                            </li>
                         </ul>
                         <div id="myTabContent" class="tab-content">
                             <div role="tabpanel" class="tab-pane fade active in" id="tab_content1" aria-labelledby="USM-tab">
@@ -232,6 +234,106 @@
                                 <div>
                                     <a href="{{url('admin/tryout/createTKD')}}" class="btn btn-primary">Create Tryout TKD</a>
                                 </div>
+                            </div>
+                            <div role="tabpanel" class="tab-pane fade" id="tab_content3" aria-labelledby="Quiz-tab">
+                                <div class="row">
+                                    <div class="col-md-1">
+
+                                        No
+
+                                    </div>
+                                    <div class="col-md-4">
+
+                                        Judul Tryout
+
+                                    </div>
+                                    <div class="col-md-2">
+
+                                        Durasi
+
+                                    </div>
+                                    <div class="col-md-2">
+
+                                        Jumlah Soal
+
+                                    </div>
+                                    <div class="col-md-2">
+
+                                        Publish Date
+
+                                    </div>
+                                    <div class="col-md-1">
+
+                                        Publish
+
+                                    </div>
+                                </div>
+                                <hr>
+                                @if($quiz->isEmpty())
+                                    <div class="row">
+                                        <div class="col-md-1">
+
+                                            0
+
+                                        </div>
+                                        <div class="col-md-4">
+
+                                            kosong
+
+                                        </div>
+                                        <div class="col-md-7">
+
+                                            kosong
+
+                                        </div>
+                                    </div>
+                                @else
+                                    @foreach($quiz as $key => $qu)
+                                        <div class="row">
+                                            <div class="col-md-1">
+
+                                                {{++$i}}
+
+                                            </div>
+                                            <div class="col-md-4">
+
+                                                {{$qu->judul}}
+
+                                            </div>
+                                            <div class="col-md-2">
+
+                                                {{$qu->durasi}} Menit
+
+                                            </div>
+                                            <div class="col-md-2">
+
+                                                {{$qu->jumlah_soal}}
+
+                                            </div>
+                                            <div class="col-md-2">
+
+                                                @if($qu->published == 0)
+                                                    not yet published
+                                                @else
+                                                    {{$qu->publish_date}}
+                                                @endif
+
+                                            </div>
+                                            <div class="col-md-1">
+                                                @if($qu->published == 0)
+                                                    {!! Form::open(['method' => 'PATCH','route' => ['tryout.publishQuiz', $qu->id]]) !!}
+                                                    {!! Form::submit('Publish', ['class' => 'btn btn-success']) !!}
+                                                    {!! Form::close() !!}
+                                                @else
+                                                    {!! Form::open(['method' => 'PATCH','route' => ['tryout.unPublishQuiz', $qu->id]]) !!}
+                                                    {!! Form::submit('UnPublish', ['class' => 'btn btn-danger']) !!}
+                                                    {!! Form::close() !!}
+                                                @endif
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                    {!! $quiz->render() !!}
+                                @endif
                             </div>
                         </div>
                     </div>

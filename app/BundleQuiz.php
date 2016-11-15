@@ -8,15 +8,17 @@ class BundleQuiz extends Model
 {
     protected $table = 'bundleQuiz';
     protected $fillable = [
+        'judul',
         'publish_date',
         'published',
         'jumlah_soal',
-        'durasi'
+        'durasi',
+        'full'
     ];
 
     public function bankQuiz()
     {
-        return $this->belongsToMany('SupremeSTAN\BankQuiz');
+        return $this->belongsToMany('SupremeSTAN\BankQuiz','banksoalQuiz_bundleQuiz','bundleQuiz_id','banksoalQuiz_id');
     }
 
     public function jawabanQuiz()

@@ -22,16 +22,16 @@ class BankQuiz extends Model
 
     public function kunciQuiz()
     {
-        return $this->hasOne('SupremeSTAN\KunciQuiz');
+        return $this->belongsTo('SupremeSTAN\KunciQuiz','kunciQuiz_id');
     }
 
     public function pembahasanQuiz()
     {
-        return $this->hasOne('SupremeSTAN\PembahasanQuiz');
+        return $this->belongsTo('SupremeSTAN\PembahasanQuiz','pembahasanQuiz_id');
     }
 
     public function bundleQuiz()
     {
-        return $this->belongsToMany('SupremeSTAN\BundleQuiz');
+        return $this->belongsToMany('SupremeSTAN\BundleQuiz','banksoalQuiz_bundleQuiz','banksoalQuiz_id','bundleQuiz_id');
     }
 }

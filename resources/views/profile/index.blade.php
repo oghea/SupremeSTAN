@@ -44,7 +44,7 @@
                     <div class="col-md-7 col-xs-7 ">
                         <label>
                             @if(Auth::user()->user_profile->address==null)
-                                Belum ada data cuk,isi makanya
+                                Belum ada data,tolong diisi ya
                             @else
                                 {{Auth::user()->user_profile->address}}
                             @endif
@@ -95,7 +95,7 @@
                     <div class="col-md-7 col-xs-7 ">
                         <label>
                             @if(Auth::user()->user_profile->phone==null)
-                                Belum ada data cuk,isi makanya
+                                Belum ada data,tolong diisi ya
                             @else
                                 {{Auth::user()->user_profile->phone}}
                             @endif
@@ -114,7 +114,7 @@
                     <div class="col-md-7 col-xs-7 ">
                         <label>
                             @if(Auth::user()->user_profile->gender==null)
-                                Belum ada data cuk,isi makanya
+                                Belum ada data,tolong diisi ya
                             @else
                                 {{Auth::user()->user_profile->gender}}
                             @endif
@@ -133,7 +133,7 @@
                     <div class="col-md-7 col-xs-7 ">
                         <label>
                             @if(Auth::user()->user_profile->line_id==null)
-                                Belum ada data cuk,isi makanya
+                                Belum ada data,tolong diisi ya
                             @else
                                 {{Auth::user()->user_profile->line_id}}
                             @endif
@@ -152,7 +152,7 @@
                     <div class="col-md-7 col-xs-7 ">
                         <label>
                             @if(Auth::user()->user_profile->state==null)
-                                Belum ada data cuk,isi makanya
+                                Belum ada data,tolong diisi ya
                             @else
                                 {{Auth::user()->user_profile->state}}
                             @endif
@@ -171,7 +171,7 @@
                     <div class="col-md-7 col-xs-7 ">
                         <label>
                             @if(Auth::user()->user_profile->city==null)
-                                Belum ada data cuk,isi makanya
+                                Belum ada data,tolong diisi ya
                             @else
                                 {{Auth::user()->user_profile->city}}
                             @endif
@@ -190,7 +190,7 @@
                     <div class="col-md-7 col-xs-7 ">
                         <label>
                             @if(Auth::user()->user_profile->school_origin==null)
-                                Belum ada data cuk,isi makanya
+                                Belum ada data,tolong diisi ya
                             @else
                                 {{Auth::user()->user_profile->school_origin}}
                             @endif

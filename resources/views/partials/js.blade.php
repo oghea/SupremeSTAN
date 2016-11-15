@@ -4,14 +4,20 @@
 <!-- bootstrap-daterangepicker -->
 {{--<script src="/js/bootstrap-datepicker.min.js"></script>--}}
 {{--<script src="/js/datepicker/daterangepicker.js"></script>--}}
+@if(str_contains(\Route::current()->getPath(),'profile') || str_contains(\Route::current()->getPath(),'admin/profile'))
+    <script src="/vendors/datepick/js/bootstrap-datepicker.min.js"></script>
+    <script src="/js/date.js"></script>
+@endif
 <script src="/js/moment/moment.min.js"></script>
-<script src="/vendors/datepick/js/bootstrap-datepicker.min.js"></script>
-<script src="/js/date.js"></script>
 @if(str_contains(\Route::current()->getPath(),'admin/bundle/'))
     <!-- jQuery Smart Wizard -->
     <script src="/vendors/jQuery-Smart-Wizard/js/jquery.smartWizard.js"></script>
-    <script src="/js/smartwiz.js"></script>
-    <script src="/js/addrow.js"></script>
+    @if(str_contains(\Route::current()->getPath(),'admin/bundle/quiz/create'))
+        <script src="/js/smartwizQuiz.js"></script>
+    @else
+        <script src="/js/smartwiz.js"></script>
+        <script src="/js/addrow.js"></script>
+    @endif
 @endif
 @if(str_contains(\Route::current()->getName(),'tryoutUser.doTPA') || str_contains(\Route::current()->getName(),'tryoutUser.doTBI'))
     <script src="/vendors/FlipClock/compiled/flipclock.min.js"></script>

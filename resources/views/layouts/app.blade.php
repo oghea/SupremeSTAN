@@ -11,7 +11,9 @@
     <!-- vendor -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet'  type='text/css'>
-    <link rel="stylesheet" href="/vendors/datepick/css/bootstrap-datepicker3.min.css">
+    @if(str_contains(\Route::current()->getPath(),'profile') || str_contains(\Route::current()->getPath(),'admin/profile'))
+        <link rel="stylesheet" href="/vendors/datepick/css/bootstrap-datepicker3.min.css">
+    @endif
     <link rel="stylesheet" href="/vendors/normalize-css/normalize.css">
     <link rel="stylesheet" href="/vendors/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="/vendors/flipclock/compiled/flipclock.css"/>

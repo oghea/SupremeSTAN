@@ -86,7 +86,7 @@ class UserController extends Controller
         }
         $user = Auth::user();
         $user->update($input);
-        return redirect()->route('profile.index')
+        return redirect()->route('dashboard.user')
             ->with('success','User updated successfully');
     }
     /**

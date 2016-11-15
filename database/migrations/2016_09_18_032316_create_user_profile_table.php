@@ -20,7 +20,7 @@ class CreateUserProfileTable extends Migration
             $table->string('first_name',50)->nullable();
             $table->string('last_name',50)->nullable();
             $table->string('quote',100)->nullable();
-            $table->date('birth_date')->nullable();
+            $table->string('birth_date')->nullable();
             $table->string('gender',10)->nullable();
             $table->string('phone',20)->nullable();
             $table->string('parent_name',100)->nullable();

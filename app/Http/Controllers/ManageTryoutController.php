@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Auth;
 use SupremeSTAN\BankSoalUSM;
+use SupremeSTAN\BundleQuiz;
 use SupremeSTAN\BundleTKD;
 use SupremeSTAN\BundleUSM;
 use SupremeSTAN\KunciUSM;
@@ -25,10 +26,7 @@ class ManageTryoutController extends Controller
         $users = Auth::user();
         $usm = TryoutUSM::orderBy('id','ASC')->paginate(5);
         $tkd = TryoutTKD::orderBy('id','ASC')->paginate(5);
-//        $jumlah_tkd = TryoutTKD::select('jumlah_soal')
-//            ->join("kdTKD_tryoutTKD","kdTKD_tryoutTKD.tryoutTKD_id","=","tryoutTKD.id")
-//            ->join("kdTKD","kdTKD_tryoutTKD.kdTKD_id",'=',"kdTKD.id")
-//            ->where('tryoutTKD.id','=',5);
+        $quiz = BundleQuiz::where('full','=',1)->orderBy('id','ASC')->paginate(5);
         $jumlah_tkd = KdTKD::select(DB::raw("SUM(jumlah_soal) as jumlah"))
             ->leftJoin("bundleTKD_kdTKD","bundleTKD_kdTKD.kdTKD_id","=","kdTKD.id")
             ->join("bundleTKD_tryoutTKD","bundleTKD_tryoutTKD.bundleTKD_id","=","bundleTKD_kdTKD.bundleTKD_id")
@@ -43,7 +41,7 @@ class ManageTryoutController extends Controller
             ->join("bundleUSM_tryoutUSM","bundleUSM_tryoutUSM.bundleUSM_id","=","bundleUSM.id")
             ->groupBy('bundleUSM_tryoutUSM.tryoutUSM_id')->get();
 
-        return view('tryout.index',compact('usm','tkd','jumlah_tkd','jumlah_usm','durasi_usm','users'))
+        return view('tryout.index',compact('usm','tkd','jumlah_tkd','jumlah_usm','durasi_usm','users','quiz'))
             ->with('i', ($request->input('page', 1) - 1) * 5);
     }
     public function create(){
@@ -107,6 +105,14 @@ class ManageTryoutController extends Controller
         $tryoutTKD->save();
         return redirect()->route('tryout.list');
     }
+    public function publishQuiz($id){
+        $tryoutQuiz = BundleQuiz::find($id);
+        $current_time = Carbon::now()->toDateString();
+        $tryoutQuiz->publish_date = $current_time;
+        $tryoutQuiz->published = 1;
+        $tryoutQuiz->save();
+        return redirect()->route('tryout.list');
+    }
     public function unPublishUSM($id){
         $tryoutUSM = TryoutUSM::find($id);
         $tryoutUSM->publish = 0;
@@ -117,6 +123,12 @@ class ManageTryoutController extends Controller
         $tryoutTKD = TryoutTKD::find($id);
         $tryoutTKD->published = 0;
         $tryoutTKD->save();
+        return redirect()->route('tryout.list');
+    }
+    public function unPublishQuiz($id){
+        $tryoutQuiz = BundleQuiz::find($id);
+        $tryoutQuiz->published = 0;
+        $tryoutQuiz->save();
         return redirect()->route('tryout.list');
     }
 }

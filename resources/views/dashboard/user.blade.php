@@ -5,7 +5,6 @@
         <div class="col-md-12">
             <h3>
                 Overview
-                <small>Some info profile of user</small>
             </h3>
         </div>
     </div>
@@ -18,7 +17,7 @@
                     </p>
                     <p class="quote-text">
                         @if(Auth::user()->user_profile->quote==null)
-                            Masukin impianmu cuk
+                            Your Noble dreams
                         @else
                             {{Auth::user()->user_profile->quote}}
                         @endif
@@ -43,7 +42,7 @@
                     <div class="col-md-7 col-md-offset-0 col-xs-8 col-xs-offset-2">
                         <label class="raleway-italic">
                             @if(Auth::user()->user_profile->address==null)
-                                Belum ada data cuk,isi makanya
+                                Belum ada data, diisi yuk
                             @else
                                 {{Auth::user()->user_profile->address}}
                             @endif
@@ -77,7 +76,7 @@
                     <div class="col-md-7 col-md-offset-0 col-xs-8 col-xs-offset-2">
                         <label class="raleway-italic">
                             @if(Auth::user()->user_profile->phone==null)
-                                Belum ada data cuk,isi makanya
+                                Belum ada data, diisi yuk
                             @else
                                 {{Auth::user()->user_profile->phone}}
                             @endif
