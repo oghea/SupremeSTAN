@@ -100,19 +100,24 @@ window.onload = function () {
     chart1.render();
 };
 
-var judulTO = ['TO1','TO2','TO3'];
-var nilaiTO = [65, 59, 80];
-var ket = ['lulus', 'tidak lulus', 'lulus'];
-var warna = ["green","red","green"];
+var judulTO = ['TO1','TO2','TO3','TO4','TO5','TO6','TO7','TO8','TO9','TO10','TO11','TO12','TO13','TO14','TO15'];
+var nilaiTOUSM = [65, 59, 80,65, 59, 80,65, 59, 80,65, 59, 80,65, 59, 80];
+var nilaiTOTKD = [80, 90, 30,40, 30, 55,61, 73, 33,42];
+var ketUSM = ['lulus', 'tidak lulus', 'lulus'];
+var ketTKD= ['lulus', 'tidak lulus', 'lulus'];
+var warnaUSM = ["#1FEF1A","#D90C0C","#1FEF1A"];
+var warnaTKD = ["#D90C0C","#D90C0C","#1FEF1A"];
 var ctx = document.getElementById("myChart");
 var myChart = new Chart(ctx, {
-    type: 'line',
+    type: 'bar',
     data: {
         labels: judulTO,
         datasets: [{
+            label: "USM",
             fill: false,
             lineTension: 0.1,
             backgroundColor: "rgba(75,192,192,0.4)",
+            hoverBackgroundColor: warnaUSM,
             borderColor: "rgba(75,192,192,1)",
             borderCapStyle: 'butt',
             borderDash: [],
@@ -122,67 +127,53 @@ var myChart = new Chart(ctx, {
             pointBackgroundColor: "#fff",
             pointBorderWidth: 1,
             pointHoverRadius: 5,
-            pointHoverBackgroundColor: warna,
-            pointHoverBorderColor: warna,
+            pointHoverBackgroundColor: warnaUSM,
+            pointHoverBorderColor: warnaUSM,
             pointHoverBorderWidth: 3,
             pointRadius: 1,
             pointHitRadius: 10,
-            data: nilaiTO,
+            data: nilaiTOUSM,
             spanGaps: false,
-        }]
+        },
+        {
+            label: "TKD",
+            fill: false,
+            lineTension: 0.1,
+            backgroundColor: "rgba(153, 102, 255, 0.2)",
+            hoverBackgroundColor: warnaTKD,
+            borderColor: "rgba(75,192,192,1)",
+            borderCapStyle: 'butt',
+            borderDash: [],
+            borderDashOffset: 0.0,
+            borderJoinStyle: 'miter',
+            pointBorderColor: "rgba(75,192,192,1)",
+            pointBackgroundColor: "#fff",
+            pointBorderWidth: 1,
+            pointHoverRadius: 5,
+            pointHoverBackgroundColor: warnaTKD,
+            pointHoverBorderColor: warnaTKD,
+            pointHoverBorderWidth: 3,
+            pointRadius: 1,
+            pointHitRadius: 10,
+            data: nilaiTOTKD,
+            spanGaps: false,
+        },
+        ]
     },  
     options: {
-        title: {
-            display: true,
-            text: 'Nilai Tryout USM'
-        },
-        legend: {
-        display: false
-        },
+        scales: {
+            yAxes: [{
+                display: true,
+                ticks: {
+                    suggestedMin: 0,    // minimum will be 0, unless there is a lower value.
+                    // OR //
+                    beginAtZero: true   // minimum value will be 0.
+                }
+            }]
+        }
     }
 });
 
-var judulTO1 = ['TO1','TO2','TO3'];
-var nilaiTO1 = [65, 59, 80];
-var ket1 = ['lulus', 'tidak lulus', 'lulus'];
-var warna1 = ["green","red","green"];
-var ctx = document.getElementById("myChart1");
-var myChart1 = new Chart(ctx, {
-    type: 'line',
-    data: {
-        labels: judulTO1,
-        datasets: [{
-            fill: false,
-            lineTension: 0.1,
-            backgroundColor: "rgba(75,192,192,0.4)",
-            borderColor: "rgba(75,192,192,1)",
-            borderCapStyle: 'butt',
-            borderDash: [],
-            borderDashOffset: 0.0,
-            borderJoinStyle: 'miter',
-            pointBorderColor: "rgba(75,192,192,1)",
-            pointBackgroundColor: "#fff",
-            pointBorderWidth: 1,
-            pointHoverRadius: 5,
-            pointHoverBackgroundColor: warna1,
-            pointHoverBorderColor: warna1,
-            pointHoverBorderWidth: 3,
-            pointRadius: 1,
-            pointHitRadius: 10,
-            data: nilaiTO1,
-            spanGaps: false,
-        }]
-    },  
-    options: {
-        title: {
-            display: true,
-            text: 'Nilai Tryout TKD'
-        },
-        legend: {
-        display: false
-        },
-    }
-});
 
 var judulTO2 = ['TO1','TO2','TO3'];
 var nilaiTO2 = [65, 59, 80];
@@ -211,7 +202,7 @@ var myChart2 = new Chart(ctx, {
             pointHoverBorderWidth: 3,
             pointRadius: 1,
             pointHitRadius: 10,
-            data: nilaiTO1,
+            data: nilaiTO2,
             spanGaps: false,
         }]
     },  
