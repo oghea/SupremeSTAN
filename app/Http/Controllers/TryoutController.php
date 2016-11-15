@@ -147,6 +147,10 @@ class TryoutController extends Controller
         return view('doTryout.listQuiz',compact('tryoutQuizList','users','verification'))
             ->with('i', ($request->input('page', 1) - 1) * 5);
     }
+    public function waktuQuiz($id){
+        $time = Carbon::now()->toDateTimeString();
+        return redirect()->route('tryoutUser.doQuiz',[$id,$time]);
+    }
     public function listTKD(Request $request){
         $users = Auth::user();
         $tryoutTKDList = TryoutTKD::where('published','=',1)->orderBy('id','ASC')->paginate(5);
@@ -266,7 +270,7 @@ class TryoutController extends Controller
 
         return redirect()->route('tryoutUser.index');
     }
-    public function doQuiz($id){
+    public function doQuiz($id,$time){
         $users = Auth::user();
         $bundleQuiz = BundleQuiz::findOrFail($id);
         $durasiQuiz = $bundleQuiz->durasi;
@@ -276,10 +280,14 @@ class TryoutController extends Controller
             ->join("bundleQuiz","bundleQuiz.id","=","banksoalQuiz_bundleQuiz.bundleQuiz_id")
             ->where('banksoalQuiz_bundleQuiz.bundleQuiz_id','=',$id)
             ->inRandomOrder()->get();
+        $waktu = Carbon::createFromFormat('Y-m-d H:i:s',$time);
+        $jam = Carbon::createFromFormat('Y-m-d H:i:s',$time)->addMinutes($durasiQuiz);
         JavaScript::put([
+            'currentTime' => $waktu->format("F d, Y H:i:s"),
+            'jam'=> $jam->format("F d, Y H:i:s"),
             'durasi' => $durasiQuiz,
         ]);
-        return view('doTryout.Quiz',compact('users','soalQuiz','bundleQuiz','durasiQuiz','id'))
+        return view('doTryout.Quiz',compact('users','soalQuiz','bundleQuiz','durasiQuiz','id','time'))
             ->with('i', 0);
     }
     public function storeQuiz(Request $request,$id){

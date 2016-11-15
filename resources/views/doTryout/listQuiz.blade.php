@@ -16,7 +16,10 @@
                     <h2>{{$tryoutQuiz->durasi}} Menit</h2>
                 </div>
                 <div class="col-xs-12 text-center text-uppercase">
-                    <a class="btn btn-primary" href="{{ route('tryoutUser.doQuiz',$tryoutQuiz->id) }}">Kerjakan</a>
+                    {!! Form::open(['method' => 'POST','route' => ['tryoutUser.listQuiz',$tryoutQuiz->id]]) !!}
+                    {!! Form::submit('Kerjakan', ['class' => 'btn btn-primary']) !!}
+                    {!! Form::close() !!}
+                    {{--<a class="btn btn-primary" href="{{ route('tryoutUser.doQuiz',$tryoutQuiz->id) }}">Kerjakan</a>--}}
                 </div>
             </div>
     @endforeach
