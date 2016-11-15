@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 
 $(document).ready(function(){
     var options = {
@@ -107,8 +105,8 @@ var myChart = new Chart(ctx, {
 });
 
 
-var judulTO2 = ['TO1','TO2','TO3'];
-var nilaiTO2 = [65, 59, 80];
+var judulTO2 = ['TO1','TO2','TO3','TO4','TO5','TO6','TO7','TO8','TO9','TO10'];
+var nilaiTO2 = [65, 59, 80, 65, 59, 80, 65, 59, 80, 65];
 var ket2 = ['lulus', 'tidak lulus', 'lulus'];
 var warna2 = ["green","red","green"];
 var ctx = document.getElementById("myChart2");
@@ -148,7 +146,3 @@ var myChart2 = new Chart(ctx, {
         }
     }
 });
-
-
-
->>>>>>> 822a0935101419fb96e6054f036f6e32dc69b4a6

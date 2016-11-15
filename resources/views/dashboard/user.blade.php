@@ -173,12 +173,6 @@
                 </div>
                 <div class="x_content">
                     <canvas id="myChart2" width="300" height="100"></canvas>
-                    <div class="col-xs-12" style="margin-top:50px">
-                        <button type="button" class="btn btn-danger disabled" style="cursor:default;opacity:1;">Tidak lulus</button>
-                    </div>
-                    <div class="col-xs-12" style="margin-top:10px">
-                        <button type="button" class="btn btn-success disabled" style="cursor:default;opacity:1;">Lulus</button>
-                    </div>
                 </div>
             </div>
         </div>

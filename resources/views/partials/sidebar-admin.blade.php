@@ -12,7 +12,7 @@
             <!-- END SIDEBAR USERPIC -->
             <!-- SIDEBAR USER TITLE -->
             <div class="profile-usertitle">
-                <div class="profile-usertitle-name">
+                <div class="profile-usertitle-name text-uppercase">
                     @if(Auth::user()->user_profile->first_name==null)
                         {{Auth::user()->name}}
                     @else

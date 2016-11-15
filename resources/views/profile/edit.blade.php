@@ -13,8 +13,8 @@
                 <div class="col-md-12 profile-content">
                     {!!Form::open(['action' => 'UserProfileController@update' , 'role' => 'form','class' => 'form-horizontal' ,'files' => true])!!}
                     <div class="form-group {{ $errors->has('first_name') ? ' has-error' : '' }}">
-                        <label class="col-lg-3 control-label">First Name:</label>
-                        <div class="col-lg-8">
+                        <label class="col-xs-3 control-label">First Name:</label>
+                        <div class="col-xs-8">
                             {!! Form::text('first_name', $namadepan, array('placeholder' => 'First Name','class' => 'form-control')) !!}
                             @if ($errors->has('first_name'))
                                 <span class="help-block">
@@ -24,14 +24,14 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-lg-3 control-label">Last Name:</label>
-                        <div class="col-lg-8">
+                        <label class="col-xs-3 control-label">Last Name:</label>
+                        <div class="col-xs-8">
                             {!! Form::text('last_name', $namabelakang, array('placeholder' => 'Last Name','class' => 'form-control')) !!}
                         </div>
                     </div>
                     <div class="form-group {{ $errors->has('address') ? ' has-error' : '' }}">
-                        <label class="col-lg-3 control-label">Alamat:</label>
-                        <div class="col-lg-8">
+                        <label class="col-xs-3 control-label">Alamat:</label>
+                        <div class="col-xs-8">
                             {!! Form::text('address', $alamat, array('placeholder' => 'Masukan Alamat Anda','class' => 'form-control')) !!}
                             @if ($errors->has('address'))
                                 <span class="help-block">
@@ -41,8 +41,8 @@
                         </div>
                     </div>
                     <div class="form-group {{ $errors->has('state') ? ' has-error' : '' }}">
-                        <label class="col-md-3 control-label">Provinsi:</label>
-                        <div class="col-md-8">
+                        <label class="col-xs-3 control-label">Provinsi:</label>
+                        <div class="col-xs-8">
                             {!!Form::select('state', [
                             'Aceh'=>'Aceh',
                             'Bali'=>'Bali',
@@ -87,8 +87,8 @@
                         </div>
                     </div>
                     <div class="form-group {{ $errors->has('city') ? ' has-error' : '' }}">
-                        <label class="col-md-3 control-label">Kota:</label>
-                        <div class="col-md-8">
+                        <label class="col-xs-3 control-label">Kota:</label>
+                        <div class="col-xs-8">
                             {!! Form::text('city', $kota, array('placeholder' => 'Masukan Kota Asal Anda','class' => 'form-control')) !!}
                             @if ($errors->has('city'))
                                 <span class="help-block">
@@ -98,14 +98,14 @@
                         </div>
                     </div>
                     <div class="form-group {{ $errors->has('birth_date') ? ' has-error' : '' }}" id="datepickId">
-                        <label class="col-md-3 control-label">Tanggal Lahir:</label>
-                        <div class="col-md-8 input-group date">
+                        <label class="col-xs-3 control-label">Tanggal Lahir:</label>
+                        <div class="col-xs-8 input-group date">
                             {{--{!! Form::date('birth_date', $ttl,array('placeholder' => 'dd/mm/yyyy','class' => 'form-control')) !!}--}}
                             {!! Form::text('birth_date', $ttl, array('placeholder' => 'dd/mm/yyyy','class' => 'form-control')) !!}
                             <span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
                         </div>
                         @if ($errors->has('birth_date'))
-                            <div class="col-md-8 col-md-offset-3">
+                            <div class="col-xs-8 col-md-offset-3">
                             <span class="help-block">
                                 <strong>{{ $errors->first('birth_date') }}</strong>
                             </span>
@@ -113,8 +113,8 @@
                         @endif
                     </div>
                     <div class="form-group {{ $errors->has('phone') ? ' has-error' : '' }}">
-                        <label class="col-md-3 control-label">No Handphone:</label>
-                        <div class="col-md-8">
+                        <label class="col-xs-3 control-label">No Handphone:</label>
+                        <div class="col-xs-8">
                             {!! Form::text('phone', $hp, array('placeholder' => 'Masukan No HP anda','class' => 'form-control')) !!}
                             @if ($errors->has('phone'))
                                 <span class="help-block">
@@ -124,8 +124,8 @@
                         </div>
                     </div>
                     <div class="form-group {{ $errors->has('gender') ? ' has-error' : '' }}">
-                        <label class="col-md-3 control-label">Gender:</label>
-                        <div class="col-md-8">
+                        <label class="col-xs-3 control-label">Gender:</label>
+                        <div class="col-xs-8">
                             <label class="radio-inline">{!! Form::radio('gender', 'Pria',$sexM) !!}Pria</label>
                             <label class="radio-inline">{!! Form::radio('gender', 'Wanita',$sexF) !!}Wanita</label>
                             @if ($errors->has('gender'))
@@ -136,14 +136,14 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-md-3 control-label">Line:</label>
-                        <div class="col-md-8">
+                        <label class="col-xs-3 control-label">Line:</label>
+                        <div class="col-xs-8">
                             {!! Form::text('line_id', $line, array('placeholder' => 'Masukan ID Line bila ada','class' => 'form-control')) !!}
                         </div>
                     </div>
                     <div class="form-group {{ $errors->has('parent_name') ? ' has-error' : '' }}">
-                        <label class="col-md-3 control-label">Nama Orang Tua/Wali:</label>
-                        <div class="col-md-8">
+                        <label class="col-xs-3 control-label">Nama Orang Tua/Wali:</label>
+                        <div class="col-xs-8">
                             {!! Form::text('parent_name', $ortu, array('placeholder' => 'Masukan nama orangtua/wali','class' => 'form-control')) !!}
                             @if ($errors->has('parent_name'))
                                 <span class="help-block">
@@ -153,8 +153,8 @@
                         </div>
                     </div>
                     <div class="form-group {{ $errors->has('parent_phone') ? ' has-error' : '' }}">
-                        <label class="col-md-3 control-label">No HP Orang Tua/Wali:</label>
-                        <div class="col-md-8">
+                        <label class="col-xs-3 control-label">No HP Orang Tua/Wali:</label>
+                        <div class="col-xs-8">
                             {!! Form::text('parent_phone', $ortuHp, array('placeholder' => 'Masukan No HP orangtua/wali','class' => 'form-control')) !!}
                             @if ($errors->has('parent_phone'))
                                 <span class="help-block">
@@ -164,20 +164,20 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-md-3 control-label">Sekolah Asal:</label>
-                        <div class="col-md-8">
+                        <label class="col-xs-3 control-label">Sekolah Asal:</label>
+                        <div class="col-xs-8">
                             {!! Form::text('school_origin', $sekolahAsal, array('placeholder' => 'Masukan Sekolah Asal Anda','class' => 'form-control')) !!}
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-md-3 control-label">Quote:</label>
-                        <div class="col-md-8">
+                        <label class="col-xs-3 control-label">Quote:</label>
+                        <div class="col-xs-8">
                             {!! Form::text('quote', $quote, array('placeholder' => 'Masukan Noble Dreams Anda','class' => 'form-control')) !!}
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-md-3 control-label">Update Profile Image</label>
-                        <div class="col-md-8">
+                        <label class="col-xs-3 control-label">Update Profile Image</label>
+                        <div class="col-xs-8">
                             {!! Form::file('avatar') !!}
                             @if ($errors->has('avatar'))
                                 <span class="help-block">
@@ -190,8 +190,8 @@
                     </div>
                     <hr>
                     <div class="form-group">
-                        <label class="col-md-3 control-label"></label>
-                        <div class="col-md-8">
+                        <label class="col-xs-3 control-label"></label>
+                        <div class="col-xs-8">
                             <input type="submit" class="btn btn-primary" value="Save Changes">
                             <span></span>
                             <input type="reset" class="btn btn-default" value="Cancel">
