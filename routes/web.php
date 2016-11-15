@@ -20,6 +20,7 @@ Route::get('email-verification/error', 'Auth\RegisterController@getVerificationE
 Route::get('email-verification/check/{token}', 'Auth\RegisterController@getVerification')->name('email-verification.check');
 Route::get('verf', ['uses'=>'UserController@notVerified', 'as'=>'user.notVerified']);
 Route::get('banned',['uses'=>'UserController@banned', 'as'=>'user.banned']);
+Route::get('verification',['uses'=>'Auth\RegisterController@checkVerification', 'as'=>'user.check']);
 
 
 //Route::group(['middleware' => ['auth']], function() {
@@ -218,12 +219,12 @@ Route::get('/tes',function (){
 //        ->where('jawabanUSM.user_id','=',7)->first();
 ////    $tes = SupremeSTAN\JawabanUSM::find(1);
 //    dd($verification);
-    $jawabUSM = SupremeSTAN\JawabanUSM::where([['tryoutUSM_id','=',1],['user_id','=',7]])->first();
-    $jwbdia = unserialize($jawabUSM->jawaban_tpa);
-    $date = Carbon\Carbon::createFromFormat('Y/m/d', '21/12/1995')->toDateString();
-//    $date = '21/12/1995';
-//    $apa = $date->format('m/d/Y');
-    dd($date);
+//    $jawabUSM = SupremeSTAN\JawabanUSM::where([['tryoutUSM_id','=',1],['user_id','=',7]])->first();
+//    $jwbdia = unserialize($jawabUSM->jawaban_tpa);
+//    $date = Carbon\Carbon::createFromFormat('Y/m/d', '21/12/1995')->toDateString();
+////    $date = '21/12/1995';
+////    $apa = $date->format('m/d/Y');
+//    dd($date);
 //    $soalnya = array();
 //    foreach ($soalTBI as $tb){
 //        $soalnya[] = $tb->kunciUSM_id;

@@ -23,7 +23,7 @@
 <body id="app-layout @if(Route::is('login') || str_contains(Request::fullUrl(), 'register')|| str_contains(Request::fullUrl(), 'password/reset')) background-login @endif" class="nav-md">
 
 {{--Header--}}
-@if(\Route::current()->getName() == 'login' || \Route::current()->getName() == 'user.notVerfied' || \Route::current()->getName() == 'user.banned')
+@if(\Route::current()->getName() == 'login' || \Route::current()->getName() == 'user.notVerfied' || \Route::current()->getName() == 'user.banned' || \Route::current()->getName() == 'user.check')
     @include('partials.kosong')
     <section>
         <div class="container">

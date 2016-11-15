@@ -43,7 +43,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/logout';
+    protected $redirectTo = '/verification';
 
     /**
      * Create a new controller instance.
@@ -90,7 +90,7 @@ class RegisterController extends Controller
         $this->validator($request->all())->validate();
 
         $user = $this->create($request->all());
-        $this->guard()->login($user);
+//        $this->guard()->login($user);
 
         UserVerification::generate($user);
         UserVerification::send($user, 'please verif');
@@ -99,5 +99,9 @@ class RegisterController extends Controller
 //        UserVerification::send($user, 'Please verify');
 
         return redirect($this->redirectPath());
+    }
+    public function checkVerification(){
+
+        return view('users.check');
     }
 }

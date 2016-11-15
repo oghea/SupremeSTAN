@@ -201,6 +201,7 @@ class UserController extends Controller
 
         return view('banned');
     }
+
     /**
      * Remove the specified resource from storage.
      *
