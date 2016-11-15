@@ -34,9 +34,14 @@
                 <h3>General</h3>
                 <ul class="nav side-menu">
                     <li><a href="{{url('/home')}}"><i class="fa fa-home"></i>Overview</a></li>
-                    <li><a href="{{url('/tryout')}}"><i class="fa fa-edit"></i>Tryout</a></li>
+                    <li><a><i class="fa fa-edit"></i>Tryout</a>
+                        <ul class="nav child_menu">
+                          <li><a href="#">Tryout Umum</a></li>
+                          <li><a href="{{url('/tryout/quiz')}}">Tryout Harian</a></li>
+                        </ul>
+                    </li>
                     <li><a href="{{url('/profile')}}"><i class="fa fa-edit"></i>Info Profile</a></li>
-                    <li><a href="{{url('/result')}}"><i class="fa fa-bar-chart-o"></i>Results</a></li>
+                    <li><a href="javascript:void(0)"><i class="fa fa-bar-chart-o"></i>Results</a></li>
                     <li><a href="javascript:void(0)"><i class="fa fa-download"></i>Downloads</a></li>
                     <li><a href="javascript:void(0)"><i class="fa fa-credit-card-alt"></i>Payments</a></li>
                     <li><a href="javascript:void(0)"><i class="fa fa-graduation-cap"></i>Ranks</a></li>
