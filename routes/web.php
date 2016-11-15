@@ -253,9 +253,9 @@ Route::get('/tes',function (){
 //    $jumlah_soalusm = SupremeSTAN\BundleQuiz::select("jumlah_soal")
 //        ->where('bundleQuiz.id','=',1)->first();
 
-    $soal_terisiQuiz=SupremeSTAN\BankQuiz::select("id")
-        ->join("banksoalQuiz_bundleQuiz","banksoalQuiz_bundleQuiz.banksoalQuiz_id","=","banksoalQuiz.id")
-        ->groupBy('bundleQuizf_id')->count("id");
+    $soal_terisiQuiz=SupremeSTAN\BankQuiz::select("banksoalQuiz_bundleQuiz.bundleQuiz_id","banksoalQuiz_bundleQuiz.banksoalQuiz_id")
+        ->leftjoin("banksoalQuiz_bundleQuiz","banksoalQuiz_bundleQuiz.banksoalQuiz_id","=","banksoalQuiz.id")
+        ->groupBy('bundleQuiz_id')->count("banksoalQuiz_bundleQuiz.banksoalQuiz_id");
     dd($soal_terisiQuiz);
 });
 //});

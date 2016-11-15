@@ -44,8 +44,40 @@
                         <label class="col-md-3 control-label">Provinsi:</label>
                         <div class="col-md-8">
                             {!!Form::select('state', [
-                            'DKI Jakarta' => 'DKI Jakarta',
-                            'Lampung' => 'Lampung']
+                            'Aceh'=>'Aceh',
+                            'Bali'=>'Bali',
+                            'Banten'=>'Banten',
+                            'Bengkulu'=>'Bengkulu',
+                            'DKI Jakarta'=>'DKI Jakarta',
+                            'Gorontalo'=>'Gorontalo',
+                            'Jambi'=>'Jambi',
+                            'Jawa Barat'=>'Jawa Barat',
+                            'Jawa Tengah'=>'Jawa Tengah',
+                            'Jawa Timur'=>'Jawa Timur',
+                            'Kalimantan Barat'=>'Kalimantan Barat',
+                            'Kalimantan Selatan'=>'Kalimantan Selatan',
+                            'Kalimantan Tengah'=>'Kalimantan Tengah',
+                            'Kalimantan Timur'=>'Kalimantan Timur',
+                            'Kalimantan Utara'=>'Kalimantan Utara',
+                            'Kep.Bangka Belitung'=>'Kep.Bangka Belitung',
+                            'Kepulauan Riau'=>'Kepulauan Riau',
+                            'Lampung'=>'Lampung',
+                            'Maluku'=>'Maluku',
+                            'Maluku Utara'=>'Maluku Utara',
+                            'Nusa Tenggara Barat'=>'Nusa Tenggara Barat',
+                            'Nusa Tenggara Timur'=>'Nusa Tenggara Timur',
+                            'Papua'=>'Papua',
+                            'Papua Barat'=>'Papua Barat',
+                            'Riau'=>'Riau',
+                            'Sulawesi Barat'=>'Sulawesi Barat',
+                            'Sulawesi Selatan'=>'Sulawesi Selatan',
+                            'Sulawesi Tengah'=>'Sulawesi Tengah',
+                            'Sulawesi Tenggara'=>'Sulawesi Tenggara',
+                            'Sulawesi Utara'=>'Sulawesi Utara',
+                            'Sumatera Barat'=>'Sumatera Barat',
+                            'Sumatera Selatan'=>'Sumatera Selatan',
+                            'Sumatera Utara'=>'Sumatera Utara',
+                            'Yogyakarya'=>'Yogayakarta']
                             , $provinsi, ['placeholder' => 'Pilih Salah Satu...','class' => 'form-control']) !!}
                             @if ($errors->has('state'))
                                 <span class="help-block">

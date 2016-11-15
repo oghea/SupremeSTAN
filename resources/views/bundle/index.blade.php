@@ -502,12 +502,12 @@
                                         ID
 
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-2">
 
                                         Nama Bundle
 
                                     </div>
-                                    <div class="col-md-2">
+                                    <div class="col-md-1">
 
                                         Jumlah Soal
 
@@ -515,6 +515,11 @@
                                     <div class="col-md-2">
 
                                         Durasi
+
+                                    </div>
+                                    <div class="col-md-2">
+
+                                        Status
 
                                     </div>
                                     <div class="col-md-2">
@@ -560,12 +565,12 @@
                                                 {{$qu->id}}
 
                                             </div>
-                                            <div class="col-md-3">
+                                            <div class="col-md-2">
 
                                                 {{$qu->judul}}
 
                                             </div>
-                                            <div class="col-md-2">
+                                            <div class="col-md-1">
 
                                                 {{$qu->jumlah_soal}}
 
@@ -576,11 +581,16 @@
 
                                             </div>
                                             <div class="col-md-2">
+
                                                 @if($qu->full)
-                                                    <a href="{{ route('bundle.viewQuiz',$qu->id) }}" class="btn btn-success disabled">Upload Soal</a>
+                                                    Complete
                                                 @else
-                                                    <a href="{{ route('bundle.viewQuiz',$qu->id) }}" class="btn btn-success">Upload Soal</a>
+                                                    Not Complete
                                                 @endif
+
+                                            </div>
+                                            <div class="col-md-2">
+                                                <a href="{{ route('bundle.viewQuiz',$qu->id) }}" class="btn btn-success">Upload Soal</a>
                                             </div>
                                             <div class="col-md-1">
                                                 {{--<a href="{{ route('bundle.delete',$tp->id) }}" class="btn btn-danger">Delete</a>--}}
