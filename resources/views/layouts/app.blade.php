@@ -52,7 +52,7 @@
             @elseif(Auth::user()->hasRole(['bimbel_premium', 'bimbel_online', 'siswa_tryout', 'free_member']))
                 @if(\Route::current()->getName() == 'tryoutUser.doTPA' || \Route::current()->getName() == 'tryoutUser.doTBI' || \Route::current()->getName() == 'tryoutUser.doTKD' || \Route::current()->getName() == 'tryoutUser.doQuiz' )
                     @include('partials.tryout-topnav')
-                    @include('partials.kosong')
+                    @include('partials.side-tryoutQuiz')  
                 @else
                     @include('partials.topnav')
                     @include('partials.sidebar')
@@ -60,13 +60,9 @@
             @else
                 @include('partials.notVerified')
             @endif
-            @if(\Route::current()->getName() == 'tryoutUser.doUSM' || \Route::current()->getName() == 'tryoutUser.doTKD' || \Route::current()->getName() == 'tryoutUser.doQuiz')
-                @yield('content')
-            @else
                 <div class="right_col" role="main">
                     @yield('content')
                 </div>
-            @endif
             @if(\Route::current()->getName() == 'tryoutUser.doUSM' || \Route::current()->getName() == 'tryoutUser.doTKD' || \Route::current()->getName() == 'tryoutUser.doQuiz')
                 @include('partials.tryout-footer')
             @else

@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 
 $(document).ready(function(){
     var options = {
@@ -148,7 +146,3 @@ var myChart2 = new Chart(ctx, {
         }
     }
 });
-
-
-
->>>>>>> 822a0935101419fb96e6054f036f6e32dc69b4a6
