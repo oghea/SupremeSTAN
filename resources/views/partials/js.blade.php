@@ -19,7 +19,7 @@
         <script src="/js/addrow.js"></script>
     @endif
 @endif
-@if(str_contains(\Route::current()->getName(),'tryoutUser.doTPA') || str_contains(\Route::current()->getName(),'tryoutUser.doTBI'))
+@if(str_contains(\Route::current()->getName(),'tryoutUser.doTPA') || str_contains(\Route::current()->getName(),'tryoutUser.doTBI') || str_contains(\Route::current()->getName(),'tryoutUser.doQuiz'))
     <script src="/vendors/FlipClock/compiled/flipclock.min.js"></script>
     <script src="/js/clock.js"></script>
 @elseif(str_contains(\Route::current()->getName(),'tryoutUser.doTKD'))

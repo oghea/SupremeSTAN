@@ -9,11 +9,11 @@ class ResultQuiz extends Model
     protected $table = 'resultQuiz';
     protected $fillable = [
         'result',
-        'nilai_quiz'
+        'nilai'
     ];
 
     public function jawabanQuiz()
     {
-        return $this->belongsTo('SupremeSTAN\JawabanQuiz');
+        return $this->hasOne('SupremeSTAN\JawabanQuiz');
     }
 }

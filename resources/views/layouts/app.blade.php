@@ -50,7 +50,7 @@
                 @include('partials.sidebar-admin')
                 @include('partials.topnav')
             @elseif(Auth::user()->hasRole(['bimbel_premium', 'bimbel_online', 'siswa_tryout', 'free_member']))
-                @if(\Route::current()->getName() == 'tryoutUser.doTPA' || \Route::current()->getName() == 'tryoutUser.doTBI' || \Route::current()->getName() == 'tryoutUser.doTKD' )
+                @if(\Route::current()->getName() == 'tryoutUser.doTPA' || \Route::current()->getName() == 'tryoutUser.doTBI' || \Route::current()->getName() == 'tryoutUser.doTKD' || \Route::current()->getName() == 'tryoutUser.doQuiz' )
                     @include('partials.tryout-topnav')
                     @include('partials.kosong')
                 @else
@@ -60,14 +60,14 @@
             @else
                 @include('partials.notVerified')
             @endif
-            @if(\Route::current()->getName() == 'tryoutUser.doUSM' || \Route::current()->getName() == 'tryoutUser.doTKD' )
+            @if(\Route::current()->getName() == 'tryoutUser.doUSM' || \Route::current()->getName() == 'tryoutUser.doTKD' || \Route::current()->getName() == 'tryoutUser.doQuiz')
                 @yield('content')
             @else
                 <div class="right_col" role="main">
                     @yield('content')
                 </div>
             @endif
-            @if(\Route::current()->getName() == 'tryoutUser.doUSM' || \Route::current()->getName() == 'tryoutUser.doTKD' )
+            @if(\Route::current()->getName() == 'tryoutUser.doUSM' || \Route::current()->getName() == 'tryoutUser.doTKD' || \Route::current()->getName() == 'tryoutUser.doQuiz')
                 @include('partials.tryout-footer')
             @else
                 @include('partials.footer')
