@@ -4,11 +4,14 @@ namespace SupremeSTAN\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use SupremeSTAN\BankQuiz;
 use SupremeSTAN\BankSoalTKD;
 use SupremeSTAN\BankSoalTKP;
 use SupremeSTAN\BankSoalUSM;
+use SupremeSTAN\BundleQuiz;
 use SupremeSTAN\BundleTKD;
 use SupremeSTAN\BundleUSM;
+use SupremeSTAN\JawabanQuiz;
 use SupremeSTAN\JawabanUSM;
 use SupremeSTAN\KunciUSM;
 use SupremeSTAN\PembahasanUSM;
@@ -17,6 +20,7 @@ use SupremeSTAN\KdTKD;
 use Carbon\Carbon;
 use DB;
 use JavaScript;
+use SupremeSTAN\ResultQuiz;
 use SupremeSTAN\ResultUSM;
 use SupremeSTAN\TryoutTKD;
 use SupremeSTAN\TryoutUSM;
@@ -82,6 +86,36 @@ class TryoutController extends Controller
         $resultUSM->keterangan = $ket;
         $resultUSM->save();
     }
+    protected function hitungNilaiQuiz($id,$uId){
+        $jawabanQuiz = JawabanQuiz::where([['bundleQuiz_id','=',$id],['user_id','=',$uId]])->first();
+        $jwbUser = unserialize($jawabanQuiz->isi_jawaban);
+        $urut = unserialize($jawabanQuiz->urutan);
+        $resQuiz = array();
+        foreach ($urut as $key => $quizKey){
+            $banksoal = BankQuiz::findOrFail($quizKey);
+            if($banksoal->kunciQuiz->jawaban_benar == $jwbUser[$key]){
+                $resQuiz[] = 4;
+            }else{
+                if($jwbUser[$key] == 0){
+                    $resQuiz[] = 0;
+                }else{
+                    $resQuiz[] = -1;
+                }
+            }
+        }
+        $skorQuiz = 0;
+        foreach ($resQuiz as $res_quiz){
+            $skorQuiz = $skorQuiz + $res_quiz;
+        }
+        $nilai = $skorQuiz;
+
+        $resultQuiz = new ResultQuiz();
+        $resultQuiz->nilai = $nilai;
+        $resultQuiz->result = serialize($resQuiz);
+        $resultQuiz->save();
+        $resId = $resultQuiz->id;
+        return $resId;
+    }
     public function index(){
         $users = Auth::user();
         $jatah_USM = $users->TO_USM;
@@ -101,6 +135,16 @@ class TryoutController extends Controller
             ->join("jawabanUSM","jawabanUSM.tryoutUSM_id","=","tryoutUSM.id")
             ->where('jawabanUSM.user_id','=',$uId)->first();
         return view('doTryout.listUSM',compact('tryoutUSMList','users','verification'))
+            ->with('i', ($request->input('page', 1) - 1) * 5);
+    }
+    public function listQuiz(Request $request){
+        $users = Auth::user();
+        $uId = $users->id;
+        $tryoutQuizList = BundleQuiz::where('published','=',1)->orderBy('id','ASC')->paginate(5);
+        $verification = BundleQuiz::select("jawabanQuiz.bundleQuiz_id" , "jawabanQuiz.user_id")
+            ->join("jawabanQuiz","jawabanQuiz.bundleQuiz_id","=","bundleQuiz_id")
+            ->where('jawabanQuiz.user_id','=',$uId)->first();
+        return view('doTryout.listQuiz',compact('tryoutQuizList','users','verification'))
             ->with('i', ($request->input('page', 1) - 1) * 5);
     }
     public function listTKD(Request $request){
@@ -221,5 +265,51 @@ class TryoutController extends Controller
     public function storeTKD(Request $request, $id){
 
         return redirect()->route('tryoutUser.index');
+    }
+    public function doQuiz($id){
+        $users = Auth::user();
+        $bundleQuiz = BundleQuiz::findOrFail($id);
+        $durasiQuiz = $bundleQuiz->durasi;
+        $soalQuiz = BankQuiz::select("banksoalQuiz.id","isi_soal","jawaban_a","jawaban_b","jawaban_c","jawaban_d","jawaban_e",
+            "banksoalQuiz_bundleQuiz.bundleQuiz_id")
+            ->join("banksoalQuiz_bundleQuiz","banksoalQuiz_bundleQuiz.banksoalQuiz_id","=","banksoalQuiz.id")
+            ->join("bundleQuiz","bundleQuiz.id","=","banksoalQuiz_bundleQuiz.bundleQuiz_id")
+            ->where('banksoalQuiz_bundleQuiz.bundleQuiz_id','=',$id)
+            ->inRandomOrder()->get();
+        JavaScript::put([
+            'durasi' => $durasiQuiz,
+        ]);
+        return view('doTryout.Quiz',compact('users','soalQuiz','bundleQuiz','durasiQuiz','id'))
+            ->with('i', 0);
+    }
+    public function storeQuiz(Request $request,$id){
+        $uId = Auth::user()->id;
+        $jawabQuiz = new JawabanQuiz();
+        $jawabQuiz->bundleQuiz()->associate($id);
+        $jawabQuiz->user()->associate($uId);
+        $urutan = $request->urutan;
+        $listUrutan = array();
+        foreach ($urutan as $list){
+            $listUrutan[] = $list;
+        }
+        $jawabQuiz->urutan = serialize($listUrutan);
+        $jawaban = $request->jawaban;
+        $listJawabanUser = array();
+        foreach ($jawaban as $jawab){
+            $listJawabanUser[] = $jawab;
+        }
+        $jawabQuiz->isi_jawaban = serialize($listJawabanUser);
+        $jawabQuiz->save();
+        $jawabQuiz->resultQuiz()->associate($this->hitungNilaiQuiz($id,$uId));
+        $jawabQuiz->save();
+
+        $user = User::findOrFail($uId);
+        if($user->TO_harian > 0) {
+            $user->TO_harian = $user->TO_harian - 1;
+        }else{
+            $user->TO_harian = 0;
+        }
+        $user->save();
+        return redirect()->route('dashboard.user');
     }
 }
