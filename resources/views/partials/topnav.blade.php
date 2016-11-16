@@ -17,12 +17,21 @@
                         <span class=" fa fa-angle-down"></span>
                     </a>
                     <ul class="dropdown-menu dropdown-usermenu pull-right">
-                        <li><a href="{{url('profile/edit')}}">Edit Profile</a></li>
-                        <li>
-                            <a href="{{url('/profile/change-pass')}}">
-                                Settings
-                            </a>
-                        </li>
+                        @if(Auth::user()->hasRole(['owner','superadmin','curriculum','finance','admin_account','admin_content']))
+                            <li><a href="{{url('admin/profile/edit')}}">Edit Profile</a></li>
+                            <li>
+                                <a href="{{url('admin/profile/change-pass')}}">
+                                    Settings
+                                </a>
+                            </li>
+                        @else
+                            <li><a href="{{url('profile/edit')}}">Edit Profile</a></li>
+                            <li>
+                                <a href="{{url('profile/change-pass')}}">
+                                    Settings
+                                </a>
+                            </li>
+                        @endif
                         <li><a href="javascript:;">Help</a></li>
                         <li><a href="{{ url('/logout') }}"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
                     </ul>
