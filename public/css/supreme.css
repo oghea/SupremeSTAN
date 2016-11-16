@@ -11,7 +11,22 @@ body {
 }
 
 /*-----------------*/
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
 
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+
+tbody > tr > th:first-child{
+  padding-left: 50px;
+}
 .clock{
   zoom: 0.7;
 }
@@ -19,6 +34,13 @@ body {
   display: none;
 }
 
+.accordion .panel:hover {
+    background-color: #ffffff;
+}
+
+.accordion .panel {
+    border: 2px solid #F2F5F7;
+}
 /*--------------*/
 
 .container .text-muted {

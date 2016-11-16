@@ -41,7 +41,7 @@
                         </ul>
                     </li>
                     <li><a href="{{url('/profile')}}"><i class="fa fa-address-book-o"></i>Info Profile</a></li>
-                    <li><a href="javascript:void(0)"><i class="fa fa-bar-chart-o"></i>Results <span class="label label-success pull-right">Coming Soon</span></a></li>
+                    <li><a href="{{url('/result')}}"><i class="fa fa-bar-chart-o"></i>Results <span class="label label-success pull-right">Coming Soon</span></a></li>
                     <li><a href="javascript:void(0)"><i class="fa fa-download"></i>Downloads <span class="label label-success pull-right">Coming Soon</span></a></li>
                     <li><a href="javascript:void(0)"><i class="fa fa-credit-card-alt"></i>Payments <span class="label label-success pull-right">Coming Soon</span></a></li>
                     <li><a href="javascript:void(0)"><i class="fa fa-graduation-cap"></i>Ranks <span class="label label-success pull-right">Coming Soon</span></a></li>
