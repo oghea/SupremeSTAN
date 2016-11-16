@@ -55,6 +55,11 @@ Route::get('verification',['uses'=>'Auth\RegisterController@checkVerification', 
     });
     Route::group([ 'middleware' => ['auth','role:owner|superadmin|curriculum|finance|admin_account|admin_content']], function() {
         Route::get('admin/home', ['uses'=>'HomeAdminController@index', 'as'=>'dashboard.admin']);
+        Route::get('admin/profile', 'UserProfileController@create');
+        Route::get('admin/profile/change-pass', 'UserController@ChangePassword');
+        Route::post('admin/profile/change-pass', 'UserController@PostChangePassword');
+        Route::get('admin/profile/edit', 'UserProfileController@edit');
+        Route::post('admin/profile/edit', 'UserProfileController@update');
 
         Route::get('admin/tryout', ['uses'=>'ManageTryoutController@index', 'as' => 'tryout.list']);
         Route::patch('admin/tryout/usm/{id}', ['uses'=>'ManageTryoutController@publishUSM', 'as' => 'tryout.publishUSM']);
@@ -262,13 +267,19 @@ Route::get('/tes',function (){
 //    $soal_terisiQuiz=SupremeSTAN\BankQuiz::select("banksoalQuiz_bundleQuiz.bundleQuiz_id","banksoalQuiz_bundleQuiz.banksoalQuiz_id")
 //        ->leftjoin("banksoalQuiz_bundleQuiz","banksoalQuiz_bundleQuiz.banksoalQuiz_id","=","banksoalQuiz.id")
 //        ->groupBy('bundleQuiz_id')->count("banksoalQuiz_bundleQuiz.banksoalQuiz_id");
-    $durasi = 20;
-    $now = \Carbon\Carbon::now()->toDateTimeString();
+//    $durasi = 20;
+//    $now = \Carbon\Carbon::now()->toDateTimeString();
+//    $waktu = Carbon\Carbon::createFromFormat('Y-m-d H:i:s',$now);
+//    $jam = Carbon\Carbon::createFromFormat('Y-m-d H:i:s',$now)->addMinutes($durasi);
+//    $harian = array();
+//    $users = SupremeSTAN\User::where('TO_harian','=',0)->get();
+//    foreach ($users as $user){
+//        $harian[] = $user->TO_harian;
+//    }
+//    dd($harian);
 
-    $waktu = Carbon\Carbon::createFromFormat('Y-m-d H:i:s',$now);
-    $jam = Carbon\Carbon::createFromFormat('Y-m-d H:i:s',$now)->addMinutes($durasi);
-//    $jam = $waktu->addMinutes($durasi);
-    dd($waktu,$now,$jam);
+////    $jam = $waktu->addMinutes($durasi);
+//
 });
 //});
 //Route::get('logout',function (){

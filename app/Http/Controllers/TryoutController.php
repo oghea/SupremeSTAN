@@ -148,6 +148,15 @@ class TryoutController extends Controller
             ->with('i', ($request->input('page', 1) - 1) * 5);
     }
     public function waktuQuiz($id){
+        $users = Auth::user();
+        $uId = $users->id;
+        $user = User::findOrFail($uId);
+        if($user->TO_harian > 0) {
+            $user->TO_harian = 0;
+        }else{
+            $user->TO_harian = 0;
+        }
+        $user->save();
         $time = Carbon::now()->toDateTimeString();
         return redirect()->route('tryoutUser.doQuiz',[$id,$time]);
     }
@@ -313,7 +322,7 @@ class TryoutController extends Controller
 
         $user = User::findOrFail($uId);
         if($user->TO_harian > 0) {
-            $user->TO_harian = $user->TO_harian - 1;
+            $user->TO_harian = 0;
         }else{
             $user->TO_harian = 0;
         }

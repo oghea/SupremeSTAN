@@ -16,9 +16,14 @@
                     <h2>{{$tryoutQuiz->durasi}} Menit</h2>
                 </div>
                 <div class="col-xs-12 text-center text-uppercase">
-                    {!! Form::open(['method' => 'POST','route' => ['tryoutUser.listQuiz',$tryoutQuiz->id]]) !!}
-                    {!! Form::submit('Kerjakan', ['class' => 'btn btn-primary']) !!}
-                    {!! Form::close() !!}
+                    @if($users->TO_harian == 0)
+                        <h2>Maaf Jatah Tryout Harian Kamu hari ini Habis</h2>
+                        <a class="btn btn-primary disabled">Kerjakan</a>
+                    @else
+                        {!! Form::open(['method' => 'POST','route' => ['tryoutUser.listQuiz',$tryoutQuiz->id]]) !!}
+                        {!! Form::submit('Kerjakan', ['class' => 'btn btn-primary']) !!}
+                        {!! Form::close() !!}
+                    @endif
                     {{--<a class="btn btn-primary" href="{{ route('tryoutUser.doQuiz',$tryoutQuiz->id) }}">Kerjakan</a>--}}
                 </div>
             </div>
