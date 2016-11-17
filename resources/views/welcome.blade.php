@@ -162,13 +162,18 @@
         <div class="row">
             <div class="col-md-12 judul-sec">
                 <h3>PKN STAN</h3>
-                <h1>-Sekolah Tinggi Akuntasi Negara-</h1>
+                <h1>-SEKOLAH TINGGI AKUNTASI NEGARA-</h1>
             </div>
             <div class="col-md-12">
+            <div class="row">
                 <div class="col-md-5" style="margin-bottom: 30px;">
                     <img class="icon-jur" src="images/icon/account.png" data-toggle="modal" data-target="#myModal">
-                    <h4><strong>Akuntasi</strong></h4>
-                    <h4>Alumni jurusan akuntansi dapat ditempatkan di berbagai instansi pemerintahan di bawah Kementrian Keuangan, seperti Badan Keuangan Fiskal (BKF), Direktorat Jenderal Bea dan Cukai (DJBC), Direktorat Jenderal Pajak (DJP), serta lainnya.</h4>
+                    <h4 style="letter-spacing:3px"><strong>AKUNTASI</strong></h4>
+                    <p>
+                        terdiri atas program:<br>
+                        - DIII Akuntansi <br>
+                        - DIV Akuntansi <br>
+                    </p>
                 </div>
                 <!-- Modal -->
                 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -176,7 +181,7 @@
                         <div class="modal-content">
                             <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                <h4 class="modal-title" id="myModalLabel">Akuntasi</h4>
+                                <h4 class="modal-title" id="myModalLabel" style="letter-spacing:3px">Akuntasi</h4>
                             </div>
                             <div class="modal-body">
                                 terdiri atas program:<br>
@@ -192,8 +197,13 @@
                 </div>
                 <div class="col-md-5 col-md-offset-2" style="margin-bottom: 30px;">
                     <img class="icon-jur" src="images/icon/TAX.png" data-toggle="modal" data-target="#myModal1">
-                    <h4><strong>Pajak</strong></h4>
-                    <h4>Para alumnus Pajak kemungkinan besar akan ditempatkan di Direktorat Jenderal Pajak. Namun tidak menutup kemungkinan penempatan pada Badan Keuangan Fiskal maupun Badan Pendidikan dan Pelatihan Keuangan (BPPK).</h4>
+                    <h4 style="letter-spacing:3px"><strong>PAJAK</strong></h4>
+                        <p>
+                            Terdiri atas program: <br>
+                            - DI Pajak <br>
+                            - DIII Pajak <br>
+                            - DIII PBB/Penilai <br>
+                        </p>
                 </div>
                 <!-- modal -->
                 <div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -201,7 +211,7 @@
                         <div class="modal-content">
                             <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                <h4 class="modal-title" id="myModalLabel">Pajak</h4>
+                                <h4 class="modal-title" id="myModalLabel" style="letter-spacing:3px">Pajak</h4>
                             </div>
                             <div class="modal-body">
                                 - DI Pajak <br>
@@ -216,10 +226,16 @@
                         </div>
                     </div>
                 </div>
+            </div>
+            <div class="row">
                 <div class="col-md-5" style="margin-bottom: 50px;">
                     <img class="icon-jur" src="images/icon/bea.png" data-toggle="modal" data-target="#myModal2">
-                    <h4><strong>Kepabean dan Cukai</strong></h4>
-                    <h4>Lulusan Kepabeanan dan Cukai akan bekerja di Direktorat Jenderal Bea dan Cukai.</h4>
+                    <h4 style="letter-spacing:3px"><strong>KEPABEAN DAN CUKAI</strong></h4>
+                    <p>
+                        Terdiri atas program: <br>
+                        - DI Kepabeanan dan Cukai <br>
+                        - DIII Kepabeanan dan Cukai <br>
+                    </p>
                 </div>
                 <!-- modal -->
                 <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -227,7 +243,7 @@
                         <div class="modal-content">
                             <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                <h4 class="modal-title" id="myModalLabel">Kepabeanan dan Cukai</h4>
+                                <h4 class="modal-title" id="myModalLabel" style="letter-spacing:3px">Kepabeanan dan Cukai</h4>
                             </div>
                             <div class="modal-body">
                                 - DI Kepabeanan dan Cukai <br>
@@ -242,8 +258,13 @@
                 </div>
                 <div class="col-md-5 col-md-offset-2" style="margin-bottom: 50px;">
                     <img class="icon-jur" src="images/icon/management keuangan.png" data-toggle="modal" data-target="#myModal3">
-                    <h4><strong>Manajemen Keuangan</strong></h4>
-                    <h4>Untuk jurusan terakhir, program Kebendaharaan Negara biasanya menempatkan lulusannya di Direktorat Jenderal Perbendaharaan (DJPBN).</h4>
+                    <h4 style="letter-spacing:3px"><strong>MANAJEMEN KEUANGAN</strong></h4>
+                    <p>
+                        Terdiri atas program: <br>
+                        - DI Kebendaharaan Negara <br>
+                        - DIII Kebendaharaan Negara <br>
+                        - DIII Manajemen Aset <br>
+                    </p>
                 </div>
                 <!-- modal -->
                 <div class="modal fade" id="myModal3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -251,7 +272,7 @@
                         <div class="modal-content">
                             <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                <h4 class="modal-title" id="myModalLabel">Management Keuangan</h4>
+                                <h4 class="modal-title" id="myModalLabel" style="letter-spacing:3px">Management Keuangan</h4>
                             </div>
                             <div class="modal-body">
                                 - DI Kebendaharaan Negara <br>
@@ -266,6 +287,7 @@
                     </div>
                 </div>
             </div>
+            </div>
         </div>
     </div>
 </section>
@@ -276,7 +298,6 @@
         <div class="row" style="margin-bottom:50px;">
             <div class="col-md-12 judul-sec">
                 <h3>WHY US?</h3>
-                <h1>Bimbel Supreme</h1>
             </div>
             <div class="col-lg-7 col-md-7 video-pro" style="background-image: url(images/icon/mac.jpg);background-size:80%;padding:none;background-position:center;background-repeat:no-repeat;height:429px;">
                 <iframe style="border-radius:5px;padding-top: 20px;padding-bottom: 6px;padding-left: 15px;padding-right: 14px;" width="530" height="310" frameborder="0" src="https://www.youtube.com/embed/YHstbcl6lQI">
@@ -288,26 +309,26 @@
                     <!-- Wrapper for slides -->
                     <div class="carousel-inner" role="listbox">
                         <div class="item active">
-                            <img class="icon-jur" src="images/icon-14.png" style="margin: 0 auto;">
+                            <img class="icon-jur" src="images/icon/exclusive.png" style="margin: 0 auto;">
                             <div class="caption-slider">
-                                <h3>Exclusive</h3>
-                                <h4>Bimbingan belajar USM STAN supreme hanya menerima 50 siswa untuk bergabung. dengan sistem penerimaan siswa yang sedikit berbeda, kami menawarkan suasan pembelajaran yang tak bisa sembarang ditemui.</h4>
+                                <h3 style="letter-spacing:3px">Exclusive</h3>
+                                <p>Bimbingan belajar USM STAN supreme hanya menerima 50 siswa untuk bergabung. dengan sistem penerimaan siswa yang sedikit berbeda, kami menawarkan suasan pembelajaran yang tak bisa sembarang ditemui.</p>
                             </div>
                         </div>
 
                         <div class="item ">
-                            <img class="icon-jur" src="images/icon-14.png" style="margin: 0 auto;">
+                            <img class="icon-jur" src="images/icon/com.png" style="margin: 0 auto;">
                             <div class="caption-slider">
-                                <h3>Comfortable</h3>
-                                <h4>Tanpa melupakan progresivitas dalam proses pembelajaran, kami menjamin kenyamanan yang akan terjalin dilingkungan Bimbingan Belajar supreme. Baik maupun siswa dan tentor, maupun baik pihak supreme dan orang tua siswa.</h4>
+                                <h3 style="letter-spacing:3px">Comfortable</h3>
+                                <p>Tanpa melupakan progresivitas dalam proses pembelajaran, kami menjamin kenyamanan yang akan terjalin dilingkungan Bimbingan Belajar supreme. Baik maupun siswa dan tentor, maupun baik pihak supreme dan orang tua siswa.</p>
                             </div>
                         </div>
 
                         <div class="item ">
-                            <img class="icon-jur" src="images/icon-14.png" style="margin: 0 auto;">
+                            <img class="icon-jur" src="images/icon/gua.png" style="margin: 0 auto;">
                             <div class="caption-slider">
-                                <h3>Guarantee</h3>
-                                <h4>Sebagai jaminan untuk siswa supreme yang belum berhasil lolos Ujian Saringan masuk PKN STAN, kami memberikan kesempatan bagi siswa yang bersangkutan untuk kembali bergabung bersama supreme ditahun berikutnya.</h4>
+                                <h3 style="letter-spacing:3px">Guarantee</h3>
+                                <p>Sebagai jaminan untuk siswa supreme yang belum berhasil lolos Ujian Saringan masuk PKN STAN, kami memberikan kesempatan bagi siswa yang bersangkutan untuk kembali bergabung bersama supreme ditahun berikutnya.</p>
                             </div>
                         </div>
                     </div>
@@ -333,13 +354,12 @@
         <div class="row" style="margin-bottom:50px;">
             <div class="col-md-12 judul-sec" >
                 <h3 style="color"><strong>PROGRAM</strong></h3>
-                <h1 style="color:#44c7f4;">Payment Accounts</h1>
             </div>
             <div class="col-md-6 col-md-offset-3 " style="color:#ffffff;">
                 <h3 ><strong>FREE MEMBER TRYOUT</strong></h3>
                 <p>Get instant access to try this supreme tryout with pro tutor.</p>
                 <div class="col-md-12">
-                    <a type="button" class="btn btn-warning" href="{{url('/register')}}">More Info!</a>
+                    <a type="button" class="btn btn-warning" href="{{url('/register')}}">SIGN UP NOW!</a>
                 </div>
             </div>
 
@@ -352,14 +372,13 @@
     <div class="container">
         <div class="row" style="margin-bottom:50px;">
             <div class="col-md-12 judul-sec">
-                <h3>TUTORS</h3>
-                <h1>Supreme Tutors</h1>
+                <h3>SUPREMESTAN TUTORS</h3>
             </div>
             <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                 <div class="hovereffect">
-                    <img class="img-responsive" src="images/team1.jpg" alt="">
+                    <img class="img-responsive" src="images/tutor1.jpg" alt="">
                     <div class="overlay">
-                        <h2>Andi Setyo Wicaksono<br>D3-Akuntasi 2014</h2>
+                        <h2></h2>
                         <p class="set1">
                             <a href="#">
                                 <i class="fa fa-twitter"></i>
@@ -380,12 +399,15 @@
                         </p>
                     </div>
                 </div>
+                <div class="col-xs-12 text-uppercase" style="letter-spacing:3px;">
+                    <h4>Andi Setyo Wicaksono<br>D3-Akuntasi 2014</h4>
+                </div>
             </div>
             <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                 <div class="hovereffect">
-                    <img class="img-responsive" src="images/team1.jpg" alt="">
+                    <img class="img-responsive" src="images/tutor3.jpg" alt="">
                     <div class="overlay">
-                        <h2>Gandes Palupi<br>D3-Kebendaharaan 2014</h2>
+                        <h2></h2>
                         <p class="set1">
                             <a href="#">
                                 <i class="fa fa-twitter"></i>
@@ -406,12 +428,15 @@
                         </p>
                     </div>
                 </div>
+                <div class="col-xs-12 text-uppercase" style="letter-spacing:3px;">
+                    <h4>Gandes Palupi<br>D3-Kebendaharaan 2014</h4>
+                </div>
             </div>
             <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                 <div class="hovereffect">
-                    <img class="img-responsive" src="images/team1.jpg" alt="">
+                    <img class="img-responsive" src="images/tutor2.jpg" alt="">
                     <div class="overlay">
-                        <h2>Zufar Lutfi Wisanggeni<br>D3-Pajak 2014</h2>
+                        <h2><br></h2>
                         <p class="set1">
                             <a href="#">
                                 <i class="fa fa-twitter"></i>
@@ -431,6 +456,9 @@
                             </a>
                         </p>
                     </div>
+                </div>
+                <div class="col-xs-12 text-uppercase" style="letter-spacing:3px;">
+                    <h4>Zufar Lutfi Wisanggeni<br>D3-Pajak 2014</h4>
                 </div>
             </div>
         </div>
@@ -443,7 +471,6 @@
         <div class="row" style="margin-bottom:50px;">
             <div class="col-md-12 judul-sec">
                 <h3>CONTACT US</h3>
-                <h1>Connect socially with us</h1>
             </div>
             <div class="col-md-3">
                     <a href="http://facebook.com/groups/163484537384503"><span  class="fa-stack fa-lg fa-3x">
